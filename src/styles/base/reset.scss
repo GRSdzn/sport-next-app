@@ -1,0 +1,36 @@
+/* Убираем отступы, поля и рамки */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Сбрасываем стили списков */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Сбрасываем ссылки */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Сбрасываем кнопки */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+/* Сбрасываем поля ввода */
+input,
+textarea {
+  border: none;
+  outline: none;
+  font: inherit;
+}
