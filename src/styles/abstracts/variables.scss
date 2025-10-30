@@ -1,11 +1,35 @@
 // _variables.scss
-$primary-color: #0044ff;
+$primary-color: #c3253a;
 $secondary-color: #ff6600;
-$text-color: #333;
-$font-family: "Inter", sans-serif;
+$text-color: #ffffff;
+$background-color: #151515;
+// bebasneuecyrillic.ttf
+@font-face {
+  font-family: 'bebasneuecyrillic';
+  src: url('/fonts/bebasneuecyrillic.ttf') format('truetype');
+}
+
+$font-family: 'bebasneuecyrillic', 'inter', sans-serif;
 
 $breakpoints: (
   mobile: 480px,
   tablet: 768px,
   desktop: 1200px,
 );
+
+// Container settings
+$container-max-width: 1200px;
+$container-padding: 24px;
+
+$rounded-sm: 4px;
+$rounded-md: 8px;
+$rounded-lg: 12px;
+$rounded-xl: 16px;
+$rounded-2xl: 20px;
+$rounded-3xl: 24px;
+$rounded-4xl: 28px;
+$rounded-5xl: 32px;
+$rounded-6xl: 36px;
+$rounded-7xl: 40px;
+$rounded-8xl: 44px;
+$rounded-9xl: 48px;

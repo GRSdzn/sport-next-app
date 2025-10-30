@@ -1,66 +1,121 @@
-// header.scss
-@use "../abstracts/variables" as var;
-@use "../abstracts/mixins.scss" as mixin;
-@use "sass:color";
+@use '../abstracts/variables' as var;
+@use '../abstracts/mixins.scss' as mixin;
+@use 'sass:color';
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: var.$primary-color;
-  color: white;
-  font-family: var.$font-family;
+  height: 77.35px;
+  padding: 16px;
+  margin-top: 16px;
 
-  &__logo {
-    font-weight: bold;
-    font-size: 1.5rem;
-  }
+  // FIXED HEADER STYLES
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: center;
+  // height: 77.35px;
+  // padding: 16px;
+  // position: fixed;
+  // top: 16px;
+  // left: 0;
+  // right: 0;
 
-  &__nav {
+  .header__container {
+    @include mixin.container();
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background-color: #ffffff05;
+    border-radius: 12px;
+
     display: flex;
-    gap: 2rem;
-
-    &-link {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
-
-      &:hover {
-        color: var.$secondary-color;
-      }
-    }
-  }
-
-  &__cta {
-    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 1rem;
 
-    .phone {
-      font-weight: bold;
-    }
-
-    .button {
-      background-color: var.$secondary-color;
-      border: none;
-      padding: 0.5rem 1rem;
-      color: white;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: background-color 0.3s ease;
-
-      &:hover {
-        background-color: color.adjust(var.$secondary-color, $lightness: -10%);
+    .header__logo {
+      .header__logo-link {
+        display: flex;
+        align-items: center;
+        gap: 7.53px;
+        text-decoration: none;
       }
     }
-  }
 
-  @include mixin.respond(mobile) {
-    padding: 1rem;
-    &__nav {
-      display: none; // заменяем на бургер меню в мобильной версии
+    .header__nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+
+      .header__nav-link {
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        font-style: medium;
+        font-size: 18px;
+        text-decoration: none;
+        line-height: 90%;
+        letter-spacing: -2%;
+      }
+    }
+
+    .header__actions {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+
+      .header__social {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        .header__social-link {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background-color: rgba(255, 255, 255, 0.1);
+          transition: background-color 0.2s ease;
+
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+          }
+
+          img {
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+          }
+        }
+      }
+
+      .header__contact {
+        .header__contact-link {
+          text-decoration: none;
+
+          .header__contact-button {
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 8px;
+            border-style: inset;
+            padding: 12px 24px;
+            color: rgba(255, 255, 255, 0.9);
+            font-family: var.$font-family;
+            font-size: 24px;
+            line-height: 90%;
+            letter-spacing: -2%;
+            font-weight: 400;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s ease;
+
+            &:hover {
+              background-color: rgba(255, 255, 255, 0.05);
+              border-color: rgba(255, 255, 255, 0.4);
+              color: white;
+            }
+          }
+        }
+      }
     }
   }
 }

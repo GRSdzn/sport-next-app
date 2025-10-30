@@ -1,5 +1,5 @@
-@use "variables" as var;
-@use "sass:map";
+@use 'variables' as var;
+@use 'sass:map';
 
 @mixin respond($breakpoint) {
   $size: map.get(var.$breakpoints, $breakpoint);
@@ -10,4 +10,13 @@
   } @else {
     @warn "Breakpoint #{$breakpoint} not found in $breakpoints map";
   }
+}
+
+// Container mixin для переиспользования
+@mixin container($max-width: var.$container-max-width, $padding: var.$container-padding) {
+  width: 100%;
+  max-width: $max-width;
+  margin: 0 auto;
+  padding-left: $padding;
+  padding-right: $padding;
 }

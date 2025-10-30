@@ -1,72 +1,7 @@
 // Импорты компонентов
-@use "layout/header";
-@use "layout/footer";
-
-// Импорты страниц
-@use "pages/home";
-@use "pages/federation";
-@use "pages/news";
-@use "pages/about";
-@use "pages/contacts";
-@use "pages/clubs";
-@use "pages/gallery";
-@use "pages/privacy";
-
-// CSS переменные
-:root {
-  // Основные цвета
-  --color-primary: #d4af37;
-  --color-primary-dark: #b8941f;
-  --color-primary-light: #e6c866;
-  --color-primary-rgb: 212, 175, 55;
-
-  // Цвета текста
-  --color-text: #2c3e50;
-  --color-text-secondary: #5a6c7d;
-  --color-text-muted: #95a5a6;
-
-  // Цвета фона
-  --color-background: #ffffff;
-  --color-background-alt: #f8f9fa;
-  --color-background-dark: #2c3e50;
-
-  // Цвета границ
-  --color-border: #e9ecef;
-  --color-border-light: #f1f3f4;
-
-  // Системные цвета
-  --color-success: #27ae60;
-  --color-success-rgb: 39, 174, 96;
-  --color-error: #e74c3c;
-  --color-error-rgb: 231, 76, 60;
-  --color-warning: #f39c12;
-  --color-info: #3498db;
-
-  // Тени
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
-  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
-  --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.18);
-
-  // Переходы
-  --transition-fast: 0.15s ease;
-  --transition-normal: 0.3s ease;
-  --transition-slow: 0.5s ease;
-
-  // Радиусы скругления
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
-  --radius-full: 50%;
-
-  // Размеры контейнеров
-  --container-sm: 576px;
-  --container-md: 768px;
-  --container-lg: 992px;
-  --container-xl: 1200px;
-  --container-xxl: 1400px;
-}
+@use 'layout/header';
+@use 'layout/footer';
+@use 'abstracts/variables' as var;
 
 // Сброс стилей
 * {
@@ -77,16 +12,19 @@
 
 // Базовые стили
 html {
-  font-size: 16px;
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, sans-serif;
-  line-height: 1.6;
-  color: var(--color-text);
-  background-color: var(--color-background);
+  font-family: var.$font-family;
+  color: var.$text-color;
+  font-size: 16px;
+  background-color: var.$background-color;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var.$text-color;
+  text-decoration: none;
 }

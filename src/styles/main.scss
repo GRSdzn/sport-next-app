@@ -1,8 +1,12 @@
-@import "abstracts/variables";
-@import "abstracts/mixins";
-@import "base/reset";
-@import "base/typography";
-@import "layout/header";
-@import "layout/footer";
-@import "components/buttons";
-@import "pages/home";
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+@import 'base/reset';
+@import 'base/typography';
+
+// LAYOUT
+@import 'layout/container';
+@import 'layout/header';
+@import 'layout/footer';
+
+// COMPONENTS
+@import 'components/buttons';
