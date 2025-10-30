@@ -11,7 +11,6 @@ type ButtonProps = {
   loading?: boolean;
   icon?: React.ReactNode;
   iconPosition?: 'left' | 'right';
-  iconSize?: number;
   ariaLabel?: string;
   'aria-label'?: string;
   'aria-disabled'?: boolean;
@@ -29,7 +28,6 @@ export const Button = (props: ButtonProps) => {
     loading = false,
     icon,
     iconPosition = 'left',
-    iconSize,
     ariaLabel,
     'aria-label': ariaLabelAlt,
     'aria-disabled': ariaDisabled,
