@@ -2,51 +2,107 @@
 @use '@/styles/abstracts/mixins' as mixin;
 
 .cover-section {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 80px 0;
-  padding-bottom: 60vh;
-  flex-direction: column;
   position: relative;
+  min-height: 100vh;
+  padding: 140px 0 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   overflow: hidden;
+  isolation: isolate;
+  //   mixin container
+  @include mixin.container();
 
-  .cover-section__title {
+  &__background {
+    transform: translateY(-65px);
+  }
+
+  &__title-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__title {
     font-family: var.$font-family;
-    font-size: 225px;
+    font-size: 250px;
     font-weight: 400;
     line-height: 1;
     letter-spacing: -0.02em;
     text-transform: uppercase;
     color: var.$text-color;
-    white-space: nowrap;
-    position: relative;
-    z-index: 1;
   }
 
-  .cover-section__subtitle {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
+  &__subtitle {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 24px;
+    row-gap: 8px;
     font-family: var.$font-family;
     font-size: 100px;
     font-weight: 400;
     line-height: 1;
     letter-spacing: -0.02em;
     text-transform: uppercase;
-    white-space: nowrap;
-    z-index: 1;
   }
 
-  .cover-section__subtitle-red {
+  &__subtitle-red {
     color: var.$primary-color;
-    z-index: 1;
-    position: relative;
   }
 
-  .cover-section__button {
-    position: relative;
-    z-index: 3;
+  &__button-wrapper {
+  }
+}
+
+@keyframes cover-section-marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@include mixin.respond('tablet') {
+  .cover-section {
+    padding: 120px 0 140px;
+    gap: 72px;
+
+    &__title {
+      font-size: clamp(56px, 16vw, 140px);
+    }
+
+    &__media {
+      transform: translateY(40px);
+    }
+  }
+}
+
+@include mixin.respond('mobile') {
+  .cover-section {
+    padding: 96px 0 120px;
+    gap: 56px;
+
+    &__content {
+      gap: 24px;
+    }
+
+    &__subtitle {
+      column-gap: 12px;
+    }
+
+    &__media {
+      transform: translateY(20px);
+    }
+
+    &__ticker {
+      padding: 14px 0;
+    }
+
+    &__ticker span {
+      letter-spacing: 0.18em;
+    }
   }
 }

@@ -15,6 +15,16 @@ export const CoverSection: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <div className="cover-section__background">
+        <Image
+          src="/images/cover-section/cover-background.png"
+          alt="Федерация КХМЕРСКОГО БОКСА МОСКВЫ"
+          width={1200}
+          height={880}
+          className="cover-section__background-image"
+        />
+      </div>
       <div className="cover-section__button-wrapper">
         <Button
           type="button"
@@ -24,15 +34,6 @@ export const CoverSection: React.FC = () => {
         >
           ПОДРОБНЕЕ
         </Button>
-      </div>
-      <div className="cover-section__background">
-        <Image
-          src="/images/cover-section/cover-background.png"
-          alt="Федерация КХМЕРСКОГО БОКСА МОСКВЫ"
-          width={1200}
-          height={880}
-          className="cover-section__background-image"
-        />
       </div>
     </section>
   );
