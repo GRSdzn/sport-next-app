@@ -6,7 +6,7 @@ $background-color: #151515;
 // bebasneuecyrillic.ttf
 @font-face {
   font-family: 'bebasneuecyrillic';
-  src: url('/fonts/bebasneuecyrillic.ttf') format('truetype');
+  src: url('/fonts/bebas-neue-regular.woff2') format('truetype');
 }
 
 $font-family: 'bebasneuecyrillic', 'inter', sans-serif;
@@ -33,3 +33,4 @@ $rounded-6xl: 36px;
 $rounded-7xl: 40px;
 $rounded-8xl: 44px;
 $rounded-9xl: 48px;
+$rounded-full: 9999px;
