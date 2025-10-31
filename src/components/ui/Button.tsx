@@ -5,6 +5,7 @@ type ButtonProps = {
   children: React.ReactNode;
   className?: string;
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'link';
+  size?: 'lp' | 'sm' | 'md' | 'lg';
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
@@ -32,6 +33,7 @@ export const Button = (props: ButtonProps) => {
     'aria-label': ariaLabelAlt,
     'aria-disabled': ariaDisabled,
     'aria-busy': ariaBusy,
+    size = 'md',
   } = props;
 
   const isDisabled = disabled || loading;
@@ -42,6 +44,7 @@ export const Button = (props: ButtonProps) => {
   const buttonClasses = [
     'button',
     `button--${variant}`,
+    `button--${size}`,
     loading && 'button--loading',
     isDisabled && 'button--disabled',
     className,

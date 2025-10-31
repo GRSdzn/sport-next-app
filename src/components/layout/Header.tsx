@@ -2,6 +2,7 @@ import '@/styles/layout/header.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 import { NAV_MENU } from '../constants/nav_menu';
+import { Button } from '../ui/Button';
 
 export default function Header() {
   return (
@@ -50,11 +51,26 @@ export default function Header() {
           </div>
           <div className="header__contact">
             <Link href="/contacts" className="header__contact-link" aria-label="Связаться с нами">
-              <button className="header__contact-button" type="button" aria-label="Связаться с Федерацией Кун Кхмер">
+              <Button
+                type="button"
+                className="header__contact-button"
+                aria-label="Связаться с Федерацией Кун Кхмер"
+                variant="outline"
+                size="md"
+              >
                 СВЯЗАТЬСЯ
-              </button>
+              </Button>
             </Link>
           </div>
+          <button type="button" className="header__burger-button" aria-label="Открыть меню">
+            <Image
+              src="/images/icons/icon-burger-menu.svg"
+              alt="Иконка меню"
+              width={20}
+              height={20}
+              aria-hidden="true"
+            />
+          </button>
         </div>
       </div>
     </header>

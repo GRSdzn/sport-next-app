@@ -24,6 +24,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.main-content {
+  padding: 40px 0;
+}
+
 a {
   color: var.$text-color;
   text-decoration: none;

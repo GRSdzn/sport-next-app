@@ -8,11 +8,10 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px 24px;
   font-family: var.$font-family;
-  font-size: 40px;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.2;
+  letter-spacing: 1px;
   text-align: center;
   text-decoration: none;
   border: none;
@@ -23,6 +22,7 @@
   overflow: hidden;
   white-space: nowrap;
   user-select: none;
+  gap: 15px;
 
   // Focus styles для доступности
   &:focus-visible {
@@ -48,7 +48,7 @@
   &__content {
     display: flex;
     align-items: center;
-    gap: 8px;
+    margin: -8px 0;
   }
 
   // Icon styles
@@ -99,15 +99,8 @@
     border: 1px solid var.$primary-color;
 
     &:hover:not(:disabled):not(&--disabled):not(&--loading) {
-      background-color: color.adjust(var.$primary-color, $lightness: -5%);
-      border-color: color.adjust(var.$primary-color, $lightness: -5%);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    &:active:not(:disabled):not(&--disabled):not(&--loading) {
-      transform: translateY(0);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      background-color: color.adjust(var.$primary-color, $lightness: -10%);
+      border-color: color.adjust(var.$primary-color, $lightness: -10%);
     }
 
     &:focus-visible {
@@ -143,10 +136,11 @@
     background-color: transparent;
     color: var.$text-color;
     border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 28px 116px;
 
     &:hover:not(:disabled):not(&--disabled):not(&--loading) {
-      background-color: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.7);
+      background-color: var.$primary-color;
+      border-color: var.$primary-color;
     }
 
     &:active:not(:disabled):not(&--disabled):not(&--loading) {
@@ -202,6 +196,64 @@
       padding: 2px 4px;
     }
   }
+
+  // Sizes
+
+  &--xl {
+    padding: 16px 32px;
+    font-size: 24px;
+    @include mixin.respond('tablet') {
+      padding: 12px 24px;
+      font-size: 20px;
+    }
+    @include mixin.respond('mobile') {
+      padding: 10px 20px;
+      font-size: 18px;
+    }
+  }
+  &--lg {
+    padding: 24px 30px;
+    font-size: 32px;
+    @include mixin.respond('tablet') {
+      padding: 14px 28px;
+      font-size: 32px;
+    }
+    @include mixin.respond('mobile') {
+      padding: 12px 24px;
+      font-size: 28px;
+    }
+  }
+
+  &--md {
+    padding: 18px 30px;
+    font-size: 24px;
+    @include mixin.respond('tablet') {
+      padding: 16px 24px;
+      font-size: 20px;
+    }
+    @include mixin.respond('mobile') {
+      padding: 6px 20px;
+      font-size: 18px;
+    }
+  }
+
+  &--sm {
+    padding: 8px 16px;
+    font-size: 14px;
+    @include mixin.respond('tablet') {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+    @include mixin.respond('mobile') {
+      padding: 4px 10px;
+      font-size: 12px;
+    }
+  }
+
+  &--lp {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
 }
 
 // Animation для spinner
@@ -211,13 +263,5 @@
   }
   100% {
     transform: rotate(360deg);
-  }
-}
-
-// Responsive adjustments
-@media (max-width: 768px) {
-  .button {
-    padding: 10px 20px;
-    font-size: 16px;
   }
 }
