@@ -3,6 +3,9 @@
 
 .about-section {
   @include mixin.container;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &__title {
     font-size: 64px;
@@ -11,12 +14,33 @@
     text-align: center;
   }
 
+  // Center
   &__description {
+    font-family: 'Inter', sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: 120%;
     text-align: center;
-    font-family: 'Inter', sans-serif;
     margin: 40px 0 55px 0;
+    max-width: 790px;
+    width: 100%;
+    letter-spacing: -2%;
+  }
+
+  // адаптив под планшет
+  @include mixin.respond('tablet') {
+    &__title {
+      font-size: 64px;
+    }
+    &__description {
+      font-size: 18px;
+    }
+  }
+
+  // адаптив под мобильный
+  @include mixin.respond('mobile') {
+    &__description {
+      font-size: 16px;
+    }
   }
 }
