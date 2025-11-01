@@ -3,9 +3,13 @@
 
 .about-section {
   @include mixin.container;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+  &__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   &__title {
     font-size: 64px;

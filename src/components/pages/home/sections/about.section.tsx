@@ -1,7 +1,17 @@
 import React from 'react';
 import '@/components/pages/home/sections/about.section.scss';
+import EmblaCarousel from '@/components/ui/Slider/EmblaCarousel';
+import { EmblaOptionsType } from 'embla-carousel';
 
 export const AboutSection: React.FC = () => {
+  const OPTIONS: EmblaOptionsType = { loop: true };
+  const SLIDES = [
+    '/images/slides/slide3.png',
+    '/images/slides/slide3.png',
+    '/images/slides/slide3.png',
+    '/images/slides/slide3.png',
+  ];
+
   return (
     <section className="about-section">
       <div className="about-section__container">
@@ -12,6 +22,7 @@ export const AboutSection: React.FC = () => {
           здорового поколения.
         </p>
         {/* slider with images */}
+        <EmblaCarousel slides={SLIDES} options={OPTIONS} />
       </div>
     </section>
   );
