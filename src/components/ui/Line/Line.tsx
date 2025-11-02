@@ -1,4 +1,4 @@
-import '@/styles/components/line-section.scss';
+import './line-section.scss';
 
 export const LineSection: React.FC = () => {
   return (

@@ -1,6 +1,6 @@
 // line-section.scss
-@use '../abstracts/variables' as var;
-@use '../abstracts/mixins.scss' as mixin;
+@use '@/styles/abstracts/variables' as var;
+@use '@/styles/abstracts/mixins' as mixin;
 
 .line-section__container {
   @include mixin.container();

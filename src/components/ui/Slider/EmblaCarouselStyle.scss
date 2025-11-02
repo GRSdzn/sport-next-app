@@ -133,7 +133,7 @@
   justify-content: space-between; // оставляем space-between
   align-items: center;
   pointer-events: none;
-  padding: 0 20%; // <-- вот тут добавляем отступы от краёв
+  padding: 0 10%; // <-- вот тут добавляем отступы от краёв
 
   @include mixin.respond('mobile') {
     display: none; // скрываем стрелки на мобильной версии

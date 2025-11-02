@@ -1,7 +1,7 @@
 // buttons.scss
 @use 'sass:color';
-@use '../abstracts/variables' as var;
-@use '../abstracts/mixins.scss' as mixin;
+@use '@/styles/abstracts/variables' as var;
+@use '@/styles/abstracts/mixins' as mixin;
 
 .button {
   display: inline-flex;
@@ -212,7 +212,7 @@
     }
   }
   &--lg {
-    padding: 24px 30px;
+    padding: 23px 26px;
     font-size: 32px;
     @include mixin.respond('tablet') {
       padding: 14px 28px;
@@ -220,7 +220,7 @@
     }
     @include mixin.respond('mobile') {
       padding: 12px 24px;
-      font-size: 28px;
+      font-size: 24px;
     }
   }
 

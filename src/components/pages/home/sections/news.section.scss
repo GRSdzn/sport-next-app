@@ -1,0 +1,74 @@
+@use '@/styles/abstracts/variables' as var;
+@use '@/styles/abstracts/mixins' as mixin;
+
+.news-section {
+  @include mixin.container();
+
+  &__title {
+    font-size: 80px;
+    font-weight: 500;
+    line-height: 90%;
+    text-align: center;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 45px;
+  }
+
+  &__tabs-wrapper {
+    width: 100%;
+  }
+
+  &__tabs-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &__button-wrapper {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  &__show-all-button {
+    font-family: var.$font-family;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    color: #fff;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+
+    &:hover {
+      opacity: 0.6;
+    }
+
+    &:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.5);
+      outline-offset: 4px;
+      border-radius: var.$rounded-sm;
+    }
+
+    @include mixin.respond('tablet') {
+      font-size: 28px;
+    }
+    @include mixin.respond('mobile') {
+      display: none;
+    }
+  }
+}

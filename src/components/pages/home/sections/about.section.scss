@@ -31,6 +31,10 @@
     letter-spacing: -2%;
   }
 
+  &__button-wrapper {
+    margin-top: 40px;
+  }
+
   // адаптив под планшет
   @include mixin.respond('tablet') {
     &__title {
@@ -45,6 +49,12 @@
   @include mixin.respond('mobile') {
     &__description {
       font-size: 16px;
+    }
+    &__button-wrapper {
+      width: 100%;
+    }
+    &__button {
+      width: 100%;
     }
   }
 }

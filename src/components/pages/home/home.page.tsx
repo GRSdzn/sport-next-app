@@ -1,7 +1,8 @@
-import React from 'react';
+'use server';
 import { CoverSection } from './sections/cover.section';
 import { AboutSection } from './sections/about.section';
-import { LineSection } from '@/components/ui/Line';
+import { LineSection } from '@/components/ui/Line/Line';
+import { NewsSection } from './sections/news.section';
 
 const HomePage: React.FC = () => {
   return (
@@ -9,6 +10,8 @@ const HomePage: React.FC = () => {
       <CoverSection />
       <LineSection />
       <AboutSection />
+      <LineSection />
+      <NewsSection />
       <LineSection />
     </div>
   );

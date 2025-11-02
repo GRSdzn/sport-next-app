@@ -2,7 +2,7 @@ import '@/styles/layout/header.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 import { NAV_MENU } from '../constants/nav_menu';
-import { Button } from '../ui/Button';
+import { Button } from '../ui/Button/Button';
 
 export default function Header() {
   return (

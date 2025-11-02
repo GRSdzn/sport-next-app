@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
+import { Inter } from 'next/font/google';
 import '../styles/globals.scss';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -11,6 +12,12 @@ const bebasNeueCyrillic = localFont({
   variable: '--font-bebas-neue-cyrillic',
 });
 
+const inter = Inter({
+  subsets: ['latin', 'cyrillic'],
+  display: 'swap',
+  variable: '--font-inter',
+});
+
 export const metadata: Metadata = mainLayoutMeta;
 
 export default function RootLayout({
@@ -20,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={bebasNeueCyrillic.className}>
+      <body className={`${bebasNeueCyrillic.variable} ${inter.variable}`}>
         <Header />
         <main className="main-content">{children}</main>
         <Footer />

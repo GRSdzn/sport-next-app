@@ -2,6 +2,8 @@ import React from 'react';
 import '@/components/pages/home/sections/about.section.scss';
 import EmblaCarousel from '@/components/ui/Slider/EmblaCarousel';
 import { EmblaOptionsType } from 'embla-carousel';
+import { Button } from '@/components/ui/Button/Button';
+import Image from 'next/image';
 
 export const AboutSection: React.FC = () => {
   const OPTIONS: EmblaOptionsType = { loop: true };
@@ -23,6 +25,19 @@ export const AboutSection: React.FC = () => {
         </p>
         {/* slider with images */}
         <EmblaCarousel slides={SLIDES} options={OPTIONS} />
+        <div className="about-section__button-wrapper">
+          <Button
+            type="button"
+            className="about-section__button"
+            aria-label="Подробнее о Федерации КХМЕРСКОГО БОКСА МОСКВЫ"
+            variant="primary"
+            size="lg"
+            icon={<Image src="/images/icons/icon-arrow.svg" alt="Иконка стрелки" width={18} height={18} />}
+            iconPosition="right"
+          >
+            ПОДРОБНЕЕ
+          </Button>
+        </div>
       </div>
     </section>
   );
