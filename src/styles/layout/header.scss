@@ -23,8 +23,7 @@
 
   .header__container {
     @include mixin.container();
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding: 16px 24px;
     background-color: #ffffff05;
     border-radius: 12px;
 
