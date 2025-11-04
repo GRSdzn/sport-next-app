@@ -10,13 +10,7 @@ export default function Header() {
       <div className="header__container">
         <div className="header__logo">
           <Link href="/" className="header__logo-link" aria-label="Федерация Кун Кхмер - перейти на главную страницу">
-            <Image
-              src="/images/header-logo.svg"
-              alt="Логотип Федерации Кун Кхмер"
-              width={116}
-              height={45.35}
-              priority
-            />
+            <Image src="/images/logo.svg" alt="Логотип Федерации Кун Кхмер" width={116} height={45.35} priority />
           </Link>
         </div>
         <nav className="header__nav" aria-label="Главная навигация" role="navigation">

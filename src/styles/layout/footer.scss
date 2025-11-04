@@ -1,0 +1,138 @@
+@use '../abstracts/variables' as var;
+@use '../abstracts/mixins' as mixin;
+
+.footer {
+  &__container {
+    @include mixin.container();
+    display: flex;
+    width: auto;
+    gap: 64px;
+    border-radius: 12px;
+    font-family: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 0.9;
+    padding: 64px 0 96px 0;
+    flex-direction: column;
+
+    @include mixin.respond('tablet') {
+      padding: 40px 12px 64px 12px;
+      gap: 40px;
+    }
+  }
+
+  //    ПРОЗРАЧНЫЕ КНОПКИ
+  &__logo-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    @include mixin.respond('tablet') {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 40px;
+    }
+  }
+  &__link-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+
+    @include mixin.respond('mobile') {
+      flex-direction: column;
+      width: 100%;
+      gap: 8px;
+    }
+  }
+
+  &__button-link {
+    @include mixin.respond('mobile') {
+      width: 100%;
+    }
+  }
+
+  &__button {
+    font-family: var.$font-family-inter;
+  }
+
+  &__socials-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include mixin.respond('tablet') {
+      gap: 24px;
+      align-items: flex-start;
+    }
+  }
+
+  &__phone-numbers {
+    display: flex;
+    gap: 200px;
+
+    @include mixin.respond('tablet') {
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+    }
+  }
+
+  &__phone-content,
+  &__email-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 400px;
+    width: 100%;
+
+    @include mixin.respond('tablet') {
+      max-width: none;
+      width: auto;
+    }
+  }
+
+  &__phone-title,
+  &__email-title {
+    font-size: 32px;
+    font-weight: 700;
+
+    color: var.$text-color;
+
+    @include mixin.respond('tablet') {
+      font-size: 24px;
+    }
+  }
+
+  &__phone-description,
+  &__email-description {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.2;
+
+    @include mixin.respond('tablet') {
+      font-size: 14px;
+    }
+  }
+
+  //   __contact-button-link
+  &__contact-button-link {
+    &__button {
+      width: 100%;
+    }
+    width: 100%;
+  }
+
+  &__button-container {
+    display: flex;
+    gap: 40px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__privacy-policy-link {
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var.$text-color-secondary;
+  }
+}

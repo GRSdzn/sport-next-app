@@ -9,6 +9,10 @@
     font-weight: 500;
     line-height: 90%;
     text-align: center;
+
+    @include mixin.respond('tablet') {
+      font-size: 64px;
+    }
   }
 
   &__container {

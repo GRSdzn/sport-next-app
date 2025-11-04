@@ -1,6 +1,5 @@
 import './news.section.scss';
 import { NewsTabs } from '@/components/features/news/NewsTabs';
-import type { EventCardProps } from '@/components/ui/EventCard';
 
 export const NewsSection: React.FC = () => {
   return (
