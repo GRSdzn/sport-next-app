@@ -1,0 +1,29 @@
+@use '@/styles/abstracts/variables' as var;
+@use '@/styles/abstracts/mixins' as mixin;
+
+.gallery-section {
+  @include mixin.container;
+
+  &__text-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 80px;
+    line-height: 0.9;
+
+    @include mixin.respond('tablet') {
+      font-size: 64px;
+    }
+  }
+
+  &__section__images {
+    margin-top: 40px;
+
+    @include mixin.respond('mobile') {
+      margin-top: 24px;
+    }
+  }
+}

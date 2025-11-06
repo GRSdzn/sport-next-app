@@ -48,7 +48,7 @@
       gap: 24px;
 
       .header__nav-link {
-        font-family: 'Inter', sans-serif;
+        font-family: var.$font-family-inter;
         font-weight: 400;
         font-size: 18px;
         text-decoration: none;
