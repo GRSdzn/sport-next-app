@@ -1,12 +1,21 @@
 @use '@/styles/abstracts/mixins' as mixin;
 .dotted-grid {
   position: absolute;
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.2) 2px, transparent 2px);
-  background-size: 22px 22px;
   pointer-events: none;
   z-index: -1;
 
   @include mixin.respond('laptop') {
     display: none;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--grid-item-size, 12px);
+    height: var(--grid-item-size, 12px);
+    background-color: var(--grid-color, rgba(255, 255, 255, 0.2));
+    box-shadow: var(--grid-box-shadow, none);
   }
 }
