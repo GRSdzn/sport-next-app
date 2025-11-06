@@ -33,14 +33,14 @@ export const GallerySection: React.FC = () => {
         </Button>
       </div>
       <div className="gallery-section__images">
-        {galleryImages.map((image, index) => (
+        {/* {galleryImages.map((image, index) => (
           <div
             key={index}
             className={`gallery-section__image-container gallery-section__image-container--${index + 1}`}
           >
             <Image src={image.src} alt={image.alt} fill className="gallery-section__image" />
           </div>
-        ))}
+        ))} */}
       </div>
     </section>
   );
