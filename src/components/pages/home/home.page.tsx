@@ -3,6 +3,7 @@ import { CoverSection } from './sections/cover.section';
 import { AboutSection } from './sections/about.section';
 import { LineSection } from '@/components/ui/Line/Line';
 import { NewsSection } from './sections/news.section';
+import { DetailSection } from './sections/detail';
 import { GallerySection } from './sections/gallery.section';
 
 const HomePage: React.FC = () => {
@@ -14,7 +15,10 @@ const HomePage: React.FC = () => {
       <LineSection />
       <NewsSection />
       <LineSection />
+      <DetailSection />
+      <LineSection />
       <GallerySection />
+      <LineSection />
     </div>
   );
 };
