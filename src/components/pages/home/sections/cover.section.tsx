@@ -17,7 +17,7 @@ export const CoverSection: React.FC = () => {
 
         <div className="cover-section__background">
           <Image
-            src="/images/test_bcg.png"
+            src="/images/cover-section/cover-background.webp"
             alt="Федерация КХМЕРСКОГО БОКСА МОСКВЫ"
             sizes="(max-width: 768px) 698px, (max-width: 1600px) 728px, 1499px"
             className="cover-section__background-image"
