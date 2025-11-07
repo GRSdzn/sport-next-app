@@ -30,7 +30,6 @@ export const CoverSection: React.FC = () => {
             type="button"
             className="cover-section__button"
             aria-label="Подробнее о Федерации КХМЕРСКОГО БОКСА МОСКВЫ"
-            variant="primary"
             size="lg"
             icon={<Image src="/images/icons/icon-arrow.svg" alt="Иконка стрелки" width={18} height={18} />}
             iconPosition="right"
