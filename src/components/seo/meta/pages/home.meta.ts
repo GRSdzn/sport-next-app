@@ -1,5 +1,5 @@
+import { SITE_URL } from "@/components/constants/urls";
 import { Metadata } from "next";
-const SITE_URL = "https://example.com";
 
 export const homeMeta: Metadata = {
   title: "Федерация Кун Кхмер — официальный сайт",

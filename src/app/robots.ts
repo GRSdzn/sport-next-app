@@ -1,23 +1,23 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from 'next';
+import { SITE_URL } from '@/components/constants/urls';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kunkhmer-federation.ru'
-
   return {
     rules: {
       userAgent: '*',
       allow: '/',
     },
-    host: baseUrl,
+    host: SITE_URL,
     sitemap: [
-      `${baseUrl}/sitemap.xml`,
-      `${baseUrl}/sitemap-news.xml`,
-      `${baseUrl}/sitemap-events.xml`,
-      `${baseUrl}/sitemap-clubs.xml`,
-      `${baseUrl}/sitemap-gallery.xml`,
-      `${baseUrl}/sitemap-contacts.xml`,
-      `${baseUrl}/sitemap-privacy.xml`,
-      `${baseUrl}/sitemap-terms.xml`,
+      `${SITE_URL}/sitemap.xml`,
+      `${SITE_URL}/sitemap-news.xml`,
+      `${SITE_URL}/sitemap-events.xml`,
+      `${SITE_URL}/sitemap-clubs.xml`,
+      `${SITE_URL}/sitemap-gallery.xml`,
+      `${SITE_URL}/sitemap-contacts.xml`,
+      `${SITE_URL}/sitemap-privacy.xml`,
+      `${SITE_URL}/sitemap-terms.xml`,
+      `${SITE_URL}/sitemap-404.xml`,
     ],
-  }
+  };
 }

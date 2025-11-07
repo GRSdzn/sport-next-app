@@ -1,0 +1,145 @@
+@use '@/styles/abstracts/variables' as var;
+@use '@/styles/abstracts/mixins' as mixin;
+
+.contact-modal__overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.02);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  z-index: 100;
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+
+    .contact-modal {
+      transform: translateY(7%);
+    }
+  }
+}
+
+.contact-modal {
+  background: var.$background-color;
+  border-radius: var.$rounded-3xl;
+  padding: 32px;
+  width: min(90%, 794px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px);
+  transition: transform 0.3s ease;
+  z-index: 101;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+
+  // ========== HEADER ==========
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-title {
+      font: 400 64px/0.9 var.$font-family-bebas;
+      color: var.$text-color;
+    }
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  // ========== BODY ==========
+  &__body {
+    margin-bottom: 24px;
+  }
+
+  &__contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    &-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    &-block {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    &-title {
+      font: 700 42px/1 var.$font-family-inter;
+      color: var.$text-color;
+
+      a {
+        color: inherit;
+        text-decoration: none;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+
+    &-description {
+      max-width: 300px;
+      font: 200 18px/1.2 var.$font-family-inter;
+      color: var.$text-color;
+      opacity: 0.85;
+    }
+  }
+
+  // ========== BUTTON ==========
+  &__button {
+    text-align: center;
+  }
+}
+
+// ========== ADAPTIVE ==========
+@include mixin.respond('tablet') {
+  .contact-modal {
+    gap: 40px;
+    padding: 24px;
+
+    &__head-title {
+      font-size: 48px;
+    }
+
+    &__contact-list-title {
+      font-size: 28px;
+    }
+  }
+}
+
+@include mixin.respond('mobile') {
+  .contact-modal {
+    gap: 32px;
+    padding: 20px;
+
+    &__head-title {
+      font-size: 32px;
+    }
+
+    &__contact-list-title {
+      font-size: 22px;
+    }
+  }
+}

@@ -1,0 +1,182 @@
+@use '@/styles/abstracts/variables' as var;
+@use '@/styles/abstracts/mixins' as mixin;
+
+.goals-n-obj-section {
+  @include mixin.container();
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 60px;
+    width: 100%;
+
+    &--reverse {
+      flex-direction: row-reverse;
+    }
+
+    // LAPTOP — вертикальная компоновка
+    @include mixin.respond('laptop') {
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      text-align: center;
+    }
+
+    // TABLET
+    @include mixin.respond('tablet') {
+      gap: 30px;
+    }
+  }
+
+  &__list-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 640px; // чтобы текст не растягивался слишком сильно
+
+    @include mixin.respond('laptop') {
+      align-items: center;
+    }
+  }
+
+  &__heading {
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 0.9;
+    text-transform: uppercase;
+
+    @include mixin.respond('laptop') {
+      font-size: 64px;
+      margin-bottom: 20px;
+    }
+
+    @include mixin.respond('tablet') {
+      font-size: 48px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @include mixin.respond('laptop') {
+      gap: 28px;
+      align-items: center;
+    }
+
+    @include mixin.respond('mobile') {
+      gap: 20px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    max-width: 580px;
+
+    @include mixin.respond('laptop') {
+      justify-content: center;
+    }
+
+    &-number {
+      font-size: 40px;
+      font-weight: 700;
+      background: #c3253a;
+      color: #fff;
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+
+      @include mixin.respond('laptop') {
+        font-size: 32px;
+        width: 56px;
+        height: 56px;
+      }
+    }
+
+    &-text {
+      font-family: var.$font-family-inter;
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var.$text-color;
+      white-space: pre-line;
+
+      @include mixin.respond('laptop') {
+        font-size: 18px;
+        line-height: 1.3;
+      }
+    }
+  }
+
+  &__images {
+    flex: 1;
+    display: grid;
+    grid-template-areas:
+      'img1 img2'
+      'img1 img3';
+    grid-template-columns: 387px 285px;
+    grid-template-rows: 240px 240px;
+    gap: 20px;
+    align-self: stretch;
+
+    // LAPTOP — центрируем, сохраняем сетку
+    @include mixin.respond('laptop') {
+      justify-content: center;
+      align-content: center;
+      align-self: center;
+      grid-template-columns: 320px 240px;
+      grid-template-rows: 200px 200px;
+      gap: 16px;
+    }
+
+    // TABLET
+    @include mixin.respond('tablet') {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  &__image-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    &:nth-child(1) {
+      grid-area: img1;
+    }
+    &:nth-child(2) {
+      grid-area: img2;
+    }
+    &:nth-child(3) {
+      grid-area: img3;
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}

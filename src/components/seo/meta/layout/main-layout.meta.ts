@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-const SITE_URL = "https://example.com";
+import { SITE_URL } from "@/components/constants/urls";
 
 export const mainLayoutMeta: Metadata = {
   title: "Федерация Кун Кхмер",

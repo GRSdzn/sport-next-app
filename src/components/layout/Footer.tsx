@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Button } from '../ui/Button/Button';
 import Link from 'next/link';
 import '@/styles/layout/footer.scss';
+import { LineSection } from '../ui/Line/Line';
 
 const FOOTER_BUTTONS = [
   {
@@ -34,6 +35,8 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer__container">
+        <LineSection />
+
         {/* LOGO + FLEX BUTTONS */}
         <div className="footer__logo-buttons">
           <div className="footer__logo">
