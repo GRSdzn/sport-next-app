@@ -41,7 +41,13 @@ export default function Footer() {
         <div className="footer__logo-buttons">
           <div className="footer__logo">
             <Link href="/" className="footer__logo-link" aria-label="Федерация Кун Кхмер - перейти на главную страницу">
-              <Image src="/images/logo.svg" alt="Logo" width={150} height={60} />
+              <Image 
+                src="/images/logo.svg" 
+                alt="Логотип Федерации Кун Кхмер" 
+                width={150} 
+                height={60} 
+                style={{ width: 'auto', height: 'auto' }}
+              />
             </Link>
           </div>
           <div className="footer__link-buttons">

@@ -23,6 +23,7 @@ export const CoverSection: React.FC = () => {
             className="cover-section__background-image"
             fill
             priority
+            fetchPriority="high"
           />
         </div>
         <div className="cover-section__button-wrapper">

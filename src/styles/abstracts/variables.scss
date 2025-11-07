@@ -8,7 +8,8 @@ $background-color: #151515;
 // bebasneuecyrillic.ttf
 @font-face {
   font-family: 'bebasneuecyrillic';
-  src: url('/fonts/bebas-neue-regular.woff2') format('truetype');
+  src: url('/fonts/bebas-neue-regular.woff2') format('woff2');
+  font-display: swap;
 }
 
 // Font families

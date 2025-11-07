@@ -1,4 +1,3 @@
-'use server';
 import { CoverSection } from './sections/cover.section';
 import { AboutSection } from './sections/about.section';
 import { LineSection } from '@/components/ui/Line/Line';

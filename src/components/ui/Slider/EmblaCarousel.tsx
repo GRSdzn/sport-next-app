@@ -115,6 +115,7 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options, slideWidth, slideH
           {slides.map((slide, i) => (
             <div className={`embla__slide${i === selectedIndex ? ' is-selected' : ''}`} key={i}>
               <div className="embla__slide__number">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={slide} alt={`Slide ${i + 1}`} className="embla__slide__image" />
                 <div className="embla__slide__overlay" />
               </div>
