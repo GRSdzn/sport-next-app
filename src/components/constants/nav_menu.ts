@@ -7,7 +7,7 @@ export const NAV_MENU: NavMenuItem[] = [
   },
   {
     label: 'Новости и мероприятия',
-    href: '/news',
+    href: '/events',
   },
   {
     label: 'О Кун Кхмер',

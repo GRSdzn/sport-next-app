@@ -1,5 +1,5 @@
 @use '@/styles/abstracts/mixins' as mixin;
 
-.home-page__container {
+.events-page__container {
   @include mixin.page-container();
 }

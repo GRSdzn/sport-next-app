@@ -24,9 +24,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-// .main-content {
-//   padding: 40px 0 100px 0;
-// }
+.main-content {
+  min-height: 50dvh;
+  // padding: 40px 0 100px 0;
+}
 
 a {
   color: var.$text-color;
