@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import './buttons.scss';
 
@@ -20,7 +18,7 @@ type ButtonProps = {
   'aria-busy'?: boolean;
 };
 
-export const Button = (props: ButtonProps) => {
+export const Button = React.memo((props: ButtonProps) => {
   const {
     children,
     className = '',
@@ -82,4 +80,4 @@ export const Button = (props: ButtonProps) => {
       )}
     </button>
   );
-};
+});
