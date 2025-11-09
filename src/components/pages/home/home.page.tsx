@@ -14,7 +14,7 @@ const HomePage: React.FC = () => {
       <LineSection />
       <AboutSection />
       <LineSection />
-      <NewsSection showAllButton />
+      <NewsSection showAllButton showLine={false} />
       <LineSection />
       <DetailInfoSection />
       <LineSection />

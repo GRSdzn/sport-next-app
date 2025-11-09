@@ -3,18 +3,21 @@ import { EventCard } from '@/components/ui/EventCard';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 import './NewsTabs.scss';
 import { eventsItems, newsItems } from '@/components/constants/events-list';
+import { LineSection } from '@/components/ui/Line/Line';
 
 export type NewsTabsProps = {
   defaultTab?: 'news' | 'events';
+  showLine?: boolean;
 };
 
-export const NewsTabs: React.FC<NewsTabsProps> = ({ defaultTab = 'news' }) => {
+export const NewsTabs: React.FC<NewsTabsProps> = ({ defaultTab = 'news', showLine = true }) => {
   return (
     <Tabs defaultValue={defaultTab}>
       <TabsList>
         <TabsTrigger value="news">НОВОСТИ</TabsTrigger>
         <TabsTrigger value="events">МЕРОПРИЯТИЯ</TabsTrigger>
       </TabsList>
+      {showLine && <LineSection />}
       <TabsContent value="news">
         <div className="news-tabs__grid">
           {newsItems.length > 0 ? (
@@ -34,6 +37,7 @@ export const NewsTabs: React.FC<NewsTabsProps> = ({ defaultTab = 'news' }) => {
           )}
         </div>
       </TabsContent>
+
       <TabsContent value="events">
         <div className="news-tabs__grid">
           {eventsItems.length > 0 ? (
