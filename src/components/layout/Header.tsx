@@ -37,7 +37,13 @@ export default function Header() {
         <nav className="header__nav" aria-label="Главная навигация" role="navigation">
           {NAV_MENU.map((item, i) =>
             item.action ? (
-              <button key={i} type="button" className="header__nav-link" onClick={item.action}>
+              <button
+                key={i}
+                type="button"
+                className="header__nav-link"
+                onClick={item.action}
+                aria-label={item.ariaLabel}
+              >
                 {item.label}
               </button>
             ) : (
