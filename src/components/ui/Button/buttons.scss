@@ -234,11 +234,11 @@
     font-size: 18px;
     @include mixin.respond('tablet') {
       padding: 6px 12px;
-      font-size: 12px;
+      font-size: 18px;
     }
     @include mixin.respond('mobile') {
       padding: 12px 24px;
-      font-size: 12px;
+      font-size: 18px;
       width: 100%;
     }
   }

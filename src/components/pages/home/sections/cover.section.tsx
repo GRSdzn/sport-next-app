@@ -1,7 +1,7 @@
+import '@/components/pages/home/sections/cover.section.scss';
 import { Button } from '@/components/ui/Button/Button';
 import Image from 'next/image';
 import React from 'react';
-import '@/components/pages/home/sections/cover.section.scss';
 
 export const CoverSection: React.FC = () => {
   return (

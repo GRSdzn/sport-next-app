@@ -17,8 +17,24 @@
   max-width: $max-width;
   margin: 0 auto;
 
+  @include respond('laptop') {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
   @include respond('tablet') {
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@mixin section-title {
+  font-weight: 400;
+  font-size: 80px;
+  line-height: 0.9;
+  text-transform: uppercase;
+
+  @include respond('tablet') {
+    font-size: 64px;
   }
 }

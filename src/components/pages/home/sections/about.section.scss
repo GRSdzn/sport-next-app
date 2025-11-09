@@ -12,9 +12,7 @@
   }
 
   &__title {
-    font-size: 80px;
-    font-weight: 400;
-    line-height: 1;
+    @include mixin.section-title;
     text-align: center;
   }
 
@@ -36,9 +34,6 @@
 
   // адаптив под планшет
   @include mixin.respond('tablet') {
-    &__title {
-      font-size: 64px;
-    }
     &__description {
       font-size: 18px;
     }

@@ -5,14 +5,8 @@
   @include mixin.container();
 
   &__title {
-    font-size: 80px;
-    font-weight: 500;
-    line-height: 90%;
+    @include mixin.section-title;
     text-align: center;
-
-    @include mixin.respond('tablet') {
-      font-size: 64px;
-    }
   }
 
   &__container {

@@ -11,12 +11,7 @@
   }
 
   &__title {
-    font-size: 80px;
-    line-height: 0.9;
-
-    @include mixin.respond('tablet') {
-      font-size: 64px;
-    }
+    @include mixin.section-title;
   }
 
   &__section__images {

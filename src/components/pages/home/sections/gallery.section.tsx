@@ -1,6 +1,6 @@
+import './gallery.section.scss';
 import { Button } from '@/components/ui/Button/Button';
 import Image from 'next/image';
-import './gallery.section.scss';
 
 const galleryImages = [
   { src: '/images/slides/slide1.png', alt: 'Фотография из галереи' },

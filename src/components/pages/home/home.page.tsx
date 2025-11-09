@@ -3,6 +3,7 @@ import { AboutSection } from './sections/about.section';
 import { LineSection } from '@/components/ui/Line/Line';
 import { NewsSection } from './sections/news.section';
 import { GallerySection } from './sections/gallery.section';
+import { DetailInfoSection } from './sections/detail-info.section';
 
 const HomePage: React.FC = () => {
   return (
@@ -13,7 +14,8 @@ const HomePage: React.FC = () => {
       <LineSection />
       <NewsSection />
       <LineSection />
-      <GallerySection />
+      {/* <GallerySection /> */}
+      <DetailInfoSection />
     </div>
   );
 };
