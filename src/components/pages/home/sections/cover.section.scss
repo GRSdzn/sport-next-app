@@ -10,7 +10,6 @@
   //   mixin container
   &__container {
     @include mixin.container();
-    padding: 0 !important;
     display: flex;
     position: relative;
     flex-direction: column;

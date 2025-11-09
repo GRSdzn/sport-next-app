@@ -10,7 +10,7 @@ export const FOOTER_BUTTONS: FooterButton[] = [
   },
   {
     label: 'Новости и мероприятия',
-    href: '/news',
+    href: '/events',
   },
   {
     label: 'О Кун Кхмер',
