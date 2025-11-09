@@ -35,17 +35,19 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer__container">
-        <LineSection />
+        <section className="footer__line-section">
+          <div className="footer__line" />
+        </section>
 
         {/* LOGO + FLEX BUTTONS */}
         <div className="footer__logo-buttons">
           <div className="footer__logo">
             <Link href="/" className="footer__logo-link" aria-label="Федерация Кун Кхмер - перейти на главную страницу">
-              <Image 
-                src="/images/logo.svg" 
-                alt="Логотип Федерации Кун Кхмер" 
-                width={150} 
-                height={60} 
+              <Image
+                src="/images/logo.svg"
+                alt="Логотип Федерации Кун Кхмер"
+                width={150}
+                height={60}
                 style={{ width: 'auto', height: 'auto' }}
               />
             </Link>

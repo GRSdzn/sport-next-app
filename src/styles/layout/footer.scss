@@ -2,8 +2,8 @@
 @use '../abstracts/mixins' as mixin;
 
 .footer {
+  @include mixin.container();
   &__container {
-    @include mixin.container();
     display: flex;
     width: auto;
     gap: 64px;
@@ -14,7 +14,7 @@
     flex-direction: column;
 
     @include mixin.respond('tablet') {
-      padding: 40px 12px 64px 12px;
+      padding: 40px 0 64px 0;
       gap: 40px;
     }
   }
@@ -134,5 +134,16 @@
     font-weight: 400;
     letter-spacing: -0.02em;
     color: var.$text-color-secondary;
+  }
+
+  &__line-section {
+    height: 1.201px;
+    width: 100%;
+    background-color: #ffff;
+    opacity: 0.2;
+    @include mixin.container();
+    .footer__line {
+      height: 1.201px;
+    }
   }
 }
