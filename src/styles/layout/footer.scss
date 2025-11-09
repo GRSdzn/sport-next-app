@@ -10,11 +10,11 @@
     border-radius: 12px;
     font-family: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     line-height: 0.9;
-    padding: 64px 0 96px 0;
+    padding: 0 0 96px 0;
     flex-direction: column;
 
     @include mixin.respond('tablet') {
-      padding: 40px 0 64px 0;
+      padding: 0 0 64px 0;
       gap: 40px;
     }
   }

@@ -38,8 +38,8 @@
     }
 
     @include mixin.respond('mobile') {
-      font-size: 16px;
       margin-bottom: 0;
+      font-size: 16px;
     }
   }
 
@@ -69,6 +69,7 @@
 
     @include mixin.respond('mobile') {
       gap: 8px;
+      margin-top: 24px;
     }
   }
   // BUTTONS
@@ -77,6 +78,8 @@
     display: none;
     @include mixin.respond('mobile') {
       display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
   &__button {

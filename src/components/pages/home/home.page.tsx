@@ -4,10 +4,14 @@ import { LineSection } from '@/components/ui/Line/Line';
 import { NewsSection } from './sections/news.section';
 import { GallerySection } from './sections/gallery.section';
 import { DetailInfoSection } from './sections/detail-info.section';
+import { FederationClubSection } from './sections/federation-club.section';
 
 const HomePage: React.FC = () => {
   return (
-    <div className="home-page__container" style={{ display: 'flex', flexDirection: 'column', gap: '100px' }}>
+    <div
+      className="home-page__container"
+      style={{ display: 'flex', flexDirection: 'column', gap: '100px', marginBottom: '100px' }}
+    >
       <CoverSection />
       <LineSection />
       <AboutSection />
@@ -16,6 +20,8 @@ const HomePage: React.FC = () => {
       <LineSection />
       {/* <GallerySection /> */}
       <DetailInfoSection />
+      <LineSection />
+      <FederationClubSection />
     </div>
   );
 };

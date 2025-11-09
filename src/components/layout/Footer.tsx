@@ -1,35 +1,8 @@
+import '@/styles/layout/footer.scss';
 import Image from 'next/image';
 import { Button } from '../ui/Button/Button';
 import Link from 'next/link';
-import '@/styles/layout/footer.scss';
-import { LineSection } from '../ui/Line/Line';
-
-const FOOTER_BUTTONS = [
-  {
-    label: 'Федерация',
-    href: '/',
-  },
-  {
-    label: 'Новости и мероприятия',
-    href: '/news',
-  },
-  {
-    label: 'О Кун Кхмер',
-    href: '/about',
-  },
-  {
-    label: 'Контакты',
-    href: '/contacts',
-  },
-  {
-    label: 'Галерея',
-    href: '/gallery',
-  },
-  {
-    label: 'Клубы',
-    href: '/privacy-policy',
-  },
-];
+import { FOOTER_BUTTONS } from '../constants/footer-buttons';
 
 export default function Footer() {
   return (
