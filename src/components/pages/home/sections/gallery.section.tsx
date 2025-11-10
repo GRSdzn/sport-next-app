@@ -3,16 +3,18 @@ import { Button } from '@/components/ui/Button/Button';
 import Image from 'next/image';
 
 const galleryImages = [
-  { src: '/images/slides/slide1.png', alt: 'Фотография из галереи' },
-  { src: '/images/slides/slide3.png', alt: 'Фотография из галереи' },
-  { src: '/images/slides/slide3.png', alt: 'Фотография из галереи' },
-  { src: '/images/slides/slide4.png', alt: 'Фотография из галереи' },
-  { src: '/images/slides/slide1.png', alt: 'Фотография из галереи' },
-  { src: '/images/slides/slide4.png', alt: 'Фотография из галереи' },
-  { src: '/images/slides/slide3.png', alt: 'Фотография из галереи' },
-  { src: '/images/slides/slide4.png', alt: 'Фотография из галереи' },
-  { src: '/images/slides/slide1.png', alt: 'Фотография из галереи' },
-  { src: '/images/slides/slide3.png', alt: 'Фотография из галереи' },
+  { src: '/images/gallery/image-1.png', alt: 'Победитель с поясом чемпиона', size: 'large' },
+  { src: '/images/gallery/image-2.png', alt: 'Семейное фото с детьми', size: 'small' },
+  { src: '/images/gallery/image-3.png', alt: 'Тренировка на лапах', size: 'medium' },
+  { src: '/images/gallery/image-5.png', alt: 'Большое групповое фото команды', size: 'wide' },
+  { src: '/images/gallery/image-6.png', alt: 'Бой на ринге', size: 'small' },
+  { src: '/images/gallery/image-4.png', alt: 'Групповое фото на ринге', size: 'medium' },
+  { src: '/images/gallery/image-7.png', alt: 'Победитель с флагом Греции', size: 'tall' },
+  { src: '/images/gallery/image-8.png', alt: 'Уличная тренировка', size: 'medium' },
+  { src: '/images/gallery/image-12.png', alt: 'Тренировка с грушей', size: 'small' },
+  { src: '/images/gallery/image-11.png', alt: 'Индивидуальная тренировка', size: 'small' },
+  { src: '/images/gallery/image-10.png', alt: 'Спарринг на улице', size: 'small' },
+  { src: '/images/gallery/image-9.png', alt: 'Групповое командное фото', size: 'small' },
 ];
 
 export const GallerySection: React.FC = () => {
@@ -33,14 +35,20 @@ export const GallerySection: React.FC = () => {
         </Button>
       </div>
       <div className="gallery-section__images">
-        {/* {galleryImages.map((image, index) => (
+        {galleryImages.map((image, index) => (
           <div
             key={index}
-            className={`gallery-section__image-container gallery-section__image-container--${index + 1}`}
+            className={`gallery-section__image-container gallery-section__image-container--${image.size}`}
           >
-            <Image src={image.src} alt={image.alt} fill className="gallery-section__image" />
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              className="gallery-section__image"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
           </div>
-        ))} */}
+        ))}
       </div>
     </section>
   );

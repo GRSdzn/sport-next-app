@@ -16,6 +16,8 @@ const HomePage: React.FC = () => {
       <LineSection />
       <NewsSection showAllButton showLine={false} />
       <LineSection />
+      <GallerySection />
+      <LineSection />
       <DetailInfoSection />
       <LineSection />
       <FederationClubSection />
