@@ -2,7 +2,11 @@ import { Metadata } from 'next';
 import { SITE_URL } from '@/components/constants/urls';
 
 export const mainLayoutMeta: Metadata = {
-  title: 'Федерация Кун Кхмер — официальный сайт',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: 'Федерация Кун Кхмер — официальный сайт',
+    template: '%s | Федерация Кун Кхмер',
+  },
   description:
     'Федерация Кун Кхмер: новости, мероприятия, клубы и галерея. Узнайте больше о боевом искусстве Кун Кхмер в России.',
   keywords: [
@@ -18,6 +22,21 @@ export const mainLayoutMeta: Metadata = {
     'тренировки кун кхмер',
     'бокс',
   ],
+  authors: [{ name: 'Федерация Кун Кхмер' }],
+  creator: 'Федерация Кун Кхмер',
+  publisher: 'Федерация Кун Кхмер',
+  applicationName: 'Федерация Кун Кхмер',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'Кун Кхмер',
+  },
   openGraph: {
     title: 'Федерация Кун Кхмер — официальный сайт',
     description: 'Новости, мероприятия и клубы Федерации Кун Кхмер. Следите за событиями и присоединяйтесь!',
@@ -25,7 +44,7 @@ export const mainLayoutMeta: Metadata = {
     siteName: 'Федерация Кун Кхмер',
     images: [
       {
-        url: `${SITE_URL}/og-home.jpg`,
+        url: '/og-home.jpg',
         width: 1200,
         height: 630,
         alt: 'Федерация Кун Кхмер',
@@ -34,8 +53,22 @@ export const mainLayoutMeta: Metadata = {
     locale: 'ru_RU',
     type: 'website',
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   alternates: {
-    canonical: `${SITE_URL}/`,
+    canonical: '/',
+  },
+  icons: {
+    icon: '/favicon.ico',
   },
   category: 'sports',
   classification: 'боевые искусства',

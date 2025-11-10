@@ -81,3 +81,5 @@ export const Button = React.memo((props: ButtonProps) => {
     </button>
   );
 });
+
+Button.displayName = 'Button';

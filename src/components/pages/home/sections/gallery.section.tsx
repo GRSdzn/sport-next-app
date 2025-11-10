@@ -45,7 +45,11 @@ export const GallerySection: React.FC = () => {
               alt={image.alt}
               fill
               className="gallery-section__image"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              sizes="(max-width: 480px) 175px, (max-width: 768px) 354px, (max-width: 1024px) 354px, 200px"
+              loading={index < 6 ? 'eager' : 'lazy'}
+              priority={index < 3}
+              quality={100}
+              fetchPriority="high"
             />
           </div>
         ))}

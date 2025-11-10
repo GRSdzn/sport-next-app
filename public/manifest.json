@@ -1,0 +1,13 @@
+{
+  "name": "Федерация Кун Кхмер",
+  "short_name": "Кун Кхмер",
+  "description": "Официальный сайт Федерации Кун Кхмер. Новости, мероприятия, чемпионаты и галерея боевого искусства.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#151515",
+  "theme_color": "#c3253a",
+  "orientation": "portrait-primary",
+  "categories": ["sports", "martial-arts"],
+  "lang": "ru",
+  "dir": "ltr"
+}
