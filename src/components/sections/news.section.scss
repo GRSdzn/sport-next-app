@@ -36,21 +36,29 @@
   }
 
   &__show-all-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: transparent;
     font-family: var.$font-family;
     font-size: 42px;
     font-weight: 400;
     line-height: 1.2;
     letter-spacing: 1px;
     color: #fff;
-    background: transparent;
-    border: none;
+    white-space: nowrap;
     cursor: pointer;
     transition: opacity 0.3s ease;
-    white-space: nowrap;
-    padding: 0;
-    margin: 0;
-    display: inline-flex;
-    align-items: center;
+
+    @include mixin.respond('tablet') {
+      font-size: 28px;
+    }
+
+    @include mixin.respond('mobile') {
+      display: none;
+    }
 
     &:hover {
       opacity: 0.6;
@@ -60,13 +68,6 @@
       outline: 2px solid rgba(255, 255, 255, 0.5);
       outline-offset: 4px;
       border-radius: var.$rounded-sm;
-    }
-
-    @include mixin.respond('tablet') {
-      font-size: 28px;
-    }
-    @include mixin.respond('mobile') {
-      display: none;
     }
   }
 }

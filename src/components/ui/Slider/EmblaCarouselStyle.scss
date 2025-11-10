@@ -22,20 +22,15 @@
   width: 100%;
   margin: 0;
   padding: 0;
-
-  // CSS переменные для управления размерами слайдов
-  // Измените эти значения для изменения размеров по умолчанию
   --slide-width: 589px;
   --slide-height: 358px;
   --slide-gap: 0px;
 
-  // Адаптив для планшетов (max-width: 768px)
   @include mixin.respond('tablet') {
     --slide-width: 450px;
     --slide-height: 280px;
   }
 
-  // Адаптив для мобильных устройств (max-width: 480px)
   @include mixin.respond('mobile') {
     --slide-width: 300px;
     --slide-height: 200px;
@@ -49,17 +44,14 @@
   padding: 0;
   height: var(--slide-height);
 
-  /* Градиент: затемнение по бокам, прозрачность посередине */
   &::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 2;
     width: 100%;
     height: 100%;
-    pointer-events: none;
-    z-index: 2;
-
     background: linear-gradient(
       to right,
       rgba(21, 21, 21, 1) 0%,
@@ -69,6 +61,7 @@
       rgba(21, 21, 21, 0.6) 90%,
       rgba(21, 21, 21, 1) 100%
     );
+    pointer-events: none;
   }
 }
 
@@ -81,14 +74,14 @@
 }
 
 .embla__slide {
+  position: relative;
+  display: block;
   flex: 0 0 auto;
   width: var(--slide-width);
   height: var(--slide-height);
   min-width: 0;
   padding: 0;
   margin: 0;
-  display: block;
-  position: relative;
 }
 
 .embla__slide__number {
@@ -104,69 +97,70 @@
 }
 
 .embla__slide__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
   position: relative;
   z-index: 1;
-  clip-path: inset(0px);
-  backface-visibility: hidden;
-  transform: translateZ(0);
+  display: block;
+  width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
   border: 0;
+  object-fit: cover;
+  clip-path: inset(0px);
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
+
 .embla__controls {
   display: flex;
-  justify-content: center; // горизонтальный центр
-  align-items: center; // вертикальный центр по высоте слайда
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
-  margin-top: 1.8rem; // отступ от слайдов
+  margin-top: 1.8rem;
 }
+
 .embla__buttons {
   position: absolute;
   top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   height: var(--slide-height);
-  display: flex;
-  justify-content: space-between; // оставляем space-between
-  align-items: center;
+  padding: 0 10%;
   pointer-events: none;
-  padding: 0 10%; // <-- вот тут добавляем отступы от краёв
 
   @include mixin.respond('mobile') {
-    display: none; // скрываем стрелки на мобильной версии
+    display: none;
   }
 }
 
 .embla__button {
-  pointer-events: all; // кнопки кликабельны, даже при абсолютном родителе с pointer-events: none
-  z-index: 10; // выше слайдов
-  -webkit-tap-highlight-color: rgba(rgba(255, 255, 255, 0.247), 0.5);
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: rgba(255, 255, 255, 0.16);
-  touch-action: manipulation;
-  display: inline-flex;
-  text-decoration: none;
-  cursor: pointer;
-  border: 0;
-  padding: 0;
-  margin: 0;
-  width: 3.6rem;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  height: 3.6rem;
-  z-index: 3;
-  border-radius: 50%;
-  color: var(--text-body);
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 3.6rem;
+  height: 3.6rem;
+  padding: 0;
+  margin: 0;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.16);
+  color: var(--text-body);
+  text-decoration: none;
+  cursor: pointer;
+  pointer-events: all;
+  touch-action: manipulation;
+  appearance: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(rgba(255, 255, 255, 0.247), 0.5);
+
+  &:disabled {
+    color: rgba(75, 75, 75, 0.233);
+  }
 }
-.embla__button:disabled {
-  color: rgba(75, 75, 75, 0.233);
-}
+
 .embla__button__svg {
   width: 35%;
   height: 35%;
@@ -178,35 +172,37 @@
   align-items: center;
   gap: 0.6rem;
 }
+
 .embla__dot {
-  -webkit-tap-highlight-color: rgba(rgba(255, 255, 255, 0.247), 0.5);
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: transparent;
-  touch-action: manipulation;
-  display: inline-flex;
-  text-decoration: none;
-  cursor: pointer;
-  border: 0;
-  padding: 0;
-  margin: 0;
-  width: 10px;
-  height: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-}
-.embla__dot:after {
-  background-color: rgba(255, 255, 255, 0.3);
   width: 10px;
   height: 10px;
+  padding: 0;
+  margin: 0;
+  border: 0;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  content: '';
-  transition: 0.5s;
-}
-.embla__dot--selected:after {
-  background-color: rgba(255, 255, 255);
+  background-color: transparent;
+  text-decoration: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  appearance: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(rgba(255, 255, 255, 0.247), 0.5);
+
+  &:after {
+    content: '';
+    display: flex;
+    align-items: center;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: 0.5s;
+  }
+
+  &--selected:after {
+    background-color: rgba(255, 255, 255);
+  }
 }

@@ -1,6 +1,7 @@
 @use 'sass:color';
-@use '../../../styles/abstracts/variables' as var;
-@use '../../../styles/abstracts/mixins' as mixin;
+@use '@/styles/abstracts/variables' as var;
+@use '@/styles/abstracts/mixins' as mixin;
+
 .tabs {
   width: auto;
   display: flex;

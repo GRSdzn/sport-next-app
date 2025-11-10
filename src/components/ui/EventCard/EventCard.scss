@@ -2,14 +2,24 @@
 @use '@/styles/abstracts/mixins' as mixin;
 
 .event-card {
-  width: 387px;
-  height: 432px;
-  overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
+  width: 387px;
+  height: 432px;
+  overflow: hidden;
   background-color: rgb(255, 255, 255, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  @include mixin.respond('laptop') {
+    width: 234px;
+    height: 275.43px;
+  }
+
+  @include mixin.respond('tablet') {
+    width: 175px;
+    height: 295px;
+  }
 
   &__image-wrapper {
     position: relative;
@@ -17,25 +27,13 @@
     height: 329px;
     flex-shrink: 0;
     overflow: hidden;
-  }
 
-  // Планшет: размеры карточки 234x275.43
-  @include mixin.respond('laptop') {
-    width: 234px;
-    height: 275.43px;
-
-    &__image-wrapper {
-      height: 200px; // Пропорционально уменьшенная высота изображения
+    @include mixin.respond('laptop') {
+      height: 200px;
     }
-  }
 
-  // Мобильная: размеры карточки 175x295
-  @include mixin.respond('tablet') {
-    width: 175px;
-    height: 295px;
-
-    &__image-wrapper {
-      height: 180px; // Пропорционально уменьшенная высота изображения
+    @include mixin.respond('tablet') {
+      height: 180px;
     }
   }
 
@@ -100,21 +98,17 @@
   }
 
   &__location {
+    display: flex;
+    align-items: center;
     font-family: var.$font-family-inter;
     font-size: 14px;
     font-weight: 400;
+    font-style: normal;
     line-height: 1.2;
     color: rgba(255, 255, 255, 0.6);
-    font-style: normal;
-    display: flex;
-    align-items: center;
   }
-  // Адаптивные размеры текста для планшетной версии
-  @include mixin.respond('laptop') {
-    &__image-wrapper {
-      height: 200px;
-    }
 
+  @include mixin.respond('laptop') {
     &__title {
       font-size: 16px;
     }

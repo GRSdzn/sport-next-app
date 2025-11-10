@@ -26,15 +26,15 @@
   }
 
   &__description {
+    margin-bottom: 40px;
     font-family: var.$font-family-inter;
     font-size: 24px;
-    line-height: 1.2;
     font-weight: 300;
-    margin-bottom: 40px;
+    line-height: 1.2;
 
     @include mixin.respond('laptop') {
-      margin-bottom: 24px;
       grid-column: 1 / -1;
+      margin-bottom: 24px;
     }
 
     @include mixin.respond('mobile') {
@@ -43,7 +43,6 @@
     }
   }
 
-  // CONTENT
   &__content {
     @include mixin.respond('laptop') {
       display: grid;
@@ -53,7 +52,6 @@
     }
   }
 
-  // IMAGES
   &__images {
     display: flex;
     flex-direction: column;
@@ -72,16 +70,17 @@
       margin-top: 24px;
     }
   }
-  // BUTTONS
 
   &__mobile-button-wrapper {
     display: none;
+
     @include mixin.respond('mobile') {
       display: flex;
       justify-content: center;
       align-items: center;
     }
   }
+
   &__button {
     @include mixin.respond('laptop') {
       grid-column: 2 / 3;

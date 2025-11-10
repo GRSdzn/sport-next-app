@@ -7,11 +7,11 @@
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  //   mixin container
+
   &__container {
     @include mixin.container();
-    display: flex;
     position: relative;
+    display: flex;
     flex-direction: column;
     align-items: center;
     max-width: 1200px;
@@ -76,13 +76,13 @@
     z-index: 5;
     bottom: 40px;
     left: 50%;
-    transform: translateX(-50%) rotate(-2deg);
-    width: 100vw;
-    height: 100px;
-    background-color: var.$primary-color;
-    overflow: hidden;
     display: flex;
     align-items: center;
+    width: 100vw;
+    height: 100px;
+    overflow: hidden;
+    background-color: var.$primary-color;
+    transform: translateX(-50%) rotate(-2deg);
   }
 
   &__red-line-text {
@@ -90,14 +90,12 @@
     flex-shrink: 0;
     align-items: center;
     white-space: nowrap;
-
     animation: marquee 20s linear infinite;
   }
 
   &__red-line-text-span {
     padding: 0 1rem;
     font-size: 30px;
-
     text-transform: uppercase;
     color: white;
   }
@@ -130,17 +128,19 @@
       margin-bottom: 50px;
       transform: translateY(-30px);
     }
+
     &__background-image {
       width: 728px;
       height: 540px;
     }
+
     &__button-wrapper {
       top: 280px;
     }
 
     &__red-line {
-      height: 77px;
       bottom: 60px;
+      height: 77px;
     }
   }
 }
@@ -148,35 +148,33 @@
 @include mixin.respond('mobile') {
   .cover-section {
     @include mixin.container();
-
     gap: 16px;
 
     &__container {
       gap: 10px;
-    }
-    &__button-wrapper {
-      width: 100%;
-    }
-    &__button {
-      width: 100%;
-    }
-
-    &__container {
       order: 1;
     }
 
     &__button-wrapper {
+      position: relative;
+      top: auto;
       order: 2;
-      margin: 20px 0;
+      width: 100%;
+      margin: 0;
+    }
+
+    &__button {
+      width: 100%;
     }
 
     &__background {
       order: 3;
+      width: 698px;
+      height: 580px;
+      margin-bottom: 0;
       transform: none;
-      margin-bottom: 0px;
     }
 
-    // TITLE & SUBTITLE
     &__title {
       font-size: 88px;
       text-align: center;
@@ -186,20 +184,9 @@
       font-size: 36px;
     }
 
-    &__background {
-      width: 698px;
-      height: 580px;
-    }
-
-    &__button-wrapper {
-      position: relative;
-      top: auto;
-      margin: 0;
-    }
-
     &__red-line {
-      height: 77px;
       bottom: 10px;
+      height: 77px;
     }
   }
 }

@@ -4,16 +4,16 @@
 .contact-modal__overlay {
   position: fixed;
   inset: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(8px);
   background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
   opacity: 0;
   visibility: hidden;
   transform: scale(1.02);
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-  z-index: 100;
 
   &.open {
     opacity: 1;
@@ -27,19 +27,18 @@
 }
 
 .contact-modal {
-  background: var.$background-color;
-  border-radius: var.$rounded-3xl;
-  padding: 32px;
-  width: min(90%, 794px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-  transform: translateY(-10px);
-  transition: transform 0.3s ease;
   z-index: 101;
   display: flex;
   flex-direction: column;
   gap: 64px;
+  width: min(90%, 794px);
+  padding: 32px;
+  background: var.$background-color;
+  border-radius: var.$rounded-3xl;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px);
+  transition: transform 0.3s ease;
 
-  // ========== HEADER ==========
   &__head {
     display: flex;
     justify-content: space-between;
@@ -62,7 +61,6 @@
     }
   }
 
-  // ========== BODY ==========
   &__body {
     margin-bottom: 24px;
   }
@@ -107,13 +105,11 @@
     }
   }
 
-  // ========== BUTTON ==========
   &__button {
     text-align: center;
   }
 }
 
-// ========== ADAPTIVE ==========
 @include mixin.respond('tablet') {
   .contact-modal {
     gap: 40px;

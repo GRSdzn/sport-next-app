@@ -4,27 +4,30 @@
 .not-found-page {
   @include mixin.container();
   display: flex;
-  min-height: 60vh;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 60vh;
 
   &__content {
-    max-width: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 40px;
+    max-width: 600px;
   }
+
   &__title {
     font: 700 160px/1 var.$font-family-bebas;
   }
+
   &__description {
     font: 400 24px/1 var.$font-family-inter;
-    text-align: center;
     line-height: 1.2;
+    text-align: center;
   }
+
   &__link {
     display: flex;
     justify-content: center;
@@ -32,6 +35,7 @@
     width: 100%;
     height: 100%;
   }
+
   &__button {
     width: 294px;
     height: 86px;
