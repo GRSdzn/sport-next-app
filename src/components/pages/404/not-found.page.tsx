@@ -29,10 +29,3 @@ export const NotFoundPage: React.FC = () => {
     </main>
   );
 };
-
-// SEO meta для Next.js можно добавить в route-level файле
-export const metadata = {
-  title: '404 — Страница не найдена',
-  description: 'Страница, которую вы ищете, не найдена. Перейдите на главную страницу.',
-  robots: 'noindex, nofollow',
-};
