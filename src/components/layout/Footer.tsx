@@ -6,14 +6,14 @@ import { FOOTER_BUTTONS } from '../constants/footer-buttons';
 
 export default function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer" role="contentinfo">
       <div className="footer__container">
-        <section className="footer__line-section">
+        <section className="footer__line-section" aria-hidden="true">
           <div className="footer__line" />
         </section>
 
         {/* LOGO + FLEX BUTTONS */}
-        <div className="footer__logo-buttons">
+        <nav className="footer__logo-buttons" aria-label="Основная навигация футера">
           <div className="footer__logo">
             <Link href="/" className="footer__logo-link" aria-label="Федерация Кун Кхмер - перейти на главную страницу">
               <Image
@@ -40,32 +40,44 @@ export default function Footer() {
               </Link>
             ))}
           </div>
-        </div>
-        {/* {NUMBER + DESCRIPTION} */}
-        <div className="footer__socials-container">
+        </nav>
+        {/* КОНТАКТНАЯ ИНФОРМАЦИЯ */}
+        <address className="footer__socials-container">
           {/* phone */}
           <div className="footer__phone-numbers">
             <div className="footer__phone-content">
-              <h2 className="footer__phone-title" title="Номер телефона">
-                +7 (903) 734-27-96
-              </h2>
+              <a
+                href="tel:+79037342796"
+                className="footer__phone-link"
+                aria-label="Позвонить президенту ФКБМ Затолочному Денису Владимировичу"
+              >
+                <span className="footer__phone-title">+7 (903) 734-27-96</span>
+              </a>
               <p className="footer__phone-description">Затолочный Денис Владимирович Президент ФКБМ</p>
             </div>
             <div className="footer__phone-content">
-              <h2 className="footer__phone-title" title="Номер телефона">
-                +7 (903) 777-77-29
-              </h2>
+              <a
+                href="tel:+79037777729"
+                className="footer__phone-link"
+                aria-label="Позвонить вице-президенту ФКБМ Серебреникову Эмилио Руфатовичу"
+              >
+                <span className="footer__phone-title">+7 (903) 777-77-29</span>
+              </a>
               <p className="footer__phone-description">Серебреников Эмилио Руфатович Вице-президент ФКБМ</p>
             </div>
           </div>
           {/* email */}
           <div className="footer__email-content">
-            <h2 className="footer__email-title" title="Email">
-              Khmer-box@yandex.ru
-            </h2>
+            <a
+              href="mailto:Khmer-box@yandex.ru"
+              className="footer__email-link"
+              aria-label="Написать на электронную почту для сотрудничества"
+            >
+              <span className="footer__email-title">Khmer-box@yandex.ru</span>
+            </a>
             <p className="footer__email-description">Сотрудничество</p>
           </div>
-        </div>
+        </address>
 
         {/* BUTTON - СВЯЗАТЬСЯ */}
         <div className="footer__button-container">
