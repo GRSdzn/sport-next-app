@@ -16,22 +16,7 @@ export const CoverSection: React.FC = () => {
         gapX={20}
         gapY={32}
       />
-      <DottedGrid
-        itemSize={12}
-        style={{ top: 600, right: 350 }}
-        className="cover-section__dotted-grid"
-        gap={20}
-        cols={5}
-        rows={5}
-      />
-      <DottedGrid
-        itemSize={12}
-        style={{ bottom: 0, right: 550 }}
-        className="cover-section__dotted-grid"
-        gap={20}
-        cols={5}
-        rows={5}
-      />
+
       <div className="cover-section__container">
         <div className="cover-section__title-wrapper">
           <h1 className="cover-section__title">ФЕДЕРАЦИЯ</h1>
@@ -40,7 +25,22 @@ export const CoverSection: React.FC = () => {
             <span className="cover-section__subtitle-white">БОКСА МОСКВЫ</span>
           </div>
         </div>
-
+        <DottedGrid
+          itemSize={12}
+          style={{ bottom: 600, right: 0 }}
+          className="cover-section__dotted-grid"
+          gap={20}
+          cols={5}
+          rows={5}
+        />
+        <DottedGrid
+          itemSize={12}
+          style={{ bottom: 0, right: 200 }}
+          className="cover-section__dotted-grid"
+          gap={20}
+          cols={5}
+          rows={5}
+        />
         <div className="cover-section__background">
           <Image
             src="/images/cover-section/cover-background.webp"
