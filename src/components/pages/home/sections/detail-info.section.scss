@@ -2,7 +2,11 @@
 @use '@/styles/abstracts/mixins' as mixin;
 
 .detail-info-section {
-  @include mixin.container;
+  position: relative;
+
+  &__wrapper {
+    @include mixin.container;
+  }
 
   &__container {
     display: grid;

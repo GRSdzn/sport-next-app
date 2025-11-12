@@ -2,10 +2,14 @@
 @use '@/styles/abstracts/mixins' as mixin;
 
 .federation-club-section {
-  @include mixin.container();
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+  position: relative;
+
+  &__wrapper {
+    @include mixin.container();
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
 
   &__title {
     @include mixin.section-title();

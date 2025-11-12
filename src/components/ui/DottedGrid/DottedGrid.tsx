@@ -10,11 +10,13 @@ interface DottedGridProps {
   cols?: number;
   itemSize?: number;
   gap?: number;
+  gapX?: number;
+  gapY?: number;
   color?: string;
 }
 
 const DEFAULT_ITEM_SIZE = 12;
-const DEFAULT_GAP = 10;
+const DEFAULT_GAP = 20;
 const DEFAULT_COLOR = 'rgba(255, 255, 255, 0.2)';
 
 export const DottedGrid: React.FC<DottedGridProps> = ({
@@ -24,15 +26,21 @@ export const DottedGrid: React.FC<DottedGridProps> = ({
   cols = 7,
   itemSize = DEFAULT_ITEM_SIZE,
   gap = DEFAULT_GAP,
+  gapX,
+  gapY,
   color = DEFAULT_COLOR,
 }) => {
   const normalizedRows = Math.max(1, Math.floor(rows));
   const normalizedCols = Math.max(1, Math.floor(cols));
-  const horizontalStep = itemSize + gap;
-  const verticalStep = itemSize + gap;
 
-  const totalWidth = normalizedCols * itemSize + (normalizedCols - 1) * gap;
-  const totalHeight = normalizedRows * itemSize + (normalizedRows - 1) * gap;
+  const horizontalGap = gapX !== undefined ? gapX : gap;
+  const verticalGap = gapY !== undefined ? gapY : gap;
+
+  const horizontalStep = itemSize + horizontalGap;
+  const verticalStep = itemSize + verticalGap;
+
+  const totalWidth = normalizedCols * itemSize + (normalizedCols - 1) * horizontalGap;
+  const totalHeight = normalizedRows * itemSize + (normalizedRows - 1) * verticalGap;
 
   const boxShadow = Array.from({ length: normalizedRows * normalizedCols }).map((_, index) => {
     const row = Math.floor(index / normalizedCols);

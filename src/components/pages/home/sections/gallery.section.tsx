@@ -1,5 +1,6 @@
 import './gallery.section.scss';
 import { Button } from '@/components/ui/Button/Button';
+import { DottedGrid } from '@/components/ui/DottedGrid/DottedGrid';
 import Image from 'next/image';
 
 const galleryImages = [
@@ -20,39 +21,41 @@ const galleryImages = [
 export const GallerySection: React.FC = () => {
   return (
     <section className="gallery-section">
-      <div className="gallery-section__text-container">
-        <h2 className="gallery-section__title">ГАЛЕРЕЯ</h2>
-        <Button
-          type="button"
-          className="gallery-section__button"
-          aria-label="Смотреть все изображения"
-          variant="primary"
-          size="lg"
-          icon={<Image src="/images/icons/icon-arrow.svg" alt="Иконка стрелки" width={18} height={18} />}
-          iconPosition="right"
-        >
-          СМОТРЕТЬ ВСЕ
-        </Button>
-      </div>
-      <div className="gallery-section__images">
-        {galleryImages.map((image, index) => (
-          <div
-            key={index}
-            className={`gallery-section__image-container gallery-section__image-container--${image.size}`}
+      <div className="gallery-section__wrapper">
+        <div className="gallery-section__text-container">
+          <h2 className="gallery-section__title">ГАЛЕРЕЯ</h2>
+          <Button
+            type="button"
+            className="gallery-section__button"
+            aria-label="Смотреть все изображения"
+            variant="primary"
+            size="lg"
+            icon={<Image src="/images/icons/icon-arrow.svg" alt="Иконка стрелки" width={18} height={18} />}
+            iconPosition="right"
           >
-            <Image
-              src={image.src}
-              alt={image.alt}
-              fill
-              className="gallery-section__image"
-              sizes="(max-width: 480px) 175px, (max-width: 768px) 354px, 354px"
-              loading={index < 6 ? 'eager' : 'lazy'}
-              priority={index < 3}
-              quality={100}
-              fetchPriority="high"
-            />
-          </div>
-        ))}
+            СМОТРЕТЬ ВСЕ
+          </Button>
+        </div>
+        <div className="gallery-section__images">
+          {galleryImages.map((image, index) => (
+            <div
+              key={index}
+              className={`gallery-section__image-container gallery-section__image-container--${image.size}`}
+            >
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                className="gallery-section__image"
+                sizes="(max-width: 480px) 175px, (max-width: 768px) 354px, 354px"
+                loading={index < 6 ? 'eager' : 'lazy'}
+                priority={index < 3}
+                quality={100}
+                fetchPriority="high"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

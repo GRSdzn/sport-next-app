@@ -1,11 +1,37 @@
 import '@/components/pages/home/sections/cover.section.scss';
 import { Button } from '@/components/ui/Button/Button';
+import { DottedGrid } from '@/components/ui/DottedGrid/DottedGrid';
 import Image from 'next/image';
 import React from 'react';
 
 export const CoverSection: React.FC = () => {
   return (
     <section className="cover-section">
+      <DottedGrid
+        itemSize={8}
+        style={{ top: 20, left: 33 }}
+        className="cover-section__dotted-grid"
+        cols={5}
+        rows={7}
+        gapX={20}
+        gapY={32}
+      />
+      <DottedGrid
+        itemSize={12}
+        style={{ top: 600, right: 350 }}
+        className="cover-section__dotted-grid"
+        gap={20}
+        cols={5}
+        rows={5}
+      />
+      <DottedGrid
+        itemSize={12}
+        style={{ bottom: 0, right: 550 }}
+        className="cover-section__dotted-grid"
+        gap={20}
+        cols={5}
+        rows={5}
+      />
       <div className="cover-section__container">
         <div className="cover-section__title-wrapper">
           <h1 className="cover-section__title">ФЕДЕРАЦИЯ</h1>

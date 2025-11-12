@@ -3,7 +3,7 @@
 
 .dotted-grid {
   position: absolute;
-  z-index: -1;
+  z-index: 1;
   pointer-events: none;
 
   @include mixin.respond('laptop') {

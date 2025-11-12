@@ -2,13 +2,17 @@
 @use '@/styles/abstracts/mixins' as mixin;
 
 .line-section__container {
-  @include mixin.container();
+  position: relative;
 
   @include mixin.respond('tablet') {
     display: none;
   }
 
-  .line-section__line {
+  &__wrapper {
+    @include mixin.container();
+  }
+
+  &__line {
     width: 100%;
     height: 1.201px;
     background-color: #fff;

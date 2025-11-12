@@ -16,10 +16,18 @@ const HomePage: React.FC = () => {
       <LineSection />
       <NewsSection showAllButton showLine={false} />
       <LineSection />
-      <GallerySection />
-      <LineSection />
       <DetailInfoSection />
-      <LineSection />
+      <LineSection
+        showDottedGrid
+        dottedGridPosition="right"
+        dottedGridProps={{ itemSize: 8, cols: 4, rows: 5, gapY: 20, gapX: 32 }}
+      />
+      <GallerySection />
+      <LineSection
+        showDottedGrid
+        dottedGridPosition="left"
+        dottedGridProps={{ itemSize: 8, cols: 3, rows: 7, gapY: 32, gapX: 20 }}
+      />
       <FederationClubSection />
     </div>
   );
