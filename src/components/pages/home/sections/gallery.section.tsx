@@ -1,6 +1,5 @@
 import './gallery.section.scss';
 import { Button } from '@/components/ui/Button/Button';
-import { DottedGrid } from '@/components/ui/DottedGrid/DottedGrid';
 import Image from 'next/image';
 
 const galleryImages = [

@@ -1,5 +1,4 @@
 import './news.section.scss';
-import { DottedGrid } from '@/components/ui/DottedGrid/DottedGrid';
 import { NewsTabs } from '@/components/features/news/NewsTabs';
 
 export type NewsSectionProps = {
