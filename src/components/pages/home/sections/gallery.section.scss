@@ -27,8 +27,22 @@
   }
 
   &__button {
-    @include mixin.respond('mobile') {
+    &--desktop {
+      display: flex;
+
+      @include mixin.respond('mobile') {
+        display: none;
+      }
+    }
+
+    &--mobile {
+      display: none;
       width: 100%;
+      margin-top: 24px;
+
+      @include mixin.respond('mobile') {
+        display: flex;
+      }
     }
   }
 

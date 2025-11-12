@@ -25,6 +25,7 @@
  * Вы можете изменить их напрямую в файле стилей или через пропсы
  */
 import React, { useEffect, useRef, useCallback } from 'react';
+import Image from 'next/image';
 import { EmblaOptionsType, EmblaCarouselType, EmblaEventType } from 'embla-carousel';
 import { DotButton, useDotButton } from './EmblaCarouselDotButton';
 import { PrevButton, NextButton, usePrevNextButtons } from './EmblaCarouselArrowButtons';
@@ -115,8 +116,14 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options, slideWidth, slideH
           {slides.map((slide, i) => (
             <div className={`embla__slide${i === selectedIndex ? ' is-selected' : ''}`} key={i}>
               <div className="embla__slide__number">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={slide} alt={`Slide ${i + 1}`} className="embla__slide__image" />
+                <Image
+                  src={slide}
+                  alt={`Slide ${i + 1}`}
+                  fill
+                  sizes="(max-width: 480px) 300px, (max-width: 768px) 450px, 589px"
+                  className="embla__slide__image"
+                  priority={i === 0}
+                />
                 <div className="embla__slide__overlay" />
               </div>
             </div>

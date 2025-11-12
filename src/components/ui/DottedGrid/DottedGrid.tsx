@@ -1,5 +1,5 @@
 // components/ui/GridPattern.tsx
-import React from 'react';
+import React, { useMemo } from 'react';
 import clsx from 'clsx';
 import './DottedGrid.scss'; // подключаем CSS
 
@@ -42,15 +42,19 @@ export const DottedGrid: React.FC<DottedGridProps> = ({
   const totalWidth = normalizedCols * itemSize + (normalizedCols - 1) * horizontalGap;
   const totalHeight = normalizedRows * itemSize + (normalizedRows - 1) * verticalGap;
 
-  const boxShadow = Array.from({ length: normalizedRows * normalizedCols }).map((_, index) => {
-    const row = Math.floor(index / normalizedCols);
-    const col = index % normalizedCols;
+  const boxShadow = useMemo(
+    () =>
+      Array.from({ length: normalizedRows * normalizedCols }).map((_, index) => {
+        const row = Math.floor(index / normalizedCols);
+        const col = index % normalizedCols;
 
-    const x = col * horizontalStep;
-    const y = row * verticalStep;
+        const x = col * horizontalStep;
+        const y = row * verticalStep;
 
-    return `${x}px ${y}px 0 0 var(--grid-color)`;
-  });
+        return `${x}px ${y}px 0 0 var(--grid-color)`;
+      }),
+    [normalizedRows, normalizedCols, horizontalStep, verticalStep]
+  );
 
   const gridStyle: React.CSSProperties = {
     ...style,
