@@ -19,9 +19,8 @@ export default function Footer() {
               <Image
                 src="/images/logo.svg"
                 alt="Логотип Федерации Кун Кхмер"
-                width={150}
-                height={60}
-                style={{ width: 'auto', height: 'auto' }}
+                width={116}
+                height={45.35}
               />
             </Link>
           </div>
