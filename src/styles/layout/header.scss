@@ -119,43 +119,34 @@
 }
 @include mixin.respond('tablet') {
   .header {
+    padding: 0;
+    margin-top: 0;
+    height: auto;
+
     .header__container {
-      .header__nav {
-        display: none;
-      }
+      padding: 12px 16px;
+      border-radius: 0;
+      height: 80px;
 
-      .header__burger {
-        display: block;
-        .header__burger-button {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-
-          .header__burger-icon {
-            position: relative;
-            width: 20px;
-            height: 2px;
-          }
-        }
-      }
-    }
-  }
-}
-
-@include mixin.respond('tablet') {
-  .header {
-    .header__container {
       .header__nav {
         display: none;
       }
 
       .header__actions {
+        gap: 16px;
+
+        .header__social {
+          .header__social-link {
+            width: 36px;
+            height: 36px;
+          }
+        }
+
         .header__burger-button {
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 10px;
+          padding: 8px;
           border-radius: 50%;
           background-color: transparent;
           border: none;
@@ -172,11 +163,34 @@
 
 @include mixin.respond('mobile') {
   .header {
+    padding: 0;
+    margin-top: 0;
+    height: auto;
+
     .header__container {
+      padding: 12px 16px;
+      border-radius: 0;
+      height: 64px;
+
+      .header__logo {
+        .header__logo-link {
+          img {
+            width: 90px;
+            height: auto;
+          }
+        }
+      }
+
       .header__actions {
+        gap: 12px;
+
         .header__social,
         .header__contact {
           display: none;
+        }
+
+        .header__burger-button {
+          padding: 6px;
         }
       }
     }

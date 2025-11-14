@@ -7,22 +7,47 @@ import { NAV_MENU } from '../constants/nav_menu';
 import { Button } from '../ui/Button/Button';
 import ContactModal from '../ui/ContactModal/ContactModal';
 import CallbackModal from '../ui/CallbackModal/CallbackModal';
+import MobileMenu from './MobileMenu/MobileMenu';
 import { useState, useEffect, useCallback } from 'react';
 
 type ModalType = 'contact' | 'callback' | null;
 
 export default function Header() {
   const [activeModal, setActiveModal] = useState<ModalType>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Функция для открытия модального окна (закрывает другие автоматически)
   const openModal = useCallback((modalType: ModalType) => {
     setActiveModal(modalType);
+    setIsMobileMenuOpen(false); // Закрываем мобильное меню при открытии модалки
   }, []);
 
   // Функция для закрытия модального окна
   const closeModal = useCallback(() => {
     setActiveModal(null);
   }, []);
+
+  // Функция для переключения мобильного меню
+  const toggleMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen((prev) => !prev);
+  }, []);
+
+  // Функция для закрытия мобильного меню
+  const closeMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(false);
+  }, []);
+
+  // Блокировка скролла при открытом мобильном меню
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
 
   // Слушаем глобальные действия
   useEffect(() => {
@@ -100,10 +125,16 @@ export default function Header() {
               СВЯЗАТЬСЯ
             </Button>
           </div>
-          <button type="button" className="header__burger-button" aria-label="Открыть меню">
+          <button
+            type="button"
+            className="header__burger-button"
+            onClick={toggleMobileMenu}
+            aria-label={isMobileMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
+            aria-expanded={isMobileMenuOpen}
+          >
             <Image
-              src="/images/icons/icon-burger-menu.svg"
-              alt="Иконка меню"
+              src={isMobileMenuOpen ? '/images/icons/icon-close.svg' : '/images/icons/icon-burger-menu.svg'}
+              alt={isMobileMenuOpen ? 'Иконка закрытия' : 'Иконка меню'}
               width={20}
               height={20}
               aria-hidden="true"
@@ -111,6 +142,8 @@ export default function Header() {
           </button>
         </div>
       </div>
+
+      <MobileMenu isOpen={isMobileMenuOpen} onClose={closeMobileMenu} onOpenContactModal={() => openModal('contact')} />
 
       <ContactModal
         isOpen={activeModal === 'contact'}
