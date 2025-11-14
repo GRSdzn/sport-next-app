@@ -32,6 +32,7 @@ export const FederationClubSection: React.FC = () => {
               width={120}
               height={120}
               loading="lazy"
+              className="federation-club-section__image"
             />
           </div>
           <div className="federation-club-section__image-container">
