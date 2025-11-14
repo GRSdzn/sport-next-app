@@ -1,0 +1,165 @@
+@use '@/styles/abstracts/variables' as var;
+@use '@/styles/abstracts/mixins' as mixin;
+
+.callback-modal {
+  &__form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    &-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      &--checkbox {
+        gap: 4px;
+      }
+    }
+
+    &-label {
+      font: 600 16px/1.4 var.$font-family-inter;
+      color: var.$text-color;
+      opacity: 0.5;
+    }
+
+    &-input {
+      width: 100%;
+      padding: 14px 16px;
+      font: 300 16px/1.4 var.$font-family-inter;
+      color: var.$text-color;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var.$rounded-md;
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      &:focus {
+        border-color: rgba(255, 255, 255, 0.4);
+      }
+
+      &.has-error {
+        border-color: rgba(255, 255, 255, 0.4);
+      }
+    }
+
+    &-checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+      position: relative;
+
+      &-input {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+
+        &:checked + .callback-modal__form-checkbox-custom::after {
+          opacity: 1;
+        }
+
+        &:focus + .callback-modal__form-checkbox-custom {
+          border-color: var.$primary-color;
+        }
+      }
+
+      &-custom {
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+        margin-top: 2px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+        position: relative;
+        transition: border-color 0.2s ease, background 0.2s ease;
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: 12px;
+          height: 12px;
+          background: var.$primary-color;
+          border-radius: 2px;
+          opacity: 0;
+          transition: opacity 0.2s ease;
+        }
+      }
+
+      &-label {
+        font: 400 14px/1.4 var.$font-family-inter;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      &-link {
+        color: #639aff;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+
+      &:hover &-custom {
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+    }
+
+    &-error {
+      font: 400 13px/1.3 var.$font-family-inter;
+      color: var.$primary-color;
+    }
+  }
+}
+
+@include mixin.respond('tablet') {
+  .callback-modal {
+    &__form-wrapper {
+      gap: 24px;
+    }
+
+    &__form {
+      gap: 20px;
+    }
+  }
+}
+
+@include mixin.respond('mobile') {
+  .callback-modal {
+    &__form-wrapper {
+      gap: 20px;
+    }
+
+    &__form {
+      gap: 16px;
+
+      &-label {
+        font-size: 14px;
+      }
+
+      &-input {
+        padding: 12px 14px;
+        font-size: 14px;
+      }
+
+      &-checkbox-label {
+        font-size: 13px;
+      }
+    }
+  }
+}

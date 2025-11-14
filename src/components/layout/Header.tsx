@@ -6,17 +6,30 @@ import Link from 'next/link';
 import { NAV_MENU } from '../constants/nav_menu';
 import { Button } from '../ui/Button/Button';
 import ContactModal from '../ui/ContactModal/ContactModal';
-import { useState, useEffect } from 'react';
+import CallbackModal from '../ui/CallbackModal/CallbackModal';
+import { useState, useEffect, useCallback } from 'react';
+
+type ModalType = 'contact' | 'callback' | null;
 
 export default function Header() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeModal, setActiveModal] = useState<ModalType>(null);
 
-  // слушаем глобальные действия
+  // Функция для открытия модального окна (закрывает другие автоматически)
+  const openModal = useCallback((modalType: ModalType) => {
+    setActiveModal(modalType);
+  }, []);
+
+  // Функция для закрытия модального окна
+  const closeModal = useCallback(() => {
+    setActiveModal(null);
+  }, []);
+
+  // Слушаем глобальные действия
   useEffect(() => {
-    const handler = () => setIsModalOpen(true);
+    const handler = () => openModal('contact');
     window.addEventListener('open-contact-modal', handler);
     return () => window.removeEventListener('open-contact-modal', handler);
-  }, []);
+  }, [openModal]);
 
   return (
     <header className="header" role="banner">
@@ -82,7 +95,7 @@ export default function Header() {
               aria-label="Связаться с Федерацией Кун Кхмер"
               variant="outline"
               size="md"
-              onClick={() => {}}
+              onClick={() => openModal('callback')}
             >
               СВЯЗАТЬСЯ
             </Button>
@@ -99,7 +112,12 @@ export default function Header() {
         </div>
       </div>
 
-      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <ContactModal
+        isOpen={activeModal === 'contact'}
+        onClose={closeModal}
+        onOpenCallback={() => openModal('callback')}
+      />
+      <CallbackModal isOpen={activeModal === 'callback'} onClose={closeModal} />
     </header>
   );
 }
