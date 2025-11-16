@@ -2,6 +2,7 @@
 @use '@/styles/abstracts/mixins' as mixin;
 
 .line-section__container {
+  width: 100%;
   position: relative;
 
   @include mixin.respond('tablet') {
