@@ -16,12 +16,7 @@ export default function Footer() {
         <nav className="footer__logo-buttons" aria-label="Основная навигация футера">
           <div className="footer__logo">
             <Link href="/" className="footer__logo-link" aria-label="Федерация Кун Кхмер - перейти на главную страницу">
-              <Image
-                src="/images/logo.svg"
-                alt="Логотип Федерации Кун Кхмер"
-                width={116}
-                height={45.35}
-              />
+              <Image src="/images/logo.svg" alt="Логотип Федерации Кун Кхмер" width={116} height={45.35} />
             </Link>
           </div>
           <div className="footer__link-buttons">
@@ -80,19 +75,17 @@ export default function Footer() {
 
         {/* BUTTON - СВЯЗАТЬСЯ */}
         <div className="footer__button-container">
-          <Link href="/contacts" className="footer__contact-button-link" aria-label="Связаться с нами">
-            <Button
-              type="button"
-              className="footer__contact-button"
-              variant="primary"
-              size="fw"
-              aria-label="Связаться с нами"
-              icon={<Image src="/images/icons/icon-arrow.svg" alt="Иконка стрелки" width={18} height={18} />}
-              iconPosition="right"
-            >
-              СВЯЗАТЬСЯ
-            </Button>
-          </Link>
+          <Button
+            type="button"
+            className="footer__contact-button"
+            aria-label="Связаться с нами"
+            variant="primary"
+            size="lg"
+            icon={<Image src="/images/icons/icon-arrow.svg" alt="Иконка стрелки" width={18} height={18} />}
+            iconPosition="right"
+          >
+            Связаться с нами
+          </Button>
           <p className="footer__privacy-policy">
             <Link
               href="/privacy-policy"

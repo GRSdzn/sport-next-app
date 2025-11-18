@@ -17,7 +17,7 @@ export const AboutSection: React.FC = () => {
         style={{ position: 'absolute', top: 0, left: 50 }}
         cols={5}
         rows={7}
-        gapX={20}
+        gap={20}
         gapY={32}
       />
       <div className="about-section__wrapper">
