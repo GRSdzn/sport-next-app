@@ -30,9 +30,7 @@ const ContactModal: React.FC<ContactModalProps> = memo(({ isOpen, onClose, onOpe
               <h3 className="contact-modal__contact-list-title">
                 <a href="tel:+79037342796">+7 (903) 734-27-96</a>
               </h3>
-              <p className="contact-modal__contact-list-description">
-                Затолочный Денис Владимирович — Президент ФКБМ
-              </p>
+              <p className="contact-modal__contact-list-description">Затолочный Денис Владимирович — Президент ФКБМ</p>
             </div>
           </div>
 
@@ -69,7 +67,8 @@ const ContactModal: React.FC<ContactModalProps> = memo(({ isOpen, onClose, onOpe
           type="button"
           className="footer__contact-button"
           variant="primary"
-          size="fw"
+          size="lg"
+          fullWidth
           aria-label="Связаться с нами"
           icon={<Image src="/images/icons/icon-arrow.svg" alt="" width={18} height={18} />}
           iconPosition="right"

@@ -5,7 +5,8 @@ type ButtonProps = {
   children: React.ReactNode;
   className?: string;
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'link';
-  size?: 'lp' | 'sm' | 'md' | 'lg' | 'fw';
+  size?: 'lp' | 'sm' | 'md' | 'lg' | 'xl';
+  fullWidth?: boolean;
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
@@ -34,6 +35,7 @@ export const Button = React.memo((props: ButtonProps) => {
     'aria-disabled': ariaDisabled,
     'aria-busy': ariaBusy,
     size = 'md',
+    fullWidth = false,
   } = props;
 
   const isDisabled = disabled || loading;
@@ -45,6 +47,7 @@ export const Button = React.memo((props: ButtonProps) => {
     'button',
     `button--${variant}`,
     `button--${size}`,
+    fullWidth && 'button--fw',
     loading && 'button--loading',
     isDisabled && 'button--disabled',
     className,

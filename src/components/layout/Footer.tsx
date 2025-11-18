@@ -1,10 +1,27 @@
+'use client';
+
 import '@/styles/layout/footer.scss';
 import Image from 'next/image';
 import { Button } from '../ui/Button/Button';
 import Link from 'next/link';
 import { FOOTER_BUTTONS } from '../constants/footer-buttons';
+import ContactModal from '../ui/ContactModal/ContactModal';
+import CallbackModal from '../ui/CallbackModal/CallbackModal';
+import { useState, useCallback } from 'react';
+
+type ModalType = 'contact' | 'callback' | null;
 
 export default function Footer() {
+  const [activeModal, setActiveModal] = useState<ModalType>(null);
+
+  const openModal = useCallback((modalType: ModalType) => {
+    setActiveModal(modalType);
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setActiveModal(null);
+  }, []);
+
   return (
     <footer className="footer" role="contentinfo">
       <div className="footer__container">
@@ -77,14 +94,15 @@ export default function Footer() {
         <div className="footer__button-container">
           <Button
             type="button"
-            className="footer__contact-button"
             aria-label="Связаться с нами"
             variant="primary"
             size="lg"
+            fullWidth
             icon={<Image src="/images/icons/icon-arrow.svg" alt="Иконка стрелки" width={18} height={18} />}
             iconPosition="right"
+            onClick={() => openModal('callback')}
           >
-            Связаться с нами
+            Связаться
           </Button>
           <p className="footer__privacy-policy">
             <Link
@@ -97,6 +115,13 @@ export default function Footer() {
           </p>
         </div>
       </div>
+
+      <ContactModal
+        isOpen={activeModal === 'contact'}
+        onClose={closeModal}
+        onOpenCallback={() => openModal('callback')}
+      />
+      <CallbackModal isOpen={activeModal === 'callback'} onClose={closeModal} />
     </footer>
   );
 }

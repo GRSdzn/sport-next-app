@@ -246,18 +246,6 @@
 
   &--fw {
     width: 100%;
-    padding: 17px 6px;
-    font-size: 32px;
-
-    @include mixin.respond('tablet') {
-      padding: 14px 28px;
-      font-size: 32px;
-    }
-
-    @include mixin.respond('mobile') {
-      padding: 12px 24px;
-      font-size: 24px;
-    }
   }
 }
 

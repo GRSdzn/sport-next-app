@@ -54,7 +54,8 @@ const CallbackModal: React.FC<CallbackModalProps> = memo(({ isOpen, onClose }) =
           <Button
             type="submit"
             variant="primary"
-            size="fw"
+            size="lg"
+            fullWidth
             aria-label="Отправить заявку на обратный звонок"
             disabled={isSubmitting}
             loading={isSubmitting}
