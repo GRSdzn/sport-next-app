@@ -1,5 +1,5 @@
-import { AboutSection } from '@/components/sections/about.section';
 import './federation.scss';
+import { AboutSection } from '@/components/sections/about.section';
 import { LineSection } from '@/components/ui/Line/Line';
 import { GoalsAndObjectivesSection } from '@/components/pages/federation/sections/about/GoalsNObjectives';
 import { OBJ_LIST } from '@/components/constants/obj-list';
