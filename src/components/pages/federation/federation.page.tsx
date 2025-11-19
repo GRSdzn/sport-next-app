@@ -2,7 +2,8 @@ import { AboutSection } from '@/components/sections/about.section';
 import './federation.scss';
 import { LineSection } from '@/components/ui/Line/Line';
 import { GoalsAndObjectivesSection } from '@/components/pages/federation/sections/about/GoalsNObjectives';
-import { GOALS_AND_OBJECTIVES_LIST } from '@/components/constants/goals-and-objectives-list';
+import { OBJ_LIST } from '@/components/constants/obj-list';
+import { GOALS_LIST } from '@/components/constants/goals-list';
 
 const FederationPage: React.FC = () => {
   return (
@@ -13,9 +14,9 @@ const FederationPage: React.FC = () => {
         dottedGridPosition="left"
         dottedGridProps={{ itemSize: 8, cols: 3, rows: 7, gapY: 32, gapX: 20 }}
       />
-      <GoalsAndObjectivesSection goals={GOALS_AND_OBJECTIVES_LIST} heading="ЦЕЛИ" listPosition="left" />
+      <GoalsAndObjectivesSection goals={GOALS_LIST} heading="ЦЕЛИ" listPosition="left" />
       <LineSection />
-      <GoalsAndObjectivesSection goals={GOALS_AND_OBJECTIVES_LIST} heading="ЗАДАЧИ" listPosition="right" />
+      <GoalsAndObjectivesSection goals={OBJ_LIST} heading="ЗАДАЧИ" listPosition="right" />
       <LineSection />
     </div>
   );

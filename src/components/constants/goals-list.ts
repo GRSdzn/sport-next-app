@@ -1,4 +1,4 @@
-export const GOALS_AND_OBJECTIVES_LIST: { number: number | string; text: string }[] = [
+export const GOALS_LIST: { number: number | string; text: string }[] = [
   {
     number: 1,
     text: 'Популяризация и развитие Кхмерского бокса в Москве.  Частности участия на международной арене чемпионат мира Европы.',
@@ -10,9 +10,5 @@ export const GOALS_AND_OBJECTIVES_LIST: { number: number | string; text: string 
   {
     number: 3,
     text: 'Подготовка высококвалифицированных спортсменов для участия в соревнованиях различного уровня.',
-  },
-  {
-    number: 4,
-    text: 'Повышение престижа Кхмерского бокса в России и мире.',
   },
 ];
