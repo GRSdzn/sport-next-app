@@ -1,7 +1,7 @@
 import { AboutSection } from '@/components/sections/about.section';
 import './federation.scss';
 import { LineSection } from '@/components/ui/Line/Line';
-import { GoalsAndObjectivesSection } from '@/components/features/about/GoalsNObjectives';
+import { GoalsAndObjectivesSection } from '@/components/pages/federation/sections/about/GoalsNObjectives';
 import { GOALS_AND_OBJECTIVES_LIST } from '@/components/constants/goals-and-objectives-list';
 
 const FederationPage: React.FC = () => {
