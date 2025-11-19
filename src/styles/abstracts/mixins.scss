@@ -29,10 +29,10 @@
 }
 
 @mixin section-title {
-  font-weight: 400;
+  font-weight: 600;
   font-size: 80px;
   line-height: 0.9;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
 
   @include respond('tablet') {

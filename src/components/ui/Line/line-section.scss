@@ -5,9 +5,9 @@
   width: 100%;
   position: relative;
 
-  @include mixin.respond('tablet') {
-    display: none;
-  }
+  // @include mixin.respond('mobile') {
+  //   display: none;
+  // }
 
   &__wrapper {
     @include mixin.container();

@@ -7,7 +7,7 @@ import { SLIDES } from '@/components/constants/slides-imgs';
 import { EmblaOptionsType } from 'embla-carousel';
 import EmblaCarousel from '@/components/ui/Slider/EmblaCarousel';
 
-export const AboutSection: React.FC = () => {
+export const AboutSection: React.FC<{ showButton?: boolean }> = ({ showButton = true }) => {
   const OPTIONS: EmblaOptionsType = { loop: true };
 
   return (
@@ -31,17 +31,19 @@ export const AboutSection: React.FC = () => {
           {/* slider with images */}
           <EmblaCarousel slides={SLIDES} options={OPTIONS} />
           <div className="about-section__button-wrapper">
-            <Button
-              type="button"
-              className="about-section__button"
-              aria-label="Подробнее о Федерации КХМЕРСКОГО БОКСА МОСКВЫ"
-              variant="primary"
-              size="lg"
-              icon={<Image src="/images/icons/icon-arrow.svg" alt="Иконка стрелки" width={18} height={18} />}
-              iconPosition="right"
-            >
-              ПОДРОБНЕЕ
-            </Button>
+            {showButton && (
+              <Button
+                type="button"
+                className="about-section__button"
+                aria-label="Подробнее о Федерации КХМЕРСКОГО БОКСА МОСКВЫ"
+                variant="primary"
+                size="lg"
+                icon={<Image src="/images/icons/icon-arrow.svg" alt="Иконка стрелки" width={18} height={18} />}
+                iconPosition="right"
+              >
+                ПОДРОБНЕЕ
+              </Button>
+            )}
           </div>
         </div>
       </div>
