@@ -11,7 +11,7 @@ const FederationPage: React.FC = () => {
       <AboutSection showButton={false} />
       <LineSection
         showDottedGrid
-        dottedGridPosition="left"
+        dottedGridPosition="right"
         dottedGridProps={{ itemSize: 8, cols: 3, rows: 7, gapY: 32, gapX: 20 }}
       />
 
