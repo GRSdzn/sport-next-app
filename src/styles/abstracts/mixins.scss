@@ -38,6 +38,10 @@
   @include respond('tablet') {
     font-size: 64px;
   }
+
+  @include respond('mobile') {
+    font-size: 48px;
+  }
 }
 
 @mixin page-container {
@@ -45,4 +49,14 @@
   flex-direction: column;
   gap: 100px;
   margin: 100px 0 80px 0;
+
+  @include respond('tablet') {
+    gap: 60px;
+    margin: 80px 0 60px 0;
+  }
+
+  @include respond('mobile') {
+    gap: 40px;
+    margin: 60px 0 40px 0;
+  }
 }

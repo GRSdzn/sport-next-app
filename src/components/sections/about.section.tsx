@@ -1,4 +1,4 @@
-import '@/components/pages/home/sections/about.section.scss';
+import '@/components/sections/about.section.scss';
 import React from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/Button/Button';

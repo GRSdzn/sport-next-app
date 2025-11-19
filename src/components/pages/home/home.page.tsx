@@ -1,6 +1,6 @@
 import './home.scss';
 import { CoverSection } from './sections/cover.section';
-import { AboutSection } from './sections/about.section';
+import { AboutSection } from '../../sections/about.section';
 import { LineSection } from '@/components/ui/Line/Line';
 import { NewsSection } from '../../sections/news.section';
 import { GallerySection } from './sections/gallery.section';

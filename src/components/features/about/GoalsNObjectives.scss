@@ -16,19 +16,36 @@
     gap: 60px;
     width: 100%;
 
+    // Планшеты: вертикальное расположение для удобства
     @include mixin.respond('laptop') {
-      flex-direction: column;
-      align-items: center;
-      gap: 40px;
-      text-align: center;
+      gap: 30px;
     }
 
     @include mixin.respond('tablet') {
-      gap: 30px;
+      flex-direction: column;
+      align-items: center;
+      gap: 48px;
+    }
+
+    // Мобильные: вертикальное расположение
+    @include mixin.respond('mobile') {
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
     }
 
     &--reverse {
       flex-direction: row-reverse;
+
+      // На планшетах всё равно вертикальная компоновка
+      @include mixin.respond('tablet') {
+        flex-direction: column;
+      }
+
+      // На мобильных устройствах всё равно вертикальная компоновка
+      @include mixin.respond('mobile') {
+        flex-direction: column;
+      }
     }
   }
 
@@ -36,17 +53,27 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 32px;
     max-width: 640px; // чтобы текст не растягивался слишком сильно
+    width: 100%;
 
     @include mixin.respond('laptop') {
       align-items: center;
+    }
+
+    @include mixin.respond('tablet') {
+      max-width: 100%;
+      gap: 24px;
+    }
+
+    @include mixin.respond('mobile') {
+      max-width: 100%;
     }
   }
 
   &__heading {
     @include mixin.section-title;
-    margin-bottom: 20px;
   }
 
   &__list {
@@ -59,6 +86,10 @@
       align-items: center;
     }
 
+    @include mixin.respond('tablet') {
+      gap: 24px;
+    }
+
     @include mixin.respond('mobile') {
       gap: 20px;
     }
@@ -69,9 +100,20 @@
     gap: 24px;
     align-items: flex-start;
     max-width: 580px;
+    width: 100%;
 
     @include mixin.respond('laptop') {
-      justify-content: center;
+    }
+
+    @include mixin.respond('tablet') {
+      max-width: 100%;
+      gap: 20px;
+      align-items: center;
+    }
+
+    @include mixin.respond('mobile') {
+      max-width: 100%;
+      gap: 16px;
     }
 
     &-number {
@@ -91,11 +133,23 @@
         height: 56px;
         font-size: 32px;
       }
+
+      @include mixin.respond('tablet') {
+        width: 52px;
+        height: 52px;
+        font-size: 30px;
+      }
+
+      @include mixin.respond('mobile') {
+        width: 48px;
+        height: 48px;
+        font-size: 28px;
+      }
     }
 
     &-text {
       font-family: var.$font-family-inter;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 300;
       line-height: 1.2;
       letter-spacing: -0.02em;
@@ -105,6 +159,16 @@
       @include mixin.respond('laptop') {
         font-size: 18px;
         line-height: 1.3;
+      }
+
+      @include mixin.respond('tablet') {
+        font-size: 16px;
+        line-height: 1.3;
+      }
+
+      @include mixin.respond('mobile') {
+        font-size: 14px;
+        line-height: 1.4;
       }
     }
   }
@@ -116,9 +180,10 @@
       'img1 img2'
       'img1 img3';
     grid-template-columns: 387px 285px;
-    grid-template-rows: 240px 240px;
+    grid-template-rows: 217px 240px;
     gap: 20px;
     align-self: stretch;
+    width: 100%;
 
     @include mixin.respond('laptop') {
       grid-template-columns: 320px 240px;
@@ -129,11 +194,33 @@
       align-self: center;
     }
 
+    @include mixin.respond('medium') {
+      grid-template-columns: minmax(240px, 1fr) minmax(180px, 0.75fr);
+      grid-template-rows: auto auto;
+      gap: 16px;
+      justify-content: center;
+      align-content: center;
+      align-self: center;
+      max-width: 500px;
+    }
+
     @include mixin.respond('tablet') {
+      display: grid;
+      grid-template-areas:
+        'img1 img2'
+        'img1 img3';
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 16px;
+      width: 100%;
+      max-width: none;
+    }
+
+    @include mixin.respond('mobile') {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 20px;
+      gap: 16px;
 
       img {
         width: 100%;
@@ -149,14 +236,48 @@
 
     &:nth-child(1) {
       grid-area: img1;
+      aspect-ratio: 387 / 477;
     }
 
     &:nth-child(2) {
       grid-area: img2;
+      aspect-ratio: 285 / 229;
     }
 
     &:nth-child(3) {
       grid-area: img3;
+      aspect-ratio: 285 / 229;
+    }
+
+    @include mixin.respond('medium') {
+      &:nth-child(1) {
+        aspect-ratio: 387 / 477;
+      }
+
+      &:nth-child(2) {
+        aspect-ratio: 285 / 229;
+      }
+
+      &:nth-child(3) {
+        aspect-ratio: 285 / 229;
+      }
+    }
+
+    @include mixin.respond('mobile') {
+      height: auto;
+      aspect-ratio: unset;
+
+      &:nth-child(1) {
+        aspect-ratio: unset;
+      }
+
+      &:nth-child(2) {
+        aspect-ratio: unset;
+      }
+
+      &:nth-child(3) {
+        aspect-ratio: unset;
+      }
     }
   }
 

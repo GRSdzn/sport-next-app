@@ -1,0 +1,6 @@
+@use '@/styles/abstracts/variables' as var;
+@use '@/styles/abstracts/mixins' as mixin;
+
+.federation-page__container {
+  @include mixin.page-container();
+}
