@@ -6,7 +6,7 @@ export interface FooterButton {
 export const FOOTER_BUTTONS: FooterButton[] = [
   {
     label: 'Федерация',
-    href: '/',
+    href: '/federation',
   },
   {
     label: 'Новости и мероприятия',

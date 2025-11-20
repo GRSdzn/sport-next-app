@@ -4,6 +4,7 @@ import { LineSection } from '@/components/ui/Line/Line';
 import { GoalsAndObjectivesSection } from '@/components/pages/federation/sections/about/GoalsNObjectives';
 import { OBJ_IMAGES, OBJ_LIST } from '@/components/constants/obj-list';
 import { GOALS_IMAGES, GOALS_LIST } from '@/components/constants/goals-list';
+import { TopOfficialsSection } from './sections/top_officials/top-officials.section';
 
 const FederationPage: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ const FederationPage: React.FC = () => {
       <LineSection />
       <GoalsAndObjectivesSection goals={OBJ_LIST} images={OBJ_IMAGES} heading="ЗАДАЧИ" listPosition="right" />
       <LineSection />
+      <TopOfficialsSection />
     </div>
   );
 };
