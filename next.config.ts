@@ -16,6 +16,7 @@ const nextConfig: NextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     qualities: [75, 85, 90, 100],
   },
+  allowedDevOrigins: ['localhost:3000', '192.168.0.137:3000', '192.168.0.137'],
 
   // Оптимизация компиляции
   compiler: {
