@@ -1,10 +1,11 @@
 import './federation.scss';
 import { AboutSection } from '@/components/sections/about.section';
 import { LineSection } from '@/components/ui/Line/Line';
-import { GoalsAndObjectivesSection } from '@/components/pages/federation/sections/about/GoalsNObjectives';
+import { GoalsAndObjectivesSection } from '@/components/pages/federation/sections/GoalsNObjectives';
 import { OBJ_IMAGES, OBJ_LIST } from '@/components/constants/obj-list';
 import { GOALS_IMAGES, GOALS_LIST } from '@/components/constants/goals-list';
-import { TopOfficialsSection } from './sections/top_officials/top-officials.section';
+import { TopOfficialsSection } from './sections/top-officials.section';
+import { CoachingStaffSection } from './sections/coaching-staff.section';
 
 const FederationPage: React.FC = () => {
   return (
@@ -21,6 +22,8 @@ const FederationPage: React.FC = () => {
       <GoalsAndObjectivesSection goals={OBJ_LIST} images={OBJ_IMAGES} heading="ЗАДАЧИ" listPosition="right" />
       <LineSection />
       <TopOfficialsSection />
+      <LineSection />
+      <CoachingStaffSection />
     </div>
   );
 };

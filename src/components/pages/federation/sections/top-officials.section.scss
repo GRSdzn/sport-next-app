@@ -19,7 +19,7 @@
     display: grid;
     grid-template-columns: 490px 490px;
     justify-content: space-between;
-    gap: 20px;
+    width: 100%;
 
     @include mixin.respond('tablet') {
       grid-template-columns: 1fr;

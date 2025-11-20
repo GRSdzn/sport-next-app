@@ -1,0 +1,110 @@
+@use '@/styles/abstracts/variables' as var;
+@use '@/styles/abstracts/mixins' as mixin;
+
+.coaching-staff-section {
+  &__container {
+    @include mixin.container();
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    justify-content: center;
+    align-items: center;
+
+    @include mixin.respond('tablet') {
+      gap: 40px;
+    }
+  }
+
+  &__title {
+    @include mixin.section-title();
+  }
+
+  &__description {
+    font-family: var.$font-family-inter;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1.2;
+  }
+
+  &__title-wrapper {
+    display: grid;
+    grid-template-columns: 490px 490px;
+    justify-content: space-between;
+    width: 100%;
+
+    @include mixin.respond('tablet') {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  &__grid-container {
+    font-family: var.$font-family-inter;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 100%;
+
+    @include mixin.respond('laptop') {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mixin.respond('tablet') {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    @include mixin.respond('mobile') {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      gap: 24px 8px;
+    }
+  }
+
+  &__grid-item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include mixin.respond('mobile') {
+      gap: 8px;
+    }
+  }
+
+  &__grid-item-title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+
+    @include mixin.respond('mobile') {
+      font-size: 16px;
+    }
+  }
+
+  &__grid-item-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+
+    @include mixin.respond('laptop') {
+      width: 354px;
+      height: 343px;
+    }
+
+    @include mixin.respond('mobile') {
+      width: 179px;
+      height: 420px;
+    }
+  }
+
+  &__grid-item-image {
+    object-fit: cover;
+    object-position: top;
+    width: 100%;
+
+    @include mixin.respond('mobile') {
+      max-height: 240px;
+    }
+  }
+}
