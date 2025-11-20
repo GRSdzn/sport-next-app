@@ -46,6 +46,7 @@ type PropType = {
 
 const EmblaCarousel: React.FC<PropType> = ({ slides, options, slideWidth, slideHeight, slideGap }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
+  const [isReady, setIsReady] = React.useState(false);
   const tweenNodes = useRef<HTMLElement[]>([]);
   const tweenFactor = useRef(TWEEN_FACTOR_BASE);
 
@@ -98,19 +99,22 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options, slideWidth, slideH
 
     setTweenNodes(emblaApi);
     tweenScale(emblaApi);
+    setIsReady(true);
 
     emblaApi.on('reInit', setTweenNodes).on('reInit', tweenScale).on('scroll', tweenScale).on('slideFocus', tweenScale);
   }, [emblaApi, setTweenNodes, tweenScale]);
 
   // Inline стили для кастомизации размеров (если переданы пропсы)
   const customStyles = {
-    ...(slideWidth && { '--slide-width': slideWidth }),
-    ...(slideHeight && { '--slide-height': slideHeight }),
-    ...(slideGap && { '--slide-gap': slideGap }),
+    '--slide-width': slideWidth || '589px',
+    '--slide-height': slideHeight || '358px',
+    '--slide-gap': slideGap || '0px',
+    opacity: isReady ? 1 : 0,
+    transition: 'opacity 0.2s ease-in-out',
   } as React.CSSProperties;
 
   return (
-    <section className="embla" style={customStyles}>
+    <section className="embla" style={customStyles} data-ready={isReady}>
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
           {slides.map((slide, i) => (
