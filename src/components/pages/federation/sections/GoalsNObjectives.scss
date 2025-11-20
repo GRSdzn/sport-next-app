@@ -110,7 +110,6 @@
     @include mixin.respond('tablet') {
       max-width: 100%;
       gap: 24px;
-      align-items: center;
     }
 
     @include mixin.respond('mobile') {
@@ -164,7 +163,7 @@
       }
 
       @include mixin.respond('mobile') {
-        font-size: 14px;
+        font-size: 16px;
         line-height: 22px;
       }
     }

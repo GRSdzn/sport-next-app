@@ -68,11 +68,10 @@
     color: var.$text-color;
 
     @include mixin.respond('tablet') {
-      font-size: 22px;
+      font-size: 24px;
     }
 
     @include mixin.respond('mobile') {
-      font-size: 20px;
       text-align: center;
     }
   }
@@ -91,7 +90,7 @@
     }
 
     @include mixin.respond('mobile') {
-      font-size: 14px;
+      font-size: 18px;
       line-height: 20px;
       text-align: center;
     }

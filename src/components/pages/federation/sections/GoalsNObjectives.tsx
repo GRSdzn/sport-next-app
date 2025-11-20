@@ -1,6 +1,6 @@
+import './GoalsNObjectives.scss';
 import Image from 'next/image';
 import React from 'react';
-import './GoalsNObjectives.scss';
 
 interface GoalItem {
   number: number | string;
