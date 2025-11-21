@@ -32,8 +32,8 @@
   }
 
   @include mixin.respond('mobile') {
-    --slide-width: 300px;
-    --slide-height: 200px;
+    --slide-width: 260px;
+    --slide-height: 162px;
   }
 }
 
@@ -124,8 +124,12 @@
   align-items: center;
   width: 100%;
   height: var(--slide-height);
-  padding: 0 10%;
+  padding: 0 15%;
   pointer-events: none;
+
+  @include mixin.respond('tablet') {
+    padding: 0 10%;
+  }
 
   @include mixin.respond('mobile') {
     display: none;

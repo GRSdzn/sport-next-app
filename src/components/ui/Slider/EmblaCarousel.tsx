@@ -106,8 +106,8 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options, slideWidth, slideH
 
   // Inline стили для кастомизации размеров (если переданы пропсы)
   const customStyles = {
-    '--slide-width': slideWidth || '589px',
-    '--slide-height': slideHeight || '358px',
+    '--slide-width': slideWidth,
+    '--slide-height': slideHeight,
     '--slide-gap': slideGap || '0px',
     opacity: isReady ? 1 : 0,
     transition: 'opacity 0.2s ease-in-out',
