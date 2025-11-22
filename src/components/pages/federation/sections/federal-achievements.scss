@@ -1,0 +1,100 @@
+@use '@/styles/abstracts/variables' as var;
+@use '@/styles/abstracts/mixins' as mixin;
+
+.federal-achievements-section {
+  &__container {
+    @include mixin.container();
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+  }
+
+  &__title {
+    @include mixin.section-title();
+    text-align: center;
+  }
+
+  //   IMAGES CONTAINER
+  //   Desktop: 5 колонок, 2 строки. Изображение #6 занимает 2 столбца
+  //   Tablet: 3 колонки, 4 строки. Изображение #6 занимает 3 столбца
+  //   Mobile: горизонтальный скролл
+  &__images-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+
+    // Desktop layout (1200px+): 5 колонок, 2 строки
+    grid-template-areas:
+      'img1 img2 img3 img4 img5'
+      'img6 img6 img7 img8 img9';
+
+    // Tablet (768px - 1023px): 3 колонки, 4 строки
+    @include mixin.respond('tablet') {
+      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-areas:
+        'img1 img2 img3'
+        'img4 img5 img7'
+        'img6 img6 img6'
+        'img8 img9 .';
+    }
+
+    // Mobile (480px - 767px): горизонтальный скролл
+    @include mixin.respond('mobile') {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 16px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      height: 380px;
+      width: 100%;
+
+      &::-webkit-scrollbar {
+        height: 4px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 2px;
+
+        &:hover {
+          background: rgba(0, 0, 0, 0.4);
+        }
+      }
+    }
+  }
+
+  &__image-wrapper {
+    // Mobile: 6-я фотография занимает 2 места
+    @include mixin.respond('mobile') {
+      &[style*='img6'] {
+        flex: 0 0 calc(2 * 284px + 12px);
+      }
+    }
+  }
+
+  &__image {
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+
+    // Mobile: фиксированные размеры 284x380 для скролла
+    @include mixin.respond('mobile') {
+      width: 284px;
+      height: 380px;
+      flex-shrink: 0;
+    }
+  }
+
+  &__image-wrapper[style*='img6'] &__image {
+    @include mixin.respond('mobile') {
+      width: calc(2 * 284px + 12px);
+    }
+  }
+}

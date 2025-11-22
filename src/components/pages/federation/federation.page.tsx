@@ -7,6 +7,7 @@ import { GOALS_IMAGES, GOALS_LIST } from '@/components/constants/goals-list';
 import { TopOfficialsSection } from './sections/top-officials.section';
 import { CoachingStaffSection } from './sections/coaching-staff.section';
 import { SocialSignificanceSection } from './sections/social-significance.section';
+import { FederalAchievementsSection } from './sections/federal-achievements.section';
 
 const FederationPage: React.FC = () => {
   return (
@@ -27,6 +28,8 @@ const FederationPage: React.FC = () => {
       <CoachingStaffSection />
       <LineSection />
       <SocialSignificanceSection />
+      <LineSection />
+      <FederalAchievementsSection />
     </div>
   );
 };
