@@ -53,10 +53,6 @@ $nav-line-height: 90%;
 // ============================================
 // LOGO
 // ============================================
-.header__logo {
-  flex-shrink: 0;
-}
-
 .header__logo-link {
   display: flex;
   align-items: center;
@@ -104,7 +100,6 @@ $nav-line-height: 90%;
   display: flex;
   align-items: center;
   gap: $nav-gap-desktop;
-  flex-shrink: 0;
 }
 
 .header__burger-button {
@@ -177,23 +172,32 @@ $nav-line-height: 90%;
     .header__container {
       padding: 12px 16px;
       border-radius: 8px;
-      gap: 12px;
+      gap: 16px;
     }
   }
 
+  .header__logo {
+    flex-shrink: 0;
+  }
+
   .header__nav {
-    gap: 12px;
-    margin: 0 16px;
+    gap: 14px;
+    flex: 1;
+    justify-content: center;
+    min-width: 0;
   }
 
   .header__nav-link {
-    font-size: 13px;
+    font-size: 14px;
     white-space: nowrap;
-    padding: 0 4px;
+    padding: 0 6px;
   }
 
   .header__actions {
-    gap: 10px;
+    gap: 12px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
   }
 
   .header__social {
