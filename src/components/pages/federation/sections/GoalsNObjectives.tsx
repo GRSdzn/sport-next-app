@@ -27,12 +27,7 @@ export const GoalsAndObjectivesSection: React.FC<GoalsAndObjectivesSectionProps>
   const headingId = React.useId();
 
   return (
-    <section
-      className="goals-n-obj-section"
-      aria-labelledby={headingId}
-      itemScope
-      itemType="https://schema.org/Organization"
-    >
+    <section id="goals-and-objectives" className="goals-n-obj-section" aria-labelledby={headingId} itemScope>
       <div className="goals-n-obj-section__container">
         <div
           className={`goals-n-obj-section__content ${

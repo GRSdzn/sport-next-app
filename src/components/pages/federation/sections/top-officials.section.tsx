@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export const TopOfficialsSection: React.FC = () => {
   return (
-    <section className="top-officials-section" aria-labelledby="top-officials-title">
+    <section id="top-officials" className="top-officials-section" aria-labelledby="top-officials-title">
       <div className="top-officials-section__container">
         <div className="top-officials-section__title-wrapper">
           <h2 id="top-officials-title" className="top-officials-section__title">

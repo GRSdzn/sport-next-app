@@ -2,9 +2,11 @@
 @use '@/styles/abstracts/mixins' as mixin;
 
 .social-significance-section {
-  @include mixin.container();
-
   &__container {
+    @include mixin.container();
+  }
+
+  &__title-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;

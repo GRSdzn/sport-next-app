@@ -2,11 +2,8 @@
 @use '@/styles/abstracts/mixins' as mixin;
 
 .goals-n-obj-section {
-  @include mixin.container();
-
   &__container {
-    max-width: 1200px;
-    margin: 0 auto;
+    @include mixin.container();
   }
 
   &__content {

@@ -4,7 +4,7 @@ import { COACHING_STAFF_LIST } from '@/components/constants/coaching-staff-list'
 
 export const CoachingStaffSection: React.FC = () => {
   return (
-    <section className="coaching-staff-section" aria-labelledby="coaching-staff-title">
+    <section id="coaching-staff" className="coaching-staff-section" aria-labelledby="coaching-staff-title">
       <div className="coaching-staff-section__container">
         <div className="coaching-staff-section__title-wrapper">
           <h2 id="coaching-staff-title" className="coaching-staff-section__title">
