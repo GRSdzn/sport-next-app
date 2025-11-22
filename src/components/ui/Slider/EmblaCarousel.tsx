@@ -147,6 +147,8 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options, slideWidth, slideH
               key={index}
               onClick={() => onDotButtonClick(index)}
               className={'embla__dot'.concat(index === selectedIndex ? ' embla__dot--selected' : '')}
+              aria-label={`Перейти на слайд ${index + 1}`}
+              aria-pressed={index === selectedIndex}
             />
           ))}
         </div>
