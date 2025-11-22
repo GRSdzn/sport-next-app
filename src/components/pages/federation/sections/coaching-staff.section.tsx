@@ -1,13 +1,16 @@
 import './coaching-staff.section.scss';
 import Image from 'next/image';
 import { COACHING_STAFF_LIST } from '@/components/constants/coaching-staff-list';
+import { DottedGrid } from '@/components/ui/DottedGrid/DottedGrid';
 
 export const CoachingStaffSection: React.FC = () => {
+  const sectionId = 'coaching-staff';
+
   return (
-    <section id="coaching-staff" className="coaching-staff-section" aria-labelledby="coaching-staff-title">
+    <section id={sectionId} className="coaching-staff-section" aria-labelledby={`${sectionId}-title`}>
       <div className="coaching-staff-section__container">
         <div className="coaching-staff-section__title-wrapper">
-          <h2 id="coaching-staff-title" className="coaching-staff-section__title">
+          <h2 id={`${sectionId}-title`} className="coaching-staff-section__title">
             ТРЕНЕРСКИЙ СОСТАВ
           </h2>
           <p className="coaching-staff-section__description">
@@ -16,14 +19,17 @@ export const CoachingStaffSection: React.FC = () => {
           </p>
         </div>
         <div className="coaching-staff-section__grid-container" role="list">
+          <DottedGrid
+            itemSize={8}
+            style={{ position: 'absolute', bottom: 20, right: 0 }}
+            cols={7}
+            rows={5}
+            gapX={32}
+            gapY={20}
+          />
+
           {COACHING_STAFF_LIST.map((coach) => (
-            <article
-              key={coach.id}
-              className="coaching-staff-section__grid-item"
-              role="listitem"
-              itemScope
-              itemType="https://schema.org/Person"
-            >
+            <article key={coach.id} className="coaching-staff-section__grid-item" role="listitem">
               <Image
                 src={coach.imageUrl}
                 alt={coach.imageAlt}

@@ -1,6 +1,7 @@
 import './gallery.section.scss';
 import { Button } from '@/components/ui/Button/Button';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const galleryImages = [
   {
@@ -33,17 +34,19 @@ export const GallerySection: React.FC = () => {
       <div className="gallery-section__wrapper">
         <div className="gallery-section__text-container">
           <h2 className="gallery-section__title">ГАЛЕРЕЯ</h2>
-          <Button
-            type="button"
-            className="gallery-section__button gallery-section__button--desktop"
-            aria-label="Смотреть все изображения"
-            variant="primary"
-            size="lg"
-            icon={<Image src="/images/icons/icon-arrow.svg" alt="Иконка стрелки" width={18} height={18} />}
-            iconPosition="right"
-          >
-            СМОТРЕТЬ ВСЕ
-          </Button>
+          <Link href="/gallery" className="gallery-section__button-link">
+            <Button
+              type="button"
+              className="gallery-section__button gallery-section__button--desktop"
+              aria-label="Смотреть все изображения"
+              variant="primary"
+              size="lg"
+              icon={<Image src="/images/icons/icon-arrow.svg" alt="Иконка стрелки" width={18} height={18} />}
+              iconPosition="right"
+            >
+              СМОТРЕТЬ ВСЕ
+            </Button>
+          </Link>
         </div>
         <div className="gallery-section__images">
           {galleryImages.map((image, index) => {

@@ -1,13 +1,14 @@
+import './not-found.scss';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/Button/Button';
-import './not-found.scss';
 
 export const NotFoundPage: React.FC = () => {
   return (
     <main className="not-found-page" role="main">
-      {/* SEO: используем semantic элементы */}
-      <div className="not-found-page__content">
+      <div className="not-found-page__container">
+        {/* SEO: используем semantic элементы */}
+        <div className="not-found-page__content">
         <h1 className="not-found-page__title">404</h1>
         <p className="not-found-page__description">
           К сожалению, страница, которую вы искали, не существует или не найдена :(
@@ -25,6 +26,7 @@ export const NotFoundPage: React.FC = () => {
             НА ГЛАВНУЮ
           </Button>
         </Link>
+        </div>
       </div>
     </main>
   );

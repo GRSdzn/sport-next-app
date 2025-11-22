@@ -2,6 +2,7 @@ import '@/components/pages/home/sections/cover.section.scss';
 import { Button } from '@/components/ui/Button/Button';
 import { DottedGrid } from '@/components/ui/DottedGrid/DottedGrid';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 export const CoverSection: React.FC = () => {
@@ -53,16 +54,18 @@ export const CoverSection: React.FC = () => {
           />
         </div>
         <div className="cover-section__button-wrapper">
-          <Button
-            type="button"
-            className="cover-section__button"
-            aria-label="Подробнее о Федерации КХМЕРСКОГО БОКСА МОСКВЫ"
-            size="lg"
-            icon={<Image src="/images/icons/icon-arrow.svg" alt="Иконка стрелки" width={18} height={18} />}
-            iconPosition="right"
-          >
-            ПОДРОБНЕЕ
-          </Button>
+          <Link href="/about-kun-khemer" className="cover-section__button-link">
+            <Button
+              type="button"
+              className="cover-section__button"
+              aria-label="Подробнее о Федерации КХМЕРСКОГО БОКСА МОСКВЫ"
+              size="lg"
+              icon={<Image src="/images/icons/icon-arrow.svg" alt="Иконка стрелки" width={18} height={18} />}
+              iconPosition="right"
+            >
+              ПОДРОБНЕЕ
+            </Button>
+          </Link>
         </div>
         {/* КРАСНАЯ ЛИНИЯ С ТЕКСТОМ */}
       </div>

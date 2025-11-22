@@ -2,6 +2,7 @@
 @use '@/styles/abstracts/mixins' as mixin;
 
 .federal-achievements-section {
+  position: relative;
   &__container {
     @include mixin.container();
     display: flex;

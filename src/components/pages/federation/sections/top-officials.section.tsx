@@ -1,13 +1,16 @@
-import { TOP_OFFICIALS } from '@/components/constants/TOP_OFFICIALS';
 import './top-officials.section.scss';
+import { TOP_OFFICIALS } from '@/components/constants/TOP_OFFICIALS';
 import Image from 'next/image';
+import { DottedGrid } from '@/components/ui/DottedGrid/DottedGrid';
 
 export const TopOfficialsSection: React.FC = () => {
+  const sectionId = 'top-officials';
+
   return (
-    <section id="top-officials" className="top-officials-section" aria-labelledby="top-officials-title">
+    <section id={sectionId} className="top-officials-section" aria-labelledby={`${sectionId}-title`}>
       <div className="top-officials-section__container">
         <div className="top-officials-section__title-wrapper">
-          <h2 id="top-officials-title" className="top-officials-section__title">
+          <h2 id={`${sectionId}-title`} className="top-officials-section__title">
             Первые лица федерации
           </h2>
           <p className="top-officials-section__description">
@@ -15,9 +18,17 @@ export const TopOfficialsSection: React.FC = () => {
             управлением и принимают ключевые решения по развитию Кхмерского бокса.
           </p>
         </div>
-        <div className="top-officials-section__officials-container">
+        <div className="top-officials-section__officials-container" style={{ position: 'relative' }}>
+          <DottedGrid
+            itemSize={8}
+            style={{ position: 'absolute', top: 20, left: -85 }}
+            cols={3}
+            rows={5}
+            gap={32}
+            gapY={20}
+          />
           {TOP_OFFICIALS.map((official) => (
-            <div key={official.id} className="top-officials-section__official-content">
+            <div key={official.id} className="top-officials-section__official-content" style={{ zIndex: 2 }}>
               <Image
                 src={official.image}
                 alt={official.name}

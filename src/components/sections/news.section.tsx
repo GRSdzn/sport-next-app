@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import './news.section.scss';
 import { NewsTabs } from '@/components/features/news/NewsTabs';
 
@@ -17,13 +18,15 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ showAllButton = false,
               <NewsTabs defaultTab="news" showLine={showLine} />
               {showAllButton && (
                 <div className="news-section__button-wrapper">
-                  <button
-                    className="news-section__show-all-button"
-                    type="button"
-                    aria-label="Смотреть все новости и мероприятия"
-                  >
-                    СМОТРЕТЬ ВСЕ
-                  </button>
+                  <Link href="/events" className="news-section__button-link">
+                    <button
+                      className="news-section__show-all-button"
+                      type="button"
+                      aria-label="Смотреть все новости и мероприятия"
+                    >
+                      СМОТРЕТЬ ВСЕ
+                    </button>
+                  </Link>
                 </div>
               )}
             </div>

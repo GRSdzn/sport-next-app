@@ -16,28 +16,30 @@ export default function Header() {
   const [activeModal, setActiveModal] = useState<ModalType>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Функция для открытия модального окна (закрывает другие автоматически)
   const openModal = useCallback((modalType: ModalType) => {
     setActiveModal(modalType);
-    setIsMobileMenuOpen(false); // Закрываем мобильное меню при открытии модалки
+    setIsMobileMenuOpen(false);
   }, []);
 
-  // Функция для закрытия модального окна
   const closeModal = useCallback(() => {
     setActiveModal(null);
   }, []);
 
-  // Функция для переключения мобильного меню
   const toggleMobileMenu = useCallback(() => {
-    setIsMobileMenuOpen((prev) => !prev);
+    setIsMobileMenuOpen((prev) => {
+      const newState = !prev;
+
+      if (newState) {
+        setActiveModal(null);
+      }
+      return newState;
+    });
   }, []);
 
-  // Функция для закрытия мобильного меню
   const closeMobileMenu = useCallback(() => {
     setIsMobileMenuOpen(false);
   }, []);
 
-  // Блокировка скролла при открытом мобильном меню
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -49,7 +51,6 @@ export default function Header() {
     };
   }, [isMobileMenuOpen]);
 
-  // Слушаем глобальные действия
   useEffect(() => {
     const handler = () => openModal('contact');
     window.addEventListener('open-contact-modal', handler);
@@ -61,13 +62,7 @@ export default function Header() {
       <div className="header__container">
         <div className="header__logo">
           <Link href="/" className="header__logo-link" aria-label="Федерация Кун Кхмер - перейти на главную страницу">
-            <Image
-              src="/images/logo.svg"
-              alt="Логотип Федерации Кун Кхмер"
-              width={116}
-              height={45.35}
-              priority
-            />
+            <Image src="/images/logo.svg" alt="Логотип Федерации Кун Кхмер" width={116} height={45.35} priority />
           </Link>
         </div>
 

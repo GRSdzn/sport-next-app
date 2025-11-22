@@ -24,6 +24,11 @@
 
   &__title {
     @include mixin.section-title;
+
+    @include mixin.respond('mobile') {
+      width: 100%;
+      text-align: center;
+    }
   }
 
   &__button {
@@ -110,5 +115,13 @@
   &__image {
     object-fit: cover;
     transition: transform 0.3s ease;
+  }
+
+  &__button--mobile {
+    display: none;
+
+    @include mixin.respond('mobile') {
+      display: flex;
+    }
   }
 }

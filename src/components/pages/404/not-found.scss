@@ -2,12 +2,20 @@
 @use '@/styles/abstracts/mixins' as mixin;
 
 .not-found-page {
-  @include mixin.container();
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 60vh;
+
+  &__container {
+    @include mixin.container();
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
 
   &__content {
     display: flex;
@@ -16,16 +24,44 @@
     justify-content: center;
     gap: 40px;
     max-width: 600px;
+
+    @include mixin.respond('tablet') {
+      gap: 32px;
+    }
+
+    @include mixin.respond('mobile') {
+      gap: 24px;
+    }
   }
 
   &__title {
     font: 700 160px/1 var.$font-family-bebas;
+
+    @include mixin.respond('laptop') {
+      font-size: 120px;
+    }
+
+    @include mixin.respond('tablet') {
+      font-size: 100px;
+    }
+
+    @include mixin.respond('mobile') {
+      font-size: 80px;
+    }
   }
 
   &__description {
     font: 400 24px/1 var.$font-family-inter;
     line-height: 1.2;
     text-align: center;
+
+    @include mixin.respond('tablet') {
+      font-size: 20px;
+    }
+
+    @include mixin.respond('mobile') {
+      font-size: 16px;
+    }
   }
 
   &__link {
@@ -39,5 +75,16 @@
   &__button {
     width: 294px;
     height: 86px;
+
+    @include mixin.respond('tablet') {
+      width: 240px;
+      height: 72px;
+    }
+
+    @include mixin.respond('mobile') {
+      width: 200px;
+      height: 60px;
+      font-size: 14px;
+    }
   }
 }

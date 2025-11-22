@@ -73,7 +73,7 @@ const Modal: React.FC<ModalProps> = memo(
         className={clsx('modal__overlay', { open: isOpen })}
         onMouseDown={handleOverlayClick}
         role="presentation"
-        aria-hidden={!isOpen}
+        {...(!isOpen && { inert: true })}
       >
         <div
           className={clsx('modal', `modal--${maxWidth}`, className)}

@@ -1,4 +1,4 @@
-import './GoalsNObjectives.scss';
+import './goals-n-objectives.scss';
 import Image from 'next/image';
 import React from 'react';
 
@@ -24,10 +24,10 @@ export const GoalsAndObjectivesSection: React.FC<GoalsAndObjectivesSectionProps>
   ],
   listPosition = 'left',
 }) => {
-  const headingId = React.useId();
+  const sectionId = 'goals-and-objectives';
 
   return (
-    <section id="goals-and-objectives" className="goals-n-obj-section" aria-labelledby={headingId} itemScope>
+    <section id={sectionId} className="goals-n-obj-section" aria-labelledby={`${sectionId}-title`} itemScope>
       <div className="goals-n-obj-section__container">
         <div
           className={`goals-n-obj-section__content ${
@@ -36,36 +36,19 @@ export const GoalsAndObjectivesSection: React.FC<GoalsAndObjectivesSectionProps>
         >
           {/* Список целей */}
           <div className="goals-n-obj-section__list-container">
-            <h2 id={headingId} className="goals-n-obj-section__heading" itemProp="name">
+            <h2 id={`${sectionId}-title`} className="goals-n-obj-section__heading" itemProp="name">
               {heading}
             </h2>
 
-            <ul
-              className="goals-n-obj-section__list"
-              role="list"
-              aria-label={`Список: ${heading}`}
-              itemProp="makesOffer"
-              itemScope
-              itemType="https://schema.org/ItemList"
-            >
-              {goals.map((goal, index) => (
-                <li
-                  key={goal.number}
-                  className="goals-n-obj-section__item"
-                  itemProp="itemListElement"
-                  itemScope
-                  itemType="https://schema.org/ListItem"
-                >
-                  <meta itemProp="position" content={String(index + 1)} />
+            <ul className="goals-n-obj-section__list" role="list" aria-label={`Список: ${heading}`}>
+              {goals.map((goal) => (
+                <li key={goal.number} className="goals-n-obj-section__item">
                   <div className="goals-n-obj-section__item-number" aria-hidden="true">
                     {goal.number}
                   </div>
                   <p
                     className="goals-n-obj-section__item-text"
-                    itemProp="description"
-                    dangerouslySetInnerHTML={{
-                      __html: goal.text.replace(/\n/g, '<br />'),
-                    }}
+                    dangerouslySetInnerHTML={{ __html: goal.text.replace(/\n/g, '<br />') }}
                   />
                 </li>
               ))}
