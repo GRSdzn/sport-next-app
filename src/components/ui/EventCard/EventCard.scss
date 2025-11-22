@@ -17,8 +17,7 @@
   }
 
   @include mixin.respond('tablet') {
-    width: 175px;
-    height: 295px;
+    width: 100%;
   }
 
   &__image-wrapper {
