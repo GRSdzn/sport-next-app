@@ -21,9 +21,9 @@ export const NewsTabs: React.FC<NewsTabsProps> = ({ defaultTab = 'news', showLin
       <TabsContent value="news">
         <div className="news-tabs__grid">
           {newsItems.length > 0 ? (
-            newsItems.map((item, index) => (
+            newsItems.map((item) => (
               <EventCard
-                key={`news-${index}`}
+                key={item.title + item.date}
                 src={item.src}
                 title={item.title}
                 description={item.description}
@@ -41,9 +41,9 @@ export const NewsTabs: React.FC<NewsTabsProps> = ({ defaultTab = 'news', showLin
       <TabsContent value="events">
         <div className="news-tabs__grid">
           {eventsItems.length > 0 ? (
-            eventsItems.map((item, index) => (
+            eventsItems.map((item) => (
               <EventCard
-                key={`event-${index}`}
+                key={item.title + item.date}
                 src={item.src}
                 title={item.title}
                 description={item.description}

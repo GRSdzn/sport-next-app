@@ -4,6 +4,12 @@
 .federation-club-section {
   position: relative;
 
+  &__dotted-grid {
+    position: absolute;
+    bottom: -100px;
+    right: 10px;
+  }
+
   &__wrapper {
     @include mixin.container();
     display: flex;

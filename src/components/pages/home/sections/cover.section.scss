@@ -8,6 +8,24 @@
   align-items: center;
   overflow: hidden;
 
+  &__dotted-grid-top-left {
+    position: absolute;
+    top: 20px;
+    left: 33px;
+  }
+
+  &__dotted-grid-center-right {
+    position: absolute;
+    bottom: 600px;
+    right: 0;
+  }
+
+  &__dotted-grid-bottom-right {
+    position: absolute;
+    bottom: 0;
+    right: 200px;
+  }
+
   &__container {
     @include mixin.container();
     position: relative;

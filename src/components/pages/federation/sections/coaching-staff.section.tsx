@@ -3,6 +3,14 @@ import Image from 'next/image';
 import { COACHING_STAFF_LIST } from '@/components/constants/coaching-staff-list';
 import { DottedGrid } from '@/components/ui/DottedGrid/DottedGrid';
 
+const DOTTED_GRID_CONFIG = {
+  itemSize: 8,
+  cols: 7,
+  rows: 5,
+  gapX: 32,
+  gapY: 20,
+} as const;
+
 export const CoachingStaffSection: React.FC = () => {
   const sectionId = 'coaching-staff';
 
@@ -19,14 +27,7 @@ export const CoachingStaffSection: React.FC = () => {
           </p>
         </div>
         <div className="coaching-staff-section__grid-container" role="list">
-          <DottedGrid
-            itemSize={8}
-            style={{ position: 'absolute', bottom: 20, right: 0 }}
-            cols={7}
-            rows={5}
-            gapX={32}
-            gapY={20}
-          />
+          <DottedGrid className="coaching-staff-section__dotted-grid" {...DOTTED_GRID_CONFIG} />
 
           {COACHING_STAFF_LIST.map((coach) => (
             <article key={coach.id} className="coaching-staff-section__grid-item" role="listitem">

@@ -4,6 +4,22 @@
 .detail-info-section {
   position: relative;
 
+  &__dotted-grid-left {
+    position: absolute;
+    top: 0;
+    left: 20px;
+  }
+
+  &__dotted-grid-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &__button-link {
+    width: 100%;
+  }
+
   &__wrapper {
     @include mixin.container;
   }

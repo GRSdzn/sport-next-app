@@ -43,6 +43,12 @@
     }
   }
 
+  &__dotted-grid {
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+  }
+
   &__grid-container {
     font-family: var.$font-family-inter;
     display: grid;

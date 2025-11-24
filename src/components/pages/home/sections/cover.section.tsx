@@ -4,19 +4,37 @@ import { DottedGrid } from '@/components/ui/DottedGrid/DottedGrid';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { ARROW_ICON } from '@/components/constants/ui-icons';
+
+const DOTTED_GRID_TOP_LEFT = {
+  itemSize: 8,
+  cols: 5,
+  rows: 7,
+  gapX: 20,
+  gapY: 32,
+} as const;
+
+const DOTTED_GRID_BOTTOM_LEFT = {
+  itemSize: 12,
+  gap: 20,
+  cols: 5,
+  rows: 5,
+} as const;
+
+const COVER_BACKGROUND_SIZES = '(max-width: 768px) 698px, (max-width: 1600px) 728px, 1499px';
+const MARQUEE_TEXT = 'ФЕДЕРАЦИЯ КХМЕРСКОГО БОКСА МОСКВЫ';
+const MARQUEE_TEXT_REPEATS = 4;
 
 export const CoverSection: React.FC = () => {
+  const marqueeTextElements = Array.from({ length: MARQUEE_TEXT_REPEATS }, (_, i) => (
+    <span key={i} className="cover-section__red-line-text-span">
+      {MARQUEE_TEXT}
+    </span>
+  ));
+
   return (
     <section className="cover-section">
-      <DottedGrid
-        itemSize={8}
-        style={{ top: 20, left: 33 }}
-        className="cover-section__dotted-grid"
-        cols={5}
-        rows={7}
-        gapX={20}
-        gapY={32}
-      />
+      <DottedGrid className="cover-section__dotted-grid-top-left" {...DOTTED_GRID_TOP_LEFT} />
 
       <div className="cover-section__container">
         <div className="cover-section__title-wrapper">
@@ -26,27 +44,13 @@ export const CoverSection: React.FC = () => {
             <span className="cover-section__subtitle-white">БОКСА МОСКВЫ</span>
           </div>
         </div>
-        <DottedGrid
-          itemSize={12}
-          style={{ bottom: 600, right: 0 }}
-          className="cover-section__dotted-grid"
-          gap={20}
-          cols={5}
-          rows={5}
-        />
-        <DottedGrid
-          itemSize={12}
-          style={{ bottom: 0, right: 200 }}
-          className="cover-section__dotted-grid"
-          gap={20}
-          cols={5}
-          rows={5}
-        />
+        <DottedGrid className="cover-section__dotted-grid-center-right" {...DOTTED_GRID_BOTTOM_LEFT} />
+        <DottedGrid className="cover-section__dotted-grid-bottom-right" {...DOTTED_GRID_BOTTOM_LEFT} />
         <div className="cover-section__background">
           <Image
             src="/images/cover-section/cover-background.webp"
             alt="Федерация КХМЕРСКОГО БОКСА МОСКВЫ"
-            sizes="(max-width: 768px) 698px, (max-width: 1600px) 728px, 1499px"
+            sizes={COVER_BACKGROUND_SIZES}
             className="cover-section__background-image"
             fill
             priority
@@ -61,27 +65,18 @@ export const CoverSection: React.FC = () => {
               className="cover-section__button"
               aria-label="Подробнее о Федерации КХМЕРСКОГО БОКСА МОСКВЫ"
               size="lg"
-              icon={<Image src="/images/icons/icon-arrow.svg" alt="Иконка стрелки" width={18} height={18} />}
+              icon={ARROW_ICON}
               iconPosition="right"
             >
               ПОДРОБНЕЕ
             </Button>
           </Link>
         </div>
-        {/* КРАСНАЯ ЛИНИЯ С ТЕКСТОМ */}
       </div>
       <div className="cover-section__red-line">
-        <div className="cover-section__red-line-text">
-          <span className="cover-section__red-line-text-span">ФЕДЕРАЦИЯ КХМЕРСКОГО БОКСА МОСКВЫ</span>
-          <span className="cover-section__red-line-text-span">ФЕДЕРАЦИЯ КХМЕРСКОГО БОКСА МОСКВЫ</span>
-          <span className="cover-section__red-line-text-span">ФЕДЕРАЦИЯ КХМЕРСКОГО БОКСА МОСКВЫ</span>
-          <span className="cover-section__red-line-text-span">ФЕДЕРАЦИЯ КХМЕРСКОГО БОКСА МОСКВЫ</span>
-        </div>
+        <div className="cover-section__red-line-text">{marqueeTextElements}</div>
         <div className="cover-section__red-line-text" aria-hidden="true">
-          <span className="cover-section__red-line-text-span">ФЕДЕРАЦИЯ КХМЕРСКОГО БОКСА МОСКВЫ</span>
-          <span className="cover-section__red-line-text-span">ФЕДЕРАЦИЯ КХМЕРСКОГО БОКСА МОСКВЫ</span>
-          <span className="cover-section__red-line-text-span">ФЕДЕРАЦИЯ КХМЕРСКОГО БОКСА МОСКВЫ</span>
-          <span className="cover-section__red-line-text-span">ФЕДЕРАЦИЯ КХМЕРСКОГО БОКСА МОСКВЫ</span>
+          {marqueeTextElements}
         </div>
       </div>
     </section>

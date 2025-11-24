@@ -3,6 +3,19 @@
 
 .federal-achievements-section {
   position: relative;
+
+  &__dotted-grid-bottom-right {
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+  }
+
+  &__dotted-grid-top-left {
+    position: absolute;
+    top: 20px;
+    left: 0;
+  }
+
   &__container {
     @include mixin.container();
     display: flex;
@@ -72,9 +85,15 @@
   }
 
   &__image-wrapper {
+    @for $i from 1 through 9 {
+      &--#{$i} {
+        grid-area: img#{$i};
+      }
+    }
+
     // Mobile: 6-я фотография занимает 2 места
     @include mixin.respond('mobile') {
-      &[style*='img6'] {
+      &--6 {
         flex: 0 0 calc(2 * 284px + 12px);
       }
     }
@@ -93,7 +112,7 @@
     }
   }
 
-  &__image-wrapper[style*='img6'] &__image {
+  &__image-wrapper--6 &__image {
     @include mixin.respond('mobile') {
       width: calc(2 * 284px + 12px);
     }

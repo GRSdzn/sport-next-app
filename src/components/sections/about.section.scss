@@ -4,6 +4,19 @@
 .about-section {
   position: relative;
 
+  &__dotted-grid {
+    position: absolute;
+    top: 0;
+
+    &--left {
+      left: 50px;
+    }
+
+    &--right {
+      right: 50px;
+    }
+  }
+
   &__wrapper {
     @include mixin.container;
   }

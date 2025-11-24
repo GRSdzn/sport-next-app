@@ -2,90 +2,75 @@ import '@/components/pages/home/sections/detail-info.section.scss';
 import { Button } from '@/components/ui/Button/Button';
 import { DottedGrid } from '@/components/ui/DottedGrid/DottedGrid';
 import Image from 'next/image';
+import Link from 'next/link';
+import { DETAIL_INFO_IMAGES, DETAIL_INFO_DESCRIPTION } from '@/components/constants/detail-info-images';
+import { ARROW_ICON } from '@/components/constants/ui-icons';
+
+const DOTTED_GRID_LEFT = {
+  itemSize: 8,
+  cols: 3,
+  rows: 7,
+  gapY: 32,
+  gapX: 20,
+} as const;
+
+const DOTTED_GRID_RIGHT = {
+  itemSize: 12,
+  cols: 2,
+  rows: 5,
+} as const;
 
 export const DetailInfoSection: React.FC = () => {
   return (
     <section className="detail-info-section">
-      <DottedGrid
-        itemSize={8}
-        style={{ position: 'absolute', top: 0, left: 20 }}
-        cols={3}
-        rows={7}
-        gapY={32}
-        gapX={20}
-      />
-      <DottedGrid itemSize={12} style={{ position: 'absolute', top: 0, right: 0 }} cols={2} rows={5} />
+      <DottedGrid className="detail-info-section__dotted-grid-left" {...DOTTED_GRID_LEFT} />
+      <DottedGrid className="detail-info-section__dotted-grid-right" {...DOTTED_GRID_RIGHT} />
       <div className="detail-info-section__wrapper">
         <div className="detail-info-section__container">
-          {/* IMAGES */}
           <div className="detail-info-section__mobile-button-wrapper">
-            <Button
-              type="button"
-              className="detail-info-section__mobile-button"
-              aria-label="Подробнее о Кун Кхмер"
-              variant="primary"
-              size="lg"
-              icon={<Image src="/images/icons/icon-arrow.svg" alt="Иконка стрелки" width={18} height={18} />}
-              iconPosition="right"
-            >
-              ПОДРОБНЕЕ
-            </Button>
+            <Link href="/about-kun-khemer" className="detail-info-section__button-link">
+              <Button
+                type="button"
+                className="detail-info-section__mobile-button"
+                aria-label="Подробнее о Кун Кхмер"
+                variant="primary"
+                size="lg"
+                icon={ARROW_ICON}
+                iconPosition="right"
+              >
+                ПОДРОБНЕЕ
+              </Button>
+            </Link>
           </div>
           <div className="detail-info-section__images">
-            <Image
-              src="/images/detail-info/image-1.png"
-              alt="Detail Info Image 1"
-              width={500}
-              height={350}
-              className="detail-info-section__image"
-              loading="lazy"
-            />
-            <Image
-              src="/images/detail-info/image-2.png"
-              alt="Detail Info Image 2"
-              width={500}
-              height={350}
-              className="detail-info-section__image"
-              loading="lazy"
-            />
-            <Image
-              src="/images/detail-info/image-3.png"
-              alt="Detail Info Image 3"
-              width={500}
-              height={350}
-              className="detail-info-section__image"
-              loading="lazy"
-            />
-            <Image
-              src="/images/detail-info/image-4.png"
-              alt="Detail Info Image 4"
-              width={500}
-              height={350}
-              className="detail-info-section__image"
-              loading="lazy"
-            />
+            {DETAIL_INFO_IMAGES.map((image) => (
+              <Image
+                key={image.id}
+                src={image.src}
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+                className="detail-info-section__image"
+                loading="lazy"
+              />
+            ))}
           </div>
-          {/* TEXT CONTENT */}
           <div className="detail-info-section__content">
             <h2 className="detail-info-section__title">КУН КХМЕР</h2>
-            <p className="detail-info-section__description">
-              Kun Khmer ( គុន ខ្មែរ ) или Прадал Серей ( ប្រដាល់សេរី ) - это боевое искусство и спортивное единоборство
-              из Камбоджи. «Прадал» означает борьбу или бокс и «Серей» означает свободный или «вольная борьба».
-              Спортивный вариант единоборства состоит из ударов в стойке кулаками в боксерских перчатках, локтями,
-              ногами, и захватов. Задача бойца Kun Khmer состоит в том, чтобы повергнуть противника - технический
-              нокаут, нокаут или выиграть по очкам. Очень похож на современный Муай Тай.
-            </p>
-            <Button
-              type="button"
-              className="detail-info-section__button"
-              aria-label="Подробнее о Кун Кхмер"
-              variant="primary"
-              size="lg"
-              icon={<Image src="/images/icons/icon-arrow.svg" alt="Иконка стрелки" width={18} height={18} />}
-              iconPosition="right"
-            >
-              ПОДРОБНЕЕ
-            </Button>
+            <p className="detail-info-section__description">{DETAIL_INFO_DESCRIPTION}</p>
+            <Link href="/about-kun-khemer" className="detail-info-section__button-link">
+              <Button
+                type="button"
+                className="detail-info-section__button"
+                aria-label="Подробнее о Кун Кхмер"
+                variant="primary"
+                size="lg"
+                icon={ARROW_ICON}
+                iconPosition="right"
+              >
+                ПОДРОБНЕЕ
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

@@ -3,6 +3,14 @@ import { TOP_OFFICIALS } from '@/components/constants/TOP_OFFICIALS';
 import Image from 'next/image';
 import { DottedGrid } from '@/components/ui/DottedGrid/DottedGrid';
 
+const DOTTED_GRID_CONFIG = {
+  itemSize: 8,
+  cols: 3,
+  rows: 5,
+  gap: 32,
+  gapY: 20,
+} as const;
+
 export const TopOfficialsSection: React.FC = () => {
   const sectionId = 'top-officials';
 
@@ -18,17 +26,10 @@ export const TopOfficialsSection: React.FC = () => {
             управлением и принимают ключевые решения по развитию Кхмерского бокса.
           </p>
         </div>
-        <div className="top-officials-section__officials-container" style={{ position: 'relative' }}>
-          <DottedGrid
-            itemSize={8}
-            style={{ position: 'absolute', top: 20, left: -85 }}
-            cols={3}
-            rows={5}
-            gap={32}
-            gapY={20}
-          />
+        <div className="top-officials-section__officials-container">
+          <DottedGrid className="top-officials-section__dotted-grid" {...DOTTED_GRID_CONFIG} />
           {TOP_OFFICIALS.map((official) => (
-            <div key={official.id} className="top-officials-section__official-content" style={{ zIndex: 2 }}>
+            <div key={official.id} className="top-officials-section__official-content">
               <Image
                 src={official.image}
                 alt={official.name}
@@ -39,8 +40,8 @@ export const TopOfficialsSection: React.FC = () => {
               />
               <h3 className="top-officials-section__official-title">{official.name}</h3>
               <ul className="top-officials-section__official-list">
-                {official.positions.map((position, index) => (
-                  <li key={index} className="top-officials-section__official-list-item">
+                {official.positions.map((position) => (
+                  <li key={`${official.id}-${position}`} className="top-officials-section__official-list-item">
                     {position}
                   </li>
                 ))}
