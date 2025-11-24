@@ -159,7 +159,7 @@
   appearance: none;
   -webkit-appearance: none;
   -webkit-tap-highlight-color: rgba(rgba(255, 255, 255, 0.247), 0.5);
-  transition: all 0.2s ease;
+  transition: 0.2s ease;
 
   &:hover:not(:disabled) {
     background-color: rgba(255, 255, 255, 0.25);
