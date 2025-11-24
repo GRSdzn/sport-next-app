@@ -2,6 +2,7 @@
 
 import './EventCard.scss';
 import React, { useState } from 'react';
+import { EmblaOptionsType } from 'embla-carousel';
 import Image from 'next/image';
 import { EventDetailModal } from '@/components/ui/EventDetailModal/EventDetailModal';
 
@@ -14,7 +15,7 @@ export type EventCardProps = {
   alt?: string;
   className?: string;
   slides?: string[];
-  carouselOptions?: any;
+  carouselOptions?: EmblaOptionsType;
 };
 
 export const EventCard: React.FC<EventCardProps> = ({
@@ -26,13 +27,13 @@ export const EventCard: React.FC<EventCardProps> = ({
   alt,
   className = '',
   slides = [],
-  carouselOptions,
+  carouselOptions = { loop: true },
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const altText = alt || title;
   const imageTitle = `${title}${date ? ` - ${date}` : ''}${location ? ` в ${location}` : ''}`;
-  const carouselSlides = slides.length > 0 ? slides : [src];
+  const modalSlides = slides.length > 0 ? slides : [src];
 
   const handleCardClick = () => {
     setIsModalOpen(true);
@@ -79,7 +80,15 @@ export const EventCard: React.FC<EventCardProps> = ({
         </div>
       </article>
 
-      <EventDetailModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <EventDetailModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title={title}
+        description={description}
+        date={date}
+        slides={modalSlides}
+        carouselOptions={carouselOptions}
+      />
     </>
   );
 };

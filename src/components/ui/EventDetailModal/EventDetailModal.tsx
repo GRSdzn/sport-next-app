@@ -2,6 +2,7 @@
 
 import './EventDetailModal.scss';
 import React, { useState, useEffect } from 'react';
+import { EmblaOptionsType } from 'embla-carousel';
 import EmblaCarousel from '@/components/ui/Slider/EmblaCarousel';
 import { EVENT_DETAIL_MODAL_DATA } from '@/components/constants/event-detail-modal';
 import Image from 'next/image';
@@ -13,7 +14,7 @@ export type EventDetailModalProps = {
   description?: string;
   date?: string;
   slides?: string[];
-  carouselOptions?: any;
+  carouselOptions?: EmblaOptionsType;
 };
 
 export const EventDetailModal: React.FC<EventDetailModalProps> = ({
