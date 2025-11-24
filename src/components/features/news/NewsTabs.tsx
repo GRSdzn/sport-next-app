@@ -14,8 +14,8 @@ export const NewsTabs: React.FC<NewsTabsProps> = ({ defaultTab = 'news', showLin
   return (
     <Tabs defaultValue={defaultTab}>
       <TabsList>
-        <TabsTrigger value="news">НОВОСТИ</TabsTrigger>
-        <TabsTrigger value="events">МЕРОПРИЯТИЯ</TabsTrigger>
+        <TabsTrigger value="news">ПРОШЕДШИЕ</TabsTrigger>
+        <TabsTrigger value="events">БУДУЩИЕ</TabsTrigger>
       </TabsList>
       {showLine && <LineSection />}
       <TabsContent value="news">

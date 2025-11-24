@@ -1,6 +1,9 @@
-import React from 'react';
-import Image from 'next/image';
+'use client';
+
 import './EventCard.scss';
+import React, { useState } from 'react';
+import Image from 'next/image';
+import { EventDetailModal } from '@/components/ui/EventDetailModal/EventDetailModal';
 
 export type EventCardProps = {
   src: string;
@@ -10,6 +13,8 @@ export type EventCardProps = {
   location?: string;
   alt?: string;
   className?: string;
+  slides?: string[];
+  carouselOptions?: any;
 };
 
 export const EventCard: React.FC<EventCardProps> = ({
@@ -20,48 +25,61 @@ export const EventCard: React.FC<EventCardProps> = ({
   location,
   alt,
   className = '',
+  slides = [],
+  carouselOptions,
 }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const altText = alt || title;
   const imageTitle = `${title}${date ? ` - ${date}` : ''}${location ? ` в ${location}` : ''}`;
+  const carouselSlides = slides.length > 0 ? slides : [src];
+
+  const handleCardClick = () => {
+    setIsModalOpen(true);
+  };
 
   return (
-    <article className={`event-card ${className}`.trim()}>
-      <div className="event-card__image-wrapper">
-        <Image
-          src={src}
-          alt={altText}
-          title={imageTitle}
-          fill
-          className="event-card__image"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 387px"
-        />
-      </div>
-      <div className="event-card__content">
-        {title && (
-          <h3 className="event-card__title" title={title}>
-            {title}
-          </h3>
-        )}
-        {description && (
-          <p className="event-card__description" title={description}>
-            {description}
-          </p>
-        )}
-        {(date || location) && (
-          <div className="event-card__meta">
-            {date && (
-              <time className="event-card__date" dateTime={date} title={date}>
-                {date}
-              </time>
-            )}
-            {location && (
-              <address className="event-card__location" title={location}>
-                {location}
-              </address>
-            )}
-          </div>
-        )}
-      </div>
-    </article>
+    <>
+      <article className={`event-card ${className}`.trim()} onClick={handleCardClick} role="button" tabIndex={0}>
+        <div className="event-card__image-wrapper">
+          <Image
+            src={src}
+            alt={altText}
+            title={imageTitle}
+            fill
+            className="event-card__image"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 387px"
+          />
+        </div>
+        <div className="event-card__content">
+          {title && (
+            <h3 className="event-card__title" title={title}>
+              {title}
+            </h3>
+          )}
+          {description && (
+            <p className="event-card__description" title={description}>
+              {description}
+            </p>
+          )}
+          {(date || location) && (
+            <div className="event-card__meta">
+              {date && (
+                <time className="event-card__date" dateTime={date} title={date}>
+                  {date}
+                </time>
+              )}
+              {location && (
+                <address className="event-card__location" title={location}>
+                  {location}
+                </address>
+              )}
+            </div>
+          )}
+        </div>
+      </article>
+
+      <EventDetailModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </>
   );
 };

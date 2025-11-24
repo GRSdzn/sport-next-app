@@ -119,6 +119,8 @@
 .embla__buttons {
   position: absolute;
   top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -126,6 +128,7 @@
   height: var(--slide-height);
   padding: 0 15%;
   pointer-events: none;
+  z-index: 20;
 
   @include mixin.respond('tablet') {
     padding: 0 10%;
@@ -137,7 +140,7 @@
 }
 
 .embla__button {
-  z-index: 10;
+  z-index: 11;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -148,7 +151,7 @@
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.16);
-  color: var(--text-body);
+  color: white;
   text-decoration: none;
   cursor: pointer;
   pointer-events: all;
@@ -156,9 +159,16 @@
   appearance: none;
   -webkit-appearance: none;
   -webkit-tap-highlight-color: rgba(rgba(255, 255, 255, 0.247), 0.5);
+  transition: all 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background-color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
 
   &:disabled {
-    color: rgba(75, 75, 75, 0.233);
+    color: rgba(255, 255, 255, 0.3);
+    opacity: 0.5;
   }
 }
 

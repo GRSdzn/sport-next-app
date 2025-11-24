@@ -51,6 +51,7 @@ export const CoverSection: React.FC = () => {
             fill
             priority
             fetchPriority="high"
+            loading="eager"
           />
         </div>
         <div className="cover-section__button-wrapper">

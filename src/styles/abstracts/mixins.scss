@@ -48,15 +48,15 @@
   display: flex;
   flex-direction: column;
   gap: 100px;
-  margin: 100px 0 80px 0;
+  margin: 170px 0 80px 0;
 
   @include respond('tablet') {
     gap: 60px;
-    margin: 80px 0 60px 0;
+    margin: 144px 0 60px 0;
   }
 
   @include respond('mobile') {
     gap: 40px;
-    margin: 60px 0 40px 0;
+    margin: 134px 0 40px 0;
   }
 }

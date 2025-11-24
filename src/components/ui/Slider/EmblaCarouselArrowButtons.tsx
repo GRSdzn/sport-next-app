@@ -46,13 +46,20 @@ export const usePrevNextButtons = (emblaApi: EmblaCarouselType | undefined): Use
 type PropType = ComponentPropsWithRef<'button'>;
 
 export const PrevButton: React.FC<PropType> = (props) => {
-  const { children, ...restProps } = props;
+  const { children, onClick, ...restProps } = props;
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onClick?.(e);
+  };
 
   return (
     <button
       className="embla__button embla__button--prev"
       type="button"
       aria-label="Предыдущий слайд"
+      onClick={handleClick}
       {...restProps}
     >
       <svg className="embla__button__svg" viewBox="0 0 532 532" aria-hidden="true">
@@ -67,13 +74,20 @@ export const PrevButton: React.FC<PropType> = (props) => {
 };
 
 export const NextButton: React.FC<PropType> = (props) => {
-  const { children, ...restProps } = props;
+  const { children, onClick, ...restProps } = props;
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onClick?.(e);
+  };
 
   return (
     <button
       className="embla__button embla__button--next"
       type="button"
       aria-label="Следующий слайд"
+      onClick={handleClick}
       {...restProps}
     >
       <svg className="embla__button__svg" viewBox="0 0 532 532" aria-hidden="true">

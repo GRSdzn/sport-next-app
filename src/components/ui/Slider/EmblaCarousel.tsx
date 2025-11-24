@@ -42,9 +42,10 @@ type PropType = {
   slideWidth?: string;
   slideHeight?: string;
   slideGap?: string;
+  dots?: boolean;
 };
 
-const EmblaCarousel: React.FC<PropType> = ({ slides, options, slideWidth, slideHeight, slideGap }) => {
+const EmblaCarousel: React.FC<PropType> = ({ slides, options, slideWidth, slideHeight, slideGap, dots = true }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
   const [isReady, setIsReady] = React.useState(false);
   const tweenNodes = useRef<HTMLElement[]>([]);
@@ -141,17 +142,19 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options, slideWidth, slideH
           <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
         </div>
 
-        <div className="embla__dots">
-          {scrollSnaps.map((_, index) => (
-            <DotButton
-              key={index}
-              onClick={() => onDotButtonClick(index)}
-              className={'embla__dot'.concat(index === selectedIndex ? ' embla__dot--selected' : '')}
-              aria-label={`Перейти на слайд ${index + 1}`}
-              aria-pressed={index === selectedIndex}
-            />
-          ))}
-        </div>
+        {dots && (
+          <div className="embla__dots">
+            {scrollSnaps.map((_, index) => (
+              <DotButton
+                key={index}
+                onClick={() => onDotButtonClick(index)}
+                className={'embla__dot'.concat(index === selectedIndex ? ' embla__dot--selected' : '')}
+                aria-label={`Перейти на слайд ${index + 1}`}
+                aria-pressed={index === selectedIndex}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

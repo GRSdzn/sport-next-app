@@ -5,13 +5,13 @@
 // ============================================
 // VARIABLES & CONSTANTS
 // ============================================
-$header-height-desktop: 77.35px;
+$header-height-desktop: 80px;
 $header-height-tablet: 80px;
 $header-height-mobile: 70px;
 $header-padding-desktop: 16px;
 $header-padding-tablet: 12px 16px;
 $header-padding-mobile: 12px 16px;
-$header-bg: #ffffff05;
+$header-bg: #1a1a1a;
 $header-border-radius: 12px;
 
 $social-size-desktop: 40px;
@@ -27,15 +27,14 @@ $nav-line-height: 90%;
 // MAIN HEADER
 // ============================================
 .header {
-  position: relative;
-  z-index: 200;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: $header-height-desktop;
-  padding: $header-padding-desktop;
   margin-top: $header-padding-desktop;
   width: 100%;
+  z-index: 200;
 
   .header__container {
     @include mixin.container();
@@ -47,6 +46,7 @@ $nav-line-height: 90%;
     align-items: center;
     width: 100%;
     gap: 24px;
+    height: 100%;
   }
 }
 
@@ -81,7 +81,8 @@ $nav-line-height: 90%;
   font-size: $nav-font-size;
   line-height: $nav-line-height;
   text-decoration: none;
-  color: #fff;
+  color: rgba(255, 255, 255, 1);
+  opacity: 0.7;
   background: none;
   border: none;
   padding: 0;
