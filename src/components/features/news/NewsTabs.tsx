@@ -1,7 +1,6 @@
-import React from 'react';
+import './NewsTabs.scss';
 import { EventCard } from '@/components/ui/EventCard';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
-import './NewsTabs.scss';
 import { eventsItems, newsItems } from '@/components/constants/events-list';
 import { LineSection } from '@/components/ui/Line/Line';
 
@@ -21,15 +20,16 @@ export const NewsTabs: React.FC<NewsTabsProps> = ({ defaultTab = 'news', showLin
       <TabsContent value="news">
         <div className="news-tabs__grid">
           {newsItems.length > 0 ? (
-            newsItems.map((item) => (
+            newsItems.map((item, index) => (
               <EventCard
-                key={item.title + item.date}
+                key={item.title + item.date + index}
                 src={item.src}
                 title={item.title}
-                description={item.description}
+                detailDescription={item.detailDescription}
                 date={item.date}
-                location={item.location}
                 alt={item.alt}
+                slides={item.slides}
+                carouselOptions={item.carouselOptions}
               />
             ))
           ) : (
@@ -41,15 +41,16 @@ export const NewsTabs: React.FC<NewsTabsProps> = ({ defaultTab = 'news', showLin
       <TabsContent value="events">
         <div className="news-tabs__grid">
           {eventsItems.length > 0 ? (
-            eventsItems.map((item) => (
+            eventsItems.map((item, index) => (
               <EventCard
-                key={item.title + item.date}
+                key={item.title + item.date + index}
                 src={item.src}
                 title={item.title}
-                description={item.description}
+                detailDescription={item.detailDescription}
                 date={item.date}
-                location={item.location}
                 alt={item.alt}
+                slides={item.slides}
+                carouselOptions={item.carouselOptions}
               />
             ))
           ) : (

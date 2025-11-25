@@ -5,13 +5,13 @@ import React, { useState } from 'react';
 import { EmblaOptionsType } from 'embla-carousel';
 import Image from 'next/image';
 import { EventDetailModal } from '@/components/ui/EventDetailModal/EventDetailModal';
+import { EventDescription } from '@/types/event-list/event-list.type';
 
 export type EventCardProps = {
   src: string;
   title: string;
-  description?: string;
+  detailDescription?: EventDescription; // Подробное описание для модального окна
   date?: string;
-  location?: string;
   alt?: string;
   className?: string;
   slides?: string[];
@@ -21,18 +21,22 @@ export type EventCardProps = {
 export const EventCard: React.FC<EventCardProps> = ({
   src,
   title,
-  description,
+  detailDescription,
   date,
-  location,
   alt,
   className = '',
   slides = [],
-  carouselOptions = { loop: true },
+  carouselOptions = {
+    loop: true,
+    align: 'center',
+    slidesToScroll: 1,
+    containScroll: false,
+  },
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const altText = alt || title;
-  const imageTitle = `${title}${date ? ` - ${date}` : ''}${location ? ` в ${location}` : ''}`;
+  const imageTitle = `${title}${date ? ` - ${date}` : ''}`;
   const modalSlides = slides.length > 0 ? slides : [src];
 
   const handleCardClick = () => {
@@ -58,25 +62,15 @@ export const EventCard: React.FC<EventCardProps> = ({
               {title}
             </h3>
           )}
-          {description && (
-            <p className="event-card__description" title={description}>
-              {description}
-            </p>
-          )}
-          {(date || location) && (
-            <div className="event-card__meta">
-              {date && (
-                <time className="event-card__date" dateTime={date} title={date}>
-                  {date}
-                </time>
-              )}
-              {location && (
-                <address className="event-card__location" title={location}>
-                  {location}
-                </address>
-              )}
-            </div>
-          )}
+          <div className="event-card__meta">
+            {date ? (
+              <time className="event-card__date" dateTime={date} title={date}>
+                {date}
+              </time>
+            ) : (
+              <p className="event-card__date">Дата не указана</p>
+            )}
+          </div>
         </div>
       </article>
 
@@ -84,7 +78,7 @@ export const EventCard: React.FC<EventCardProps> = ({
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         title={title}
-        description={description}
+        description={detailDescription}
         date={date}
         slides={modalSlides}
         carouselOptions={carouselOptions}

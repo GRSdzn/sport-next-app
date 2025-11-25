@@ -4,14 +4,15 @@ import './EventDetailModal.scss';
 import React, { useState, useEffect } from 'react';
 import { EmblaOptionsType } from 'embla-carousel';
 import EmblaCarousel from '@/components/ui/Slider/EmblaCarousel';
-import { EVENT_DETAIL_MODAL_DATA } from '@/components/constants/event-detail-modal';
 import Image from 'next/image';
+import { FormattedContent } from '@/components/ui/FormattedContent/FormattedContent';
+import { EventDescription } from '@/types/event-list/event-list.type';
 
 export type EventDetailModalProps = {
   isOpen: boolean;
   onClose: () => void;
   title?: string;
-  description?: string;
+  description?: EventDescription;
   date?: string;
   slides?: string[];
   carouselOptions?: EmblaOptionsType;
@@ -20,11 +21,16 @@ export type EventDetailModalProps = {
 export const EventDetailModal: React.FC<EventDetailModalProps> = ({
   isOpen,
   onClose,
-  title = EVENT_DETAIL_MODAL_DATA.title,
-  description = EVENT_DETAIL_MODAL_DATA.description,
-  date = EVENT_DETAIL_MODAL_DATA.date,
-  slides = EVENT_DETAIL_MODAL_DATA.slides,
-  carouselOptions = { loop: true },
+  title,
+  description,
+  date,
+  slides = ['/images/slides/slide1.png'],
+  carouselOptions = {
+    loop: true,
+    align: 'center',
+    slidesToScroll: 1,
+    containScroll: false,
+  },
 }) => {
   const [mounted, setMounted] = useState(false);
 
@@ -76,11 +82,13 @@ export const EventDetailModal: React.FC<EventDetailModalProps> = ({
           <div className="event-detail-modal__info">
             <h2 className="event-detail-modal__title">{title}</h2>
 
-            {description && <p className="event-detail-modal__description">{description}</p>}
-            {date && (
-              <time className="event-detail-modal__date" dateTime={date}>
+            {description && <FormattedContent content={description} className="event-detail-modal__description" />}
+            {date ? (
+              <time className="event-detail-modal__date" dateTime={date} title={date}>
                 {date}
               </time>
+            ) : (
+              <p className="event-detail-modal__date">Дата не указана</p>
             )}
           </div>
         </div>

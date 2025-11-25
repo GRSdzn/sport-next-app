@@ -1,0 +1,61 @@
+@use '@/styles/abstracts/variables' as var;
+@use '@/styles/abstracts/mixins' as mixin;
+
+.formatted-content {
+  display: flex;
+  flex-direction: column;
+
+  &__paragraph {
+    font-family: var.$font-family-inter;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 1);
+    margin: 0;
+
+    @include mixin.respond('tablet') {
+      font-size: 16px;
+      line-height: 22px;
+    }
+
+    @include mixin.respond('mobile') {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+
+  &__list {
+    font-family: var.$font-family-inter;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 1);
+    margin: 0;
+    padding-left: 24px;
+    list-style-type: disc;
+
+    @include mixin.respond('tablet') {
+      font-size: 16px;
+      line-height: 22px;
+      padding-left: 20px;
+    }
+
+    @include mixin.respond('mobile') {
+      font-size: 14px;
+      line-height: 20px;
+      padding-left: 18px;
+    }
+  }
+
+  &__list-item {
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &::marker {
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+}

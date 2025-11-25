@@ -8,7 +8,12 @@ import EmblaCarousel from '@/components/ui/Slider/EmblaCarousel';
 import Link from 'next/link';
 import { ARROW_ICON } from '@/components/constants/ui-icons';
 
-const CAROUSEL_OPTIONS: EmblaOptionsType = { loop: true };
+const CAROUSEL_OPTIONS: EmblaOptionsType = {
+  loop: true,
+  align: 'center',
+  slidesToScroll: 1,
+  containScroll: false,
+};
 
 const DOTTED_GRID_CONFIG = {
   itemSize: 8,

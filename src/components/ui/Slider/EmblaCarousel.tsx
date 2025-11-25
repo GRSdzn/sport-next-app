@@ -24,7 +24,7 @@
  *
  * Вы можете изменить их напрямую в файле стилей или через пропсы
  */
-import React, { useEffect, useRef, useCallback } from 'react';
+import React, { useEffect, useRef, useCallback, useMemo } from 'react';
 import Image from 'next/image';
 import { EmblaOptionsType, EmblaCarouselType, EmblaEventType } from 'embla-carousel';
 import { DotButton, useDotButton } from './EmblaCarouselDotButton';
@@ -33,6 +33,13 @@ import useEmblaCarousel from 'embla-carousel-react';
 import '@/components/ui/Slider/EmblaCarouselStyle.scss';
 
 const TWEEN_FACTOR_BASE = 0.6;
+
+/**
+ * Минимальное количество слайдов для корректной работы бесконечного loop.
+ * При align: 'center' нужно минимум 3 слайда (предыдущий, текущий, следующий),
+ * но для плавной анимации и визуально корректного отображения рекомендуется 5+
+ */
+const MIN_SLIDES_FOR_INFINITE_LOOP = 5;
 
 const numberWithinRange = (num: number, min: number, max: number) => Math.min(Math.max(num, min), max);
 
@@ -45,14 +52,59 @@ type PropType = {
   dots?: boolean;
 };
 
+/**
+ * Вычисляет необходимое количество дублирований слайдов для корректной работы loop
+ * @param originalCount - количество оригинальных слайдов
+ * @param minRequired - минимально необходимое количество слайдов
+ * @returns количество раз, которое нужно повторить массив слайдов
+ */
+const calculateDuplicationFactor = (originalCount: number, minRequired: number): number => {
+  if (originalCount >= minRequired) return 1;
+  return Math.ceil(minRequired / originalCount);
+};
+
 const EmblaCarousel: React.FC<PropType> = ({ slides, options, slideWidth, slideHeight, slideGap, dots = true }) => {
+  const originalSlidesCount = slides.length;
+
+  /**
+   * Дублируем слайды только если:
+   * 1. Включен loop режим
+   * 2. Слайдов меньше минимально необходимого количества
+   *
+   * Это необходимо потому что Embla Carousel физически не может создать
+   * бесконечный loop если слайдов недостаточно для заполнения viewport
+   */
+  const displaySlides = useMemo(() => {
+    const shouldDuplicate = options?.loop && originalSlidesCount < MIN_SLIDES_FOR_INFINITE_LOOP;
+    if (!shouldDuplicate) return slides;
+
+    const duplicationFactor = calculateDuplicationFactor(originalSlidesCount, MIN_SLIDES_FOR_INFINITE_LOOP);
+    return Array.from({ length: duplicationFactor }, () => slides).flat();
+  }, [slides, options?.loop, originalSlidesCount]);
+
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
   const [isReady, setIsReady] = React.useState(false);
   const tweenNodes = useRef<HTMLElement[]>([]);
   const tweenFactor = useRef(TWEEN_FACTOR_BASE);
 
-  const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi);
+  const { selectedIndex } = useDotButton(emblaApi);
   const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } = usePrevNextButtons(emblaApi);
+
+  /**
+   * Вычисляем индекс оригинального слайда для корректного отображения dots
+   * Если слайды дублированы, берем остаток от деления на количество оригинальных слайдов
+   */
+  const originalSlideIndex = useMemo(() => {
+    return selectedIndex % originalSlidesCount;
+  }, [selectedIndex, originalSlidesCount]);
+
+  /**
+   * Создаем массив точек на основе оригинального количества слайдов,
+   * а не дублированных, чтобы пользователь видел корректное количество
+   */
+  const dotIndices = useMemo(() => {
+    return Array.from({ length: originalSlidesCount }, (_, i) => i);
+  }, [originalSlidesCount]);
 
   // Собираем DOM элементы слайдов
   const setTweenNodes = useCallback((api: EmblaCarouselType) => {
@@ -90,8 +142,10 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options, slideWidth, slideH
       const tweenValue = 1 - Math.abs(diffToTarget * tweenFactor.current);
       const scale = numberWithinRange(tweenValue, 0.3, 1);
       const tweenNode = tweenNodes.current[index];
-      tweenNode.style.transform = `scale(${scale})`;
-      tweenNode.style.transformOrigin = 'center center';
+      if (tweenNode) {
+        tweenNode.style.transform = `scale(${scale})`;
+        tweenNode.style.transformOrigin = 'center center';
+      }
     });
   }, []);
 
@@ -103,27 +157,65 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options, slideWidth, slideH
     setIsReady(true);
 
     emblaApi.on('reInit', setTweenNodes).on('reInit', tweenScale).on('scroll', tweenScale).on('slideFocus', tweenScale);
+
+    return () => {
+      emblaApi.off('reInit', setTweenNodes).off('reInit', tweenScale).off('scroll', tweenScale).off('slideFocus', tweenScale);
+    };
   }, [emblaApi, setTweenNodes, tweenScale]);
 
   // Inline стили для кастомизации размеров (если переданы пропсы)
-  const customStyles = {
-    '--slide-width': slideWidth,
-    '--slide-height': slideHeight,
-    '--slide-gap': slideGap || '0px',
-    opacity: isReady ? 1 : 0,
-    transition: 'opacity 0.2s ease-in-out',
-  } as React.CSSProperties;
+  const customStyles = useMemo(
+    () =>
+      ({
+        '--slide-width': slideWidth,
+        '--slide-height': slideHeight,
+        '--slide-gap': slideGap || '0px',
+        opacity: isReady ? 1 : 0,
+        transition: 'opacity 0.2s ease-in-out',
+      }) as React.CSSProperties,
+    [slideWidth, slideHeight, slideGap, isReady],
+  );
+
+  /**
+   * Обработчик клика по точке навигации
+   * Учитывает дублирование слайдов и прокручивает к правильному индексу
+   */
+  const handleDotClick = useCallback(
+    (dotIndex: number) => {
+      if (!emblaApi) return;
+
+      // Находим ближайший индекс дублированного слайда, который соответствует оригинальному
+      const currentIndex = emblaApi.selectedScrollSnap();
+      const totalSlides = displaySlides.length;
+
+      // Вычисляем все возможные индексы для этого оригинального слайда
+      const targetIndices = [];
+      for (let i = dotIndex; i < totalSlides; i += originalSlidesCount) {
+        targetIndices.push(i);
+      }
+
+      // Выбираем ближайший индекс к текущей позиции
+      const targetIndex = targetIndices.reduce((closest, current) => {
+        const currentDistance = Math.abs(current - currentIndex);
+        const closestDistance = Math.abs(closest - currentIndex);
+        return currentDistance < closestDistance ? current : closest;
+      });
+
+      emblaApi.scrollTo(targetIndex);
+    },
+    [emblaApi, displaySlides.length, originalSlidesCount],
+  );
 
   return (
     <section className="embla" style={customStyles} data-ready={isReady}>
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
-          {slides.map((slide, i) => (
-            <div className={`embla__slide${i === selectedIndex ? ' is-selected' : ''}`} key={i}>
+          {displaySlides.map((slide, i) => (
+            <div className={`embla__slide${i === selectedIndex ? ' is-selected' : ''}`} key={`${slide}-${i}`}>
               <div className="embla__slide__number">
                 <Image
                   src={slide}
-                  alt={`Slide ${i + 1}`}
+                  alt={`Slide ${(i % originalSlidesCount) + 1}`}
                   fill
                   sizes="(max-width: 480px) 300px, (max-width: 768px) 450px, 589px"
                   className="embla__slide__image"
@@ -144,13 +236,13 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options, slideWidth, slideH
 
         {dots && (
           <div className="embla__dots">
-            {scrollSnaps.map((_, index) => (
+            {dotIndices.map((dotIndex) => (
               <DotButton
-                key={index}
-                onClick={() => onDotButtonClick(index)}
-                className={'embla__dot'.concat(index === selectedIndex ? ' embla__dot--selected' : '')}
-                aria-label={`Перейти на слайд ${index + 1}`}
-                aria-pressed={index === selectedIndex}
+                key={dotIndex}
+                onClick={() => handleDotClick(dotIndex)}
+                className={'embla__dot'.concat(dotIndex === originalSlideIndex ? ' embla__dot--selected' : '')}
+                aria-label={`Перейти на слайд ${dotIndex + 1}`}
+                aria-pressed={dotIndex === originalSlideIndex}
               />
             ))}
           </div>
