@@ -39,7 +39,9 @@ $nav-line-height: 90%;
   .header__container {
     @include mixin.container();
     padding: 16px 24px;
-    background-color: $header-bg;
+    background-color: rgba(26, 26, 26, 0.7);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
     border-radius: $header-border-radius;
     display: flex;
     justify-content: space-between;
