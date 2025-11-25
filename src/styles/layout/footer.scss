@@ -149,6 +149,25 @@
     }
   }
 
+  .adaptive-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 200px;
+
+    > * {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    @include mixin.respond('tablet') {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 40px;
+    }
+  }
+
   &__privacy-policy-link {
     font-size: 18px;
     font-weight: 400;

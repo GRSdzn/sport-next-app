@@ -1,27 +1,12 @@
-'use client';
-
 import '@/styles/layout/footer.scss';
 import Image from 'next/image';
 import { Button } from '../ui/Button/Button';
 import Link from 'next/link';
 import { FOOTER_BUTTONS } from '../constants/footer-buttons';
-import ContactModal from '../ui/ContactModal/ContactModal';
-import CallbackModal from '../ui/CallbackModal/CallbackModal';
-import { useState, useCallback } from 'react';
+import {ClientButton} from "@/components/layout/ClientButton";
 
-type ModalType = 'contact' | 'callback' | null;
-
+/** сделал футер серверной компонентой */
 export default function Footer() {
-  const [activeModal, setActiveModal] = useState<ModalType>(null);
-
-  const openModal = useCallback((modalType: ModalType) => {
-    setActiveModal(modalType);
-  }, []);
-
-  const closeModal = useCallback(() => {
-    setActiveModal(null);
-  }, []);
-
   return (
     <footer className="footer" role="contentinfo">
       <div className="footer__container">
@@ -90,38 +75,8 @@ export default function Footer() {
           </div>
         </address>
 
-        {/* BUTTON - СВЯЗАТЬСЯ */}
-        <div className="footer__button-container">
-          <Button
-            type="button"
-            aria-label="Связаться с нами"
-            variant="primary"
-            size="lg"
-            fullWidth
-            icon={<Image src="/images/icons/icon-arrow.svg" alt="Иконка стрелки" width={18} height={18} />}
-            iconPosition="right"
-            onClick={() => openModal('callback')}
-          >
-            Связаться
-          </Button>
-          <p className="footer__privacy-policy">
-            <Link
-              href="/privacy-policy"
-              className="footer__privacy-policy-link"
-              aria-label="Политика конфиденциальности"
-            >
-              Политика конфиденциальности
-            </Link>
-          </p>
-        </div>
+        <ClientButton />
       </div>
-
-      <ContactModal
-        isOpen={activeModal === 'contact'}
-        onClose={closeModal}
-        onOpenCallback={() => openModal('callback')}
-      />
-      <CallbackModal isOpen={activeModal === 'callback'} onClose={closeModal} />
     </footer>
   );
 }
