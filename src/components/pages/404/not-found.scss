@@ -7,6 +7,7 @@
   align-items: center;
   justify-content: center;
   min-height: 60vh;
+  @include mixin.page-container();
 
   &__container {
     @include mixin.container();
@@ -39,14 +40,6 @@
 
     @include mixin.respond('laptop') {
       font-size: 120px;
-    }
-
-    @include mixin.respond('tablet') {
-      font-size: 100px;
-    }
-
-    @include mixin.respond('mobile') {
-      font-size: 80px;
     }
   }
 

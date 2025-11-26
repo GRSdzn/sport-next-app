@@ -7,7 +7,6 @@ export const NotFoundPage: React.FC = () => {
   return (
     <main className="not-found-page" role="main">
       <div className="not-found-page__container">
-        {/* SEO: используем semantic элементы */}
         <div className="not-found-page__content">
         <h1 className="not-found-page__title">404</h1>
         <p className="not-found-page__description">
