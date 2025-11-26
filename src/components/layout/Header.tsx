@@ -10,7 +10,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useModal } from '@/hooks/useModal';
 
 export default function Header() {
-  const { activeSystemModal, openSystemModal, closeSystemModal } = useModal();
+  const { openSystemModal, closeSystemModal } = useModal();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleOpenModal = useCallback(

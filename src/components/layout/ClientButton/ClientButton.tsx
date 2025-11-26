@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import { Button } from '@/components/ui/Button/Button';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -27,11 +26,7 @@ export const ClientButton = () => {
       </Button>
       <div className="adaptive-container">
         <p>
-          <Link
-            href="/privacy-policy"
-            className="footer__privacy-policy-link"
-            aria-label="Политика конфиденциальности"
-          >
+          <Link href="/privacy-policy" className="footer__privacy-policy-link" aria-label="Политика конфиденциальности">
             Политика конфиденциальности
           </Link>
         </p>

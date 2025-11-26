@@ -1,5 +1,6 @@
 'use client';
 
+import './CallbackModal.scss';
 import { memo } from 'react';
 import { Button } from '../Button/Button';
 import Modal from '../Modal/Modal';
@@ -7,7 +8,6 @@ import { FormInput } from './components/FormInput';
 import { CheckboxField } from './components/CheckboxField';
 import { useCallbackForm } from './hooks/useCallbackForm';
 import type { CallbackModalProps } from './types';
-import './CallbackModal.scss';
 
 const CallbackModal: React.FC<CallbackModalProps> = memo(({ isOpen, onClose }) => {
   const { formData, errors, isSubmitting, handleInputChange, handleSubmit } = useCallbackForm(onClose);

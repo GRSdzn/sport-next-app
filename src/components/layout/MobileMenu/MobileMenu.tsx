@@ -1,10 +1,10 @@
 'use client';
 
+import './MobileMenu.scss';
 import Link from 'next/link';
 import { memo } from 'react';
 import clsx from 'clsx';
 import { NAV_MENU } from '@/components/constants/nav_menu';
-import './MobileMenu.scss';
 
 interface MobileMenuProps {
   isOpen: boolean;

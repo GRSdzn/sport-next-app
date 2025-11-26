@@ -1,9 +1,5 @@
 'use client';
 /**
- * EmblaCarousel - Компонент слайдера с управляемыми размерами
- *
- * Использование:
- *
  * 1. Базовое использование (размеры по умолчанию из CSS):
  * <EmblaCarousel slides={SLIDES} options={{ loop: true }} />
  *
@@ -22,7 +18,6 @@
  * - Tablet: width: 450px, height: 280px
  * - Mobile: width: 300px, height: 200px
  *
- * Вы можете изменить их напрямую в файле стилей или через пропсы
  */
 import React, { useEffect, useRef, useCallback, useMemo } from 'react';
 import Image from 'next/image';
@@ -52,12 +47,6 @@ type PropType = {
   dots?: boolean;
 };
 
-/**
- * Вычисляет необходимое количество дублирований слайдов для корректной работы loop
- * @param originalCount - количество оригинальных слайдов
- * @param minRequired - минимально необходимое количество слайдов
- * @returns количество раз, которое нужно повторить массив слайдов
- */
 const calculateDuplicationFactor = (originalCount: number, minRequired: number): number => {
   if (originalCount >= minRequired) return 1;
   return Math.ceil(minRequired / originalCount);
@@ -98,15 +87,10 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options, slideWidth, slideH
     return selectedIndex % originalSlidesCount;
   }, [selectedIndex, originalSlidesCount]);
 
-  /**
-   * Создаем массив точек на основе оригинального количества слайдов,
-   * а не дублированных, чтобы пользователь видел корректное количество
-   */
   const dotIndices = useMemo(() => {
     return Array.from({ length: originalSlidesCount }, (_, i) => i);
   }, [originalSlidesCount]);
 
-  // Собираем DOM элементы слайдов
   const setTweenNodes = useCallback((api: EmblaCarouselType) => {
     tweenNodes.current = api
       .slideNodes()
