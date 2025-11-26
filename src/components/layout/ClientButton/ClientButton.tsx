@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import { Button } from '@/components/ui/Button/Button';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -26,16 +25,14 @@ export const ClientButton = () => {
         Связаться
       </Button>
       <div className="adaptive-container">
-        <p>
-          <Link
-            href="/privacy-policy"
-            className="footer__privacy-policy-link"
-            aria-label="Политика конфиденциальности"
-          >
+        <div className="footer__footer-links">
+          <Link href="/privacy-policy" className="footer__privacy-policy-link" aria-label="Политика конфиденциальности">
             Политика конфиденциальности
           </Link>
-        </p>
-        <CodeCake />
+        </div>
+        <div className="footer__codecake-wrapper">
+          <CodeCake />
+        </div>
       </div>
     </div>
   );

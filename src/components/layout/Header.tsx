@@ -10,7 +10,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useModal } from '@/hooks/useModal';
 
 export default function Header() {
-  const { activeSystemModal, openSystemModal, closeSystemModal } = useModal();
+  const { openSystemModal, closeSystemModal } = useModal();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleOpenModal = useCallback(
@@ -90,7 +90,7 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image src="/images/icons/icon-vk.svg" alt="Иконка ВКонтакте" width={20} height={20} />
+              <Image src="/images/icons/icon-vk.svg" alt="Иконка ВКонтакте" width={21} height={13} />
             </Link>
             <Link
               href="https://t.me"
@@ -99,7 +99,7 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image src="/images/icons/icon-tg.svg" alt="Иконка Telegram" width={20} height={20} />
+              <Image src="/images/icons/icon-tg.svg" alt="Иконка Telegram" width={21} height={17} />
             </Link>
           </div>
           <div className="header__contact">

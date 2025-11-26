@@ -11,15 +11,15 @@ export const GallerySection: React.FC = () => {
       <div className="gallery-section__wrapper">
         <div className="gallery-section__text-container">
           <h2 className="gallery-section__title">ГАЛЕРЕЯ</h2>
-          <Link href="/gallery" className="gallery-section__button-link">
+          <Link href="/gallery" className="gallery-section__button-link" aria-label="Смотреть все изображения галереи">
             <Button
               type="button"
               className="gallery-section__button gallery-section__button--desktop"
-              aria-label="Смотреть все изображения"
               variant="primary"
               size="lg"
               icon={ARROW_ICON}
               iconPosition="right"
+              aria-hidden="true"
             >
               СМОТРЕТЬ ВСЕ
             </Button>
@@ -42,15 +42,15 @@ export const GallerySection: React.FC = () => {
             </div>
           ))}
         </div>
-        <Link href="/gallery" className="gallery-section__button-link">
+        <Link href="/gallery" className="gallery-section__button-link" aria-label="Смотреть все изображения галереи">
           <Button
             type="button"
             className="gallery-section__button gallery-section__button--mobile"
-            aria-label="Смотреть все изображения"
             variant="primary"
             size="lg"
             icon={ARROW_ICON}
             iconPosition="right"
+            aria-hidden="true"
           >
             СМОТРЕТЬ ВСЕ
           </Button>

@@ -51,7 +51,7 @@ const ContactModal: React.FC<ContactModalProps> = memo(({ isOpen, onClose, onOpe
           <LineSection />
 
           <div className="contact-modal__contact-list-item">
-            <Image src="/images/icons/icon-mail.svg" alt="" width={24} height={24} loading="lazy" />
+            <Image src="/images/icons/icon-mail.svg" alt="" width={34} height={27} loading="lazy" />
             <div className="contact-modal__contact-list-block">
               <h3 className="contact-modal__contact-list-title">
                 <a href="mailto:Khmer-box@yandex.ru">Khmer-box@yandex.ru</a>

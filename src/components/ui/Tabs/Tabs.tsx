@@ -1,7 +1,7 @@
 'use client';
 
-import { TabsProvider } from './TabsProvider';
 import './Tabs.scss';
+import { TabsProvider } from './TabsProvider';
 
 export type TabsProps = {
   children: React.ReactNode;

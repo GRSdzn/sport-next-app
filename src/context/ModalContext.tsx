@@ -2,12 +2,13 @@
 
 import { createContext, useState, useCallback, useEffect, ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
+import type { EventDescription } from '@/types/event-list/event-list.type';
 
 export type SystemModalType = 'contact' | 'callback' | null;
 
 export interface EventDetailData {
   title?: string;
-  description?: any;
+  description?: EventDescription;
   date?: string;
   slides?: string[];
 }

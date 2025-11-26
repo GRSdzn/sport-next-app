@@ -26,12 +26,6 @@ export const EventCard: React.FC<EventCardProps> = ({
   alt,
   className = '',
   slides = [],
-  carouselOptions = {
-    loop: true,
-    align: 'center',
-    slidesToScroll: 1,
-    containScroll: false,
-  },
 }) => {
   const { openEventDetail } = useModal();
 
@@ -48,8 +42,22 @@ export const EventCard: React.FC<EventCardProps> = ({
     });
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleCardClick();
+    }
+  };
+
   return (
-    <article className={`event-card ${className}`.trim()} onClick={handleCardClick} role="button" tabIndex={0}>
+    <article
+      className={`event-card ${className}`.trim()}
+      onClick={handleCardClick}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      role="button"
+      aria-label={`${title}${date ? `, ${date}` : ''}`}
+    >
       <div className="event-card__image-wrapper">
         <Image
           src={src}
