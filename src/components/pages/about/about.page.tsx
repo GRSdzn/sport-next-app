@@ -1,7 +1,7 @@
-import { ABOUT_IMAGES } from '@/components/constants/about-img-list';
 import './about.scss';
 import Image from 'next/image';
 import { DottedGrid } from '@/components/ui/DottedGrid/DottedGrid';
+import { DETAIL_INFO_IMAGES } from '@/components/constants/detail-info-images';
 
 export const AboutPage: React.FC = () => {
   return (
@@ -33,7 +33,7 @@ export const AboutPage: React.FC = () => {
       <section className="about-page__gallery">
         <div className="about-page__wrapper">
           <div className="about-page__gallery-grid">
-            {ABOUT_IMAGES.map((image, index) => (
+            {DETAIL_INFO_IMAGES.map((image, index) => (
               <figure key={`about-image-${index}`} className="about-page__gallery-item">
                 <div className="about-page__image-wrapper">
                   <Image
