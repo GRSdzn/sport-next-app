@@ -59,7 +59,7 @@ export const CoverSection: React.FC = () => {
           />
         </div>
         <div className="cover-section__button-wrapper">
-          <Link href="/about-kun-khemer" className="cover-section__button-link">
+          <Link href="/about" className="cover-section__button-link">
             <Button
               type="button"
               className="cover-section__button"

@@ -28,7 +28,7 @@ export const DetailInfoSection: React.FC = () => {
       <div className="detail-info-section__wrapper">
         <div className="detail-info-section__container">
           <div className="detail-info-section__mobile-button-wrapper">
-            <Link href="/about-kun-khemer" className="detail-info-section__button-link">
+            <Link href="/about" className="detail-info-section__button-link">
               <Button
                 type="button"
                 className="detail-info-section__mobile-button"
@@ -58,7 +58,7 @@ export const DetailInfoSection: React.FC = () => {
           <div className="detail-info-section__content">
             <h2 className="detail-info-section__title">КУН КХМЕР</h2>
             <p className="detail-info-section__description">{DETAIL_INFO_DESCRIPTION}</p>
-            <Link href="/about-kun-khemer" className="detail-info-section__button-link">
+            <Link href="/about" className="detail-info-section__button-link">
               <Button
                 type="button"
                 className="detail-info-section__button"
