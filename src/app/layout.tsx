@@ -6,6 +6,8 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { mainLayoutMeta } from '@/components/seo/meta';
 import type { Viewport } from 'next';
+import { ModalProvider } from '@/context/ModalContext';
+import { GlobalModals } from '@/components/layout/GlobalModals';
 
 const bebasNeueCyrillic = localFont({
   src: '../../public/fonts/bebas-neue-regular.woff2',
@@ -32,9 +34,12 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={`${bebasNeueCyrillic.variable} ${inter.variable}`}>
-        <Header />
-        <main className="main-content">{children}</main>
-        <Footer />
+        <ModalProvider>
+          <Header />
+          <main className="main-content">{children}</main>
+          <Footer />
+          <GlobalModals />
+        </ModalProvider>
       </body>
     </html>
   );

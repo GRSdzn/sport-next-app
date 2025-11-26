@@ -5,40 +5,35 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { NAV_MENU } from '../constants/nav_menu';
 import { Button } from '../ui/Button/Button';
-import ContactModal from '../ui/ContactModal/ContactModal';
-import CallbackModal from '../ui/CallbackModal/CallbackModal';
 import MobileMenu from './MobileMenu/MobileMenu';
 import { useState, useEffect, useCallback } from 'react';
-
-type ModalType = 'contact' | 'callback' | null;
+import { useModal } from '@/hooks/useModal';
 
 export default function Header() {
-  const [activeModal, setActiveModal] = useState<ModalType>(null);
+  const { activeSystemModal, openSystemModal, closeSystemModal } = useModal();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const openModal = useCallback((modalType: ModalType) => {
-    setActiveModal(modalType);
-    setIsMobileMenuOpen(false);
-  }, []);
-
-  const closeModal = useCallback(() => {
-    setActiveModal(null);
-  }, []);
+  const handleOpenModal = useCallback(
+    (modalType: 'contact' | 'callback') => {
+      openSystemModal(modalType);
+      setIsMobileMenuOpen(false);
+    },
+    [openSystemModal],
+  );
 
   const toggleMobileMenu = useCallback(() => {
-    setIsMobileMenuOpen((prev) => {
-      const newState = !prev;
-
-      if (newState) {
-        setActiveModal(null);
-      }
-      return newState;
-    });
+    setIsMobileMenuOpen((prev) => !prev);
   }, []);
 
   const closeMobileMenu = useCallback(() => {
     setIsMobileMenuOpen(false);
   }, []);
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      closeSystemModal();
+    }
+  }, [isMobileMenuOpen, closeSystemModal]);
 
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -52,10 +47,10 @@ export default function Header() {
   }, [isMobileMenuOpen]);
 
   useEffect(() => {
-    const handler = () => openModal('contact');
+    const handler = () => openSystemModal('contact');
     window.addEventListener('open-contact-modal', handler);
     return () => window.removeEventListener('open-contact-modal', handler);
-  }, [openModal]);
+  }, [openSystemModal]);
 
   return (
     <header className="header" role="banner">
@@ -114,7 +109,7 @@ export default function Header() {
               aria-label="Связаться с Федерацией Кун Кхмер"
               variant="outline"
               size="md"
-              onClick={() => openModal('callback')}
+              onClick={() => handleOpenModal('callback')}
             >
               СВЯЗАТЬСЯ
             </Button>
@@ -137,14 +132,11 @@ export default function Header() {
         </div>
       </div>
 
-      <MobileMenu isOpen={isMobileMenuOpen} onClose={closeMobileMenu} onOpenContactModal={() => openModal('contact')} />
-
-      <ContactModal
-        isOpen={activeModal === 'contact'}
-        onClose={closeModal}
-        onOpenCallback={() => openModal('callback')}
+      <MobileMenu
+        isOpen={isMobileMenuOpen}
+        onClose={closeMobileMenu}
+        onOpenContactModal={() => handleOpenModal('contact')}
       />
-      <CallbackModal isOpen={activeModal === 'callback'} onClose={closeModal} />
     </header>
   );
 }
