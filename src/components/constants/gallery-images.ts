@@ -5,6 +5,12 @@ export type GalleryImage = {
   size: 'large' | 'small' | 'medium' | 'wide' | 'tall';
 };
 
+export type GalleryPageImage = {
+  id: string;
+  src: string;
+  alt: string;
+};
+
 export const GALLERY_IMAGES: GalleryImage[] = [
   {
     id: 'gallery-champion-belt',
@@ -91,3 +97,56 @@ export const getImageSizes = (size: GalleryImage['size']): string => {
 
   return sizesMap[size];
 };
+
+export const GALLERY_PAGE_IMAGES: GalleryPageImage[] = [
+  {
+    id: 'gallery-champion-belt',
+    src: '/images/gallery/image-1.png',
+    alt: 'Победитель с поясом чемпиона',
+  },
+  {
+    id: 'gallery-champion-belt',
+    src: '/images/gallery/image-1.png',
+    alt: 'Победитель с поясом чемпиона',
+  },
+  {
+    id: 'gallery-champion-belt',
+    src: '/images/gallery/image-1.png',
+    alt: 'Победитель с поясом чемпиона',
+  },
+  {
+    id: 'gallery-champion-belt',
+    src: '/images/gallery/image-1.png',
+    alt: 'Победитель с поясом чемпиона',
+  },
+  {
+    id: 'gallery-champion-belt',
+    src: '/images/gallery/image-1.png',
+    alt: 'Победитель с поясом чемпиона',
+  },
+  {
+    id: 'gallery-champion-belt',
+    src: '/images/gallery/image-1.png',
+    alt: 'Победитель с поясом чемпиона',
+  },
+  {
+    id: 'gallery-champion-belt',
+    src: '/images/gallery/image-1.png',
+    alt: 'Победитель с поясом чемпиона',
+  },
+  {
+    id: 'gallery-champion-belt',
+    src: '/images/gallery/image-1.png',
+    alt: 'Победитель с поясом чемпиона',
+  },
+  {
+    id: 'gallery-champion-belt',
+    src: '/images/gallery/image-1.png',
+    alt: 'Победитель с поясом чемпиона',
+  },
+  {
+    id: 'gallery-champion-belt',
+    src: '/images/gallery/image-1.png',
+    alt: 'Победитель с поясом чемпиона',
+  },
+];

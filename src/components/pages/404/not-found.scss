@@ -77,7 +77,6 @@
     @include mixin.respond('mobile') {
       width: 200px;
       height: 60px;
-      font-size: 14px;
     }
   }
 }
